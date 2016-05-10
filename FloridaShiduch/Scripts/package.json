@@ -1,0 +1,24 @@
+{
+  "name": "florida-shidduch",
+  "version": "0.0.1",
+  "description": "Jewish dating web site.",
+  "main": "main.js",
+  "dependencies": {
+    "requirejs": "^2.2.0"
+  },
+  "devDependencies": {
+    "bower": "^1.7.9"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "jewish",
+    "dating",
+    "shiduch",
+    "shodchan",
+    "florida"
+  ],
+  "author": "Gary Kaganas",
+  "license": "ISC"
+}

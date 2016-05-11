@@ -1,24 +1,23 @@
 {
-  "name": "florida-shidduch",
-  "version": "0.0.1",
-  "description": "Jewish dating web site.",
-  "main": "main.js",
-  "dependencies": {
-    "requirejs": "^2.2.0"
-  },
+  "name": "scripts",
+  "version": "0.0.0",
+  "dependencies": {},
   "devDependencies": {
-    "bower": "^1.7.9"
+    "del-cli": "^0.2.0",
+    "node-sass": "^3.4.2",
+    "postcss-cli": "^2.5.1",
+    "autoprefixer": "^6.3.3",
+    "postcss-flexboxfixer": "0.0.4",
+    "cssnano": "^3.5.2"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "scripts": { 
+    "scss": "npm run scss:clean && node-sass ../Content/Styles -o ../Content/Styles --source-map true --output-style expanded --source-comments true",
+    "scss:watch": "npm run scss && node-sass ../Content/Styles -o ../Content/Styles --source-map true --output-style expanded --source-comments true --watch -r ../Content/Styles",
+    "scss:prod": "npm run scss:clean && node-sass ../Content/Styles -o ../Content/Styles --output-style compressed && npm run scss:final",
+    "scss:final": "postcss -u autoprefixer -u postcss-flexboxfixer -u cssnano --config ops.json -r ../Content/Styles/*.css",
+    "scss:clean": "del-cli --force ../Content/Styles/styles.css"
   },
-  "keywords": [
-    "jewish",
-    "dating",
-    "shiduch",
-    "shodchan",
-    "florida"
-  ],
-  "author": "Gary Kaganas",
-  "license": "ISC"
+  "engines": {
+    "node": ">=0.8.0"
+  }
 }

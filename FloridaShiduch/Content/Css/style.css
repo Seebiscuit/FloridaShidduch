@@ -19,8 +19,8 @@ body {background:#eceded;border:0;font:14px Arial, Helvetica, sans-serif;color:#
 .css3{border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px;box-shadow:0 0 4px rgba(0, 0, 0, .4);-moz-box-shadow:0 0 4px rgba(0, 0, 0, .4);-webkit-box-shadow:0 0 4px rgba(0, 0, 0, .4);position:relative}
 /* Global Structure */
 .main {margin:0 auto;width:900px}
-.body1 {background:url(../images/bg_top.gif) top repeat-x #eceded;position:fixed;z-index:2;top:0;left:0;width:100%}
-.body2 {background:url(../images/bg_top_img.jpg) top center no-repeat}
+.body1 {background:url(../images/bg_top.gif) bottom repeat-x #eceded;position:fixed;z-index:2;top:0;left:0;width:100%}
+.body2 {background:url(../images/bg_top_img.jpg) bottom center no-repeat}
 .body3 {background:#eceded;padding-bottom:20px}
 .body4 {background:#1a1a1a;height:142px}
 /* main layout */
@@ -33,7 +33,7 @@ h3 a {text-decoration:none;color:#000}
 h3 a:hover {color:#f77007}
 p {padding-bottom:20px}
 /* header */
-header {width:100%;overflow:hidden;height:248px}
+header {width:100%;overflow:hidden;height:164px}
 #top_nav {float:right;padding:9px 0 0 0}
 #top_nav li {float:left;background:url(../images/line_top.gif) 0 0 no-repeat;padding:1px 2px 2px 21px;margin-left:16px}
 #top_nav a {display:block;width:16px;height:14px;position:relative}
@@ -62,7 +62,7 @@ a.aToolTipCloseBtn {display:block;height:20px;width:20px;overflow:hidden;backgro
 #menu .nav5 a:hover, #menu .nav5.menu_active a {color:#e40016}
 #menu .nav6 a:hover, #menu .nav6.menu_active a {color:#f77007}
 /* content */
-#content {padding:248px 0 0 243px;width:649px;position:relative;z-index:1;padding-bottom:56px}
+#content {padding:248px 0 0 243px;position:relative;z-index:1;padding-bottom:56px}
 /* The Nivo Slider styles */
 #slider {position:relative;width:100%;height:396px;z-index:88;overflow:hidden}
 /* If an image is wrapped in a link */

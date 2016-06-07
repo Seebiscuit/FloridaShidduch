@@ -1,0 +1,705 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="content/styles/styles.css" type="text/css" media="all">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+</head>
+<body>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <div class="container col-md-8 col-md-offset-2">
+        <div class="row" data-name="demographic">
+            <h2>Demographics</h2>
+            <div class="form-group col-xs-2">
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" name="register-gender" id="register-personal-gender-male" value="male">
+                    <label for="register-personal-gender-male">Male</label>
+                </div>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" name="register-gender" id="register-personal-gender-female" value="female">
+                    <label for="register-personal-gender-female">Female</label>
+                </div>
+            </div>
+            <div class="form-group col-xs-5">
+                <input type="text" class="form-control" id="register-fname" placeholder="First Name">
+            </div>
+            <div class="form-group col-xs-5">
+                <input type="text" class="form-control" id="register-lname" placeholder="Last Name">
+            </div>
+            <div class="form-group col-xs-8">
+                <input type="text" class="form-control" id="register-address-home" placeholder="Home Address">
+            </div>
+            <div class="form-group col-xs-4">
+                <input type="text" class="form-control" id="register-address-apt" placeholder="Apt">
+            </div>
+            <div class="form-group col-xs-7">
+                <input type="text" class="form-control" id="register-address-city" placeholder="City">
+            </div>
+            <div class="form-group col-xs-2">
+                <input type="text" class="form-control" id="register-address-state" placeholder="State">
+            </div>
+            <div class="form-group col-xs-3">
+                <input type="text" pattern="[0-9]{5}" class="form-control" id="register-address-zip" placeholder="Zip">
+            </div>
+            <div class="form-group col-xs-4">
+                <input type="text" class="form-control" id="register-contact-mobile" placeholder="Mobile Phone">
+            </div>
+            <div class="form-group col-xs-4">
+                <input type="text" class="form-control" id="register-contact-home" placeholder="Home Phone">
+            </div>
+            <div class="form-group col-xs-4">
+                <input type="text" class="form-control" id="register-contact-work" placeholder="Work Phone">
+            </div>
+        </div>
+        <div data-name="personal" class="row">
+            <h2>Personal Information</h2>
+            <div class="form-group col-xs-3">
+                <label class="control-label" for="register-personal-birthday">Birthday</label>
+                <input type="date" class="form-control" id="register-personal-birthday">
+            </div>
+            <div class="form-group col-xs-3">
+                <div class="col-xs-5 align-bottom no-right-padding">
+                    <label for="register-personal-height">Height</label>
+                    <select class="form-control" id="register-personal-height-feet" value="5">
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select>
+                </div>
+                <div class="col-xs-5 align-bottom no-right-padding">
+                    <select class="form-control" id="register-personal-height-inches" value="5">
+                        <option>1"</option>
+                        <option>2"</option>
+                        <option>3"</option>
+                        <option>4"</option>
+                        <option>5"</option>
+                        <option>6"</option>
+                        <option>7"</option>
+                        <option>8"</option>
+                        <option>9"</option>
+                        <option>10"</option>
+                        <option>11"</option>
+                        <option>12"</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-xs-6">
+                <div>
+                    <label class="control-label" for="register-personal-build">Build</label>
+                </div>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" name="register-build" id="register-personal-build-slim" value="slim">
+                    <label for="register-personal-build-slim">Slim</label>
+                </div>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" name="register-build" id="register-personal-build-average" value="avereage">
+                    <label for="register-personal-build-average">Average</label>
+                </div>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" name="register-build" id="register-personal-build-heavy" value="heavy">
+                    <label for="register-personal-build-heavy">Somewhat overweight</label>
+                </div>
+            </div>
+            <div class="col-xs-12 no-left-padding">
+                <div class="form-group col-xs-3">
+                    <div>
+                        <label class="control-label" for="register-personal-martialstatus">Marital Status</label>
+                    </div>
+                    <select id="register-personal-martialstatus" class="selectpicker">
+                        <option value="single">Single</option>
+                        <option value="divorced">Divorced</option>
+                        <option value="widowed">Widowed</option>
+                    </select>
+                </div>
+                <div class="form-group col-xs-3">
+                    <label class="control-label" for="register-personal-pet">Pet Owner</label>
+                    <div>
+                        <div class="radio radio-info radio-inline">
+                            <input type="radio" name="register-personal-pet" id="register-personal-pet-yes" value="yes">
+                            <label for="register-personal-pet-yes">Yes</label>
+                        </div>
+                        <div class="radio radio-info radio-inline">
+                            <input type="radio" name="register-personal-pet" id="register-personal-pet-no" value="no">
+                            <label for="register-personal-pet-no">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-xs-3">
+                    <label class="control-label" for="register-personal-smoker">Smoker</label>
+                    <div>
+                        <div class="radio radio-info radio-inline">
+                            <input type="radio" name="register-personal-smoker" id="register-personal-smoker-yes" value="yes">
+                            <label for="register-personal-smoker-yes">Yes</label>
+                        </div>
+                        <div class="radio radio-info radio-inline">
+                            <input type="radio" name="register-personal-smoker" id="register-personal-smoker-no" value="no">
+                            <label for="register-personal-smoker-no">No</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-name="background" class="row">
+            <h2>Background</h2>
+            <div class="form-group col-xs-2">
+                <label class="control-label" for="register-background-jfb">Born Jewish</label>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" name="register-background-jfb" id="register-background-jfbr-yes" value="true">
+                    <label for="register-background-jfb-yes">Yes</label>
+                </div>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" name="register-background-jfb" id="register-background-jfb-no" value="false">
+                    <label for="register-background-jfb-no">No</label>
+                </div>
+            </div>
+            <div class="form-group col-xs-9">
+                <label class="control-label" for="register-background-conversion">Conversion Information</label>
+                <input type="text" class="form-control" id="register-background-conversion" placeholder="Please provide the name of the Rabbi, Beis Din and date of conversion">
+            </div>
+            <div>
+                <div class="form-group col-xs-4 no-right-padding align-bottom">
+                    <label class="control-label" for="register-background-time">Religious Background</label>
+                    <div>
+                        <div class="radio radio-info radio-inline">
+                            <input type="radio" name="register-background-time" id="register-background-time-ffb" value="ffb">
+                            <label for="register-background-time-ffb">Frum from birth</label>
+                        </div>
+                        <div class="radio radio-info radio-inline">
+                            <input type="radio" name="register-background-time" id="register-background-time-bt" value="bt">
+                            <label for="register-background-time-bt">Baal Teshuva</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 align-bottom">
+                    <input type="text" class="form-control" id="register-background-fyear" placeholder="From from what year?">
+                </div>
+            </div>
+            <div class="form-group col-xs-4">
+                <div>
+                    <label class="control-label" for="register-background-ethnicity">Ethnicity</label>
+                </div>
+                <select id="register-background-ethnicity" class="selectpicker">
+                    <option value="ashkenaz">Ashkenaz</option>
+                    <option value="sephardi">Sephardi</option>
+                    <option value="teimani">Teimani</option>
+                </select>
+            </div>
+            <div class="form-group col-xs-4">
+                <div>
+                    <label class="control-label" for="register-background-observance">Style of Observance</label>
+                </div>
+                <select id="register-background-observance" class="selectpicker">
+                    <option value="blackhat">Yeshivish Black Hat</option>
+                    <option value="chassidish">Chassidish</option>
+                    <option value="modern">Yeshivish Modern</option>
+                    <option value="liberal">Modern Orthodox Liberal</option>
+                    <option value="tranditional">Traditional and Growing</option>
+                </select>
+            </div>
+            <div class="form-group col-xs-4">
+                <div>
+                    <label class="control-label" for="register-background-kohen">Kohen</label>
+                </div>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" name="register-background-kohen" id="register-background-kohen-yes" value="yes">
+                    <label for="register-background-kohen-yes">I am a Kohen</label>
+                </div>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" name="register-background-kohen" id="register-background-kohen-bt" value="no">
+                    <label for="register-background-kohen-no">I am not</label>
+                </div>
+            </div>
+            <div class="form-group col-xs-12">
+                <div>
+                    <label class="control-label" for="register-background-marrykohen">Can you marry a Kohen?</label>
+                </div>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" name="register-background-kohen" id="register-background-marrykohen-yes" value="yes">
+                    <label for="register-background-marrykohen-yes">Yes</label>
+                </div>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" name="register-background-marrykohen" id="register-background-marrykohen-bt" value="no">
+                    <label for="register-background-marrykohen-no">No</label>
+                </div>
+            </div>
+        </div>
+        <div data-name="lifestyle" class="row">
+            <h2>Lifestyle</h2>
+            <div class="form-group col-xs-12">
+                <div>
+                    <label class="control-label" for="register-lifestyle-learning">Do you have a scheduled learning session?</label>
+                </div>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" name="register-background-learning" id="register-lifestyle-learning-daily" value="daily">
+                    <label for="register-lifestyle-learning-yes">Daily</label>
+                </div>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" name="register-lifestyle-learning" id="register-lifestyle-learning-regularly" value="regularly">
+                    <label for="register-lifestyle-learning-regularly">Regularly</label>
+                </div>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" name="register-lifestyle-learning" id="register-lifestyle-learning-occasionally" value="occasionally">
+                    <label for="register-lifestyle-learning-occasionally">Occasionally</label>
+                </div>
+            </div>
+            <div class="form-group col-xs-5 align-bottom">
+                <div>
+                    <label class="control-label" for="register-lifestyle-shul">Shul Attendance</label>
+                </div>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" name="register-lifestyle-shul" id="register-lifestyle-shul-daily" value="daily">
+                    <label for="register-lifestyle-shul-yes">Daily</label>
+                </div>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" name="register-lifestyle-shul" id="register-lifestyle-shul-regularly" value="regularly">
+                    <label for="register-lifestyle-shul-regularly">Shabbos and Holidays</label>
+                </div>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" name="register-lifestyle-shul" id="register-lifestyle-shul-occasionally" value="occasionally">
+                    <label for="register-lifestyle-shul-occasionally">High Holidays</label>
+                </div>
+                <div class="radio radio-info radio-inline">
+                    <input type="radio" name="register-lifestyle-observance" id="register-lifestyle-shul-other" value="other">
+                    <label for="register-lifestyle-shul-other">Other:</label>
+                </div>
+            </div>
+            <div class="col-xs-3 align-bottom no-left-padding">
+                <input type="text" class="form-control" id="register-lifestyle-shul-other-desc" placeholder="Please, specify">
+            </div>
+            <div class="form-group col-xs-12">
+                <label class="control-label" for="register-lifestyle-kashrus">Current Kashrus</label>
+                <div>
+                    <div class="radio radio-inline ">
+                        <input type="radio" class="radio radio-info" name="register-lifestyle-kashrus" id="registerreligious-kashrus-always">
+                        <label for="register-lifestyle-kashrus-always">Always</label>
+                    </div>
+                    <div class="radio radio-inline">
+                        <input type="radio" class="radio radio-info" name="register-lifestyle-kashrus" id="register-lifestyle-kashrus-mostly">
+                        <label for="register-lifestyle-kashrus-mostly">Mostly</label>
+                    </div>
+                    <div class="radio radio-inline">
+                        <input type="radio" class="radio radio-info" name="register-lifestyle-kashrus" id="register-lifestyle-kashrus-none">
+                        <label for="register-lifestyle-kashrus-none">None</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-xs-6">
+                <label class="control-label" for="register-personal-dress">Mode of Dress</label>
+                <div>
+                    <div class="radio radio-inline ">
+                        <input type="radio" class="radio radio-info" name="register-personal-dress-skirt" id="registerpersonal-dress-skirts">
+                        <label for="register-personal-dress-skirts">Skirt only</label>
+                    </div>
+                    <div class="radio radio-inline">
+                        <input type="radio" class="radio radio-info" name="register-personal-dress-skirt" id="register-personal-dress-pants">
+                        <label for="register-personal-dress-pants">Will wear pants</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="radio radio-inline">
+                        <input type="radio" class="radio radio-info" name="register-personal-dress-sleeve" id="register-personal-dress-elbows">
+                        <label for="register-personal-dress-elbows">Elbows covered</label>
+                    </div>
+                    <div class="radio radio-inline">
+                        <input type="radio" class="radio radio-info" name="register-personal-dress-sleeve" id="register-personal-dress-ssleeve">
+                        <label for="register-personal-dress-ssleeve">Short sleeves</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-xs-6">
+                <label class="control-label" for="register-personal-hair">Hair Covering When Married</label>
+                <div>
+                    <div class="radio radio-inline ">
+                        <input type="radio" class="radio radio-info" name="register-personal-hair" id="registerpersonal-hair-wig">
+                        <label for="register-personal-hair-wig">Fully with wig</label>
+                    </div>
+                    <div class="radio radio-inline">
+                        <input type="radio" class="radio radio-info" name="register-personal-hair" id="register-personal-hair-scarf">
+                        <label for="register-personal-hair-scarf">Scarves</label>
+                    </div>
+                    <div class="radio radio-inline">
+                        <input type="radio" class="radio radio-info" name="register-personal-hair" id="register-personal-hair-none">
+                        <label for="register-personal-hair-none">None</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-name="education" class="row">
+            <h2>Education and Occupation</h2>
+            <div class="form-group col-xs-12">
+                <label class="control-label" for="register-education-hebrew">Highest Hebrew Education</label>
+                <div class="radio radio-info">
+                    <input type="radio" class="radio" name="register-education-hebrew" id="register-education-hebrew-hschool">
+                    <label for="register-education-hebrew-hschool">Hebrew School</label>
+                </div>
+                <div class="radio radio-info">
+                    <input type="radio" class="radio radio-inline" name="register-education-hebrew" id="register-education-hebrew-jdschool">
+                    <label for="register-education-hebrew-jdschool">Jewish Day School</label>
+                </div>
+                <div class="radio radio-info">
+                    <input type="radio" class="radio radio-inline" name="register-education-hebrew" id="register-education-hebrew-yhschool">
+                    <label for="register-education-hebrew-yhschool">Yeshiva High School</label>
+                </div>
+                <div class="col-xs-12 no-left-padding">
+                    <div class="radio radio-info col-xs-3 align-bottom">
+                        <input type="radio" class="radio" name="register-education-hebrew" id="register-education-hebrew-yeshsemi">
+                        <label for="register-education-hebrew-yeshsemi">Post High School Yeshiva/Seminary</label>
+                    </div>
+                    <div class="col-xs-4 align-bottom">
+                        <input type="text" class="form-control" id="register-education-hebrew-yeshsemi-principal" placeholder="Rosh Yeshiva/Menahales">
+                    </div>
+                    <div class="col-xs-4 align-bottom">
+                        <input type="text" class="form-control" id="register-education-hebrew-yeshsemi-location" placeholder="Location">
+                    </div>
+                </div>
+                <div class="checkbox col-xs-12 no-left-padding">
+                    <div class="checkbox checkbox-info col-xs-3 align-bottom">
+                        <input type="checkbox" class="checkbox checkbox-info" name="register-education-hebrew" id="register-education-hebrew-israel">
+                        <label for="register-education-hebrew-israel">Study in Israel</label>
+                    </div>
+                    <div class="col-xs-3 align-bottom">
+                        <input type="text" class="form-control" id="register-education-hebrew-israel-duration" placeholder="How long?">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-xs-12">
+                <label class="control-label" for="register-education-secular">Highest Secular Education</label>
+                <div class="radio radio-info">
+                    <input type="radio" class="radio" name="register-education-secular" id="register-education-secular-hschool">
+                    <label for="register-education-secular-hschool">High School</label>
+                </div>
+                <div class=" col-xs-12 no-left-padding">
+                    <div class="radio radio-info col-xs-3 align-bottom">
+                        <input type="radio" class="radio" name="register-education-secular" id="register-education-secular-bachelors">
+                        <label for="register-education-secular-bachelors">Bachelors</label>
+                    </div>
+                    <div class="col-xs-4 align-bottom">
+                        <input type="text" class="form-control" id="register-education-secular-bachelors-name" placeholder="Name of graduating institution">
+                    </div>
+                    <div class="col-xs-4 align-bottom">
+                        <input type="text" class="form-control" id="register-education-secular-bachelors-location" placeholder="Location">
+                    </div>
+                </div>
+                <div class=" col-xs-12 no-left-padding">
+                    <div class="radio radio-info col-xs-3 align-bottom">
+                        <input type="radio" class="radio" name="register-education-secular" id="register-education-secular-masters">
+                        <label for="register-education-secular-masters">Masters</label>
+                    </div>
+                    <div class="col-xs-4 align-bottom">
+                        <input type="text" class="form-control" id="register-education-secular-masters-name" placeholder="Name of graduating institution">
+                    </div>
+                    <div class="col-xs-4 align-bottom">
+                        <input type="text" class="form-control" id="register-education-secular-masters-location" placeholder="Location">
+                    </div>
+                </div>
+                <div class=" col-xs-12 no-left-padding">
+                    <div class="radio radio-info col-xs-3 align-bottom">
+                        <input type="radio" class="radio" name="register-education-secular" id="register-education-secular-doctorate">
+                        <label for="register-education-secular-doctorate">Doctorate</label>
+                    </div>
+                    <div class="col-xs-4 align-bottom">
+                        <input type="text" class="form-control" id="register-education-secular-doctorate-name" placeholder="Name of graduating institution">
+                    </div>
+                    <div class="col-xs-4 align-bottom">
+                        <input type="text" class="form-control" id="register-education-secular-doctorate-location" placeholder="Location">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <label class="control-label" for="register-occupation">Occupation</label>
+            </div>
+            <div class="checkbox col-xs-12 no-left-padding">
+                <div class="checkbox checkbox-info col-xs-3">
+                    <input type="checkbox" class="checkbox" name="register-occupation" id="register-occupation-working">
+                    <label for="register-occupation-working">Working</label>
+                </div>
+                <div class="col-xs-4 align-bottom">
+                    <input type="text" class="form-control" id="register-occupation-working-firm" placeholder="Company Name">
+                </div>
+                <div class="col-xs-4 align-bottom">
+                    <input type="text" class="form-control" id="register-occupation-working-title" placeholder="Job Title">
+                </div>
+            </div>
+            <div class="checkbox checkbox-info">
+                <input type="checkbox" class="checkbox" name="register-occupation" id="register-occupation-seeking">
+                <label for="register-occupation-seeking">Seeking employment</label>
+            </div>
+            <div class="checkbox checkbox-info">
+                <input type="checkbox" class="checkbox" name="register-occupation" id="register-occupation-yeshiva">
+                <label for="register-occupation-yeshiva">Yeshiva student</label>
+            </div>
+            <div class="checkbox checkbox-info">
+                <input type="checkbox" class="checkbox" name="register-occupation" id="register-occupation-college">
+                <label for="register-occupation-college">Attending college</label>
+            </div>
+            <div class=" col-xs-12 no-left-padding">
+                <div class="checkbox checkbox-info col-xs-3 align-bottom">
+                    <input type="checkbox" class="checkbox" name="register-occupation" id="register-occupation-other">
+                    <label for="register-occupation-other">Other:</label>
+                </div>
+                <div class="col-xs-8 align-bottom">
+                    <input type="text" class="form-control" id="register-occupation-other-describe" placeholder="Please describe your current situation">
+                </div>
+            </div>
+        </div>
+        <div data-name="spouse" class="row">
+            <h2>What I'm Looking For</h2>
+            <div class="form-group col-xs-4">
+                <div>
+                    <label for="register-spouse-height">Age Range</label>
+                </div>
+                <div class="form-group col-xs-6">
+                    <div class="col-xs-1 no-left-padding align-bottom">Max</div>
+                    <div class="col-xs-10 align-bottom">
+                        <input type="number" class="form-control" name="register-spouse-age" id="register-spouse-age-max" placeholder="Years" />
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <div class="col-xs-1 no-left-padding align-bottom" ">Min</div>
+                    <div class="col-xs-10 align-bottom">
+                        <input type="number" class="form-control" name="register-spouse-age" id="register-spouse-age-max" placeholder="Years" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-xs-8">
+                <div>
+                    <label for="register-spouse-height">Height Range</label>
+                </div>
+                <div class="form-group col-xs-6">
+                    <div class="col-xs-1 no-left-padding align-bottom" g">Max</div>
+                    <div class="col-xs-5 align-bottom">
+                        <select class="form-control" id="register-spouse-height-max-feet" value="5">
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-5 align-bottom">
+                        <select class="form-control" id="register-spouse-height-max-inches" value="5">
+                            <option>1"</option>
+                            <option>2"</option>
+                            <option>3"</option>
+                            <option>4"</option>
+                            <option>5"</option>
+                            <option>6"</option>
+                            <option>7"</option>
+                            <option>8"</option>
+                            <option>9"</option>
+                            <option>10"</option>
+                            <option>11"</option>
+                            <option>12"</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <div class="col-xs-1 no-left-padding align-bottom">Min</div>
+                    <div class="col-xs-5 align-bottom">
+                        <select class="form-control" id="register-spouse-height-min-feet" value="5">
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-5 align-bottom">
+                        <select class="form-control" id="register-spouse-height-min-inches" value="5">
+                            <option>1"</option>
+                            <option>2"</option>
+                            <option>3"</option>
+                            <option>4"</option>
+                            <option>5"</option>
+                            <option>6"</option>
+                            <option>7"</option>
+                            <option>8"</option>
+                            <option>9"</option>
+                            <option>10"</option>
+                            <option>11"</option>
+                            <option>12"</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-xs-12">
+                <label class="control-label" for="register-spouse-maritalstatus">Marital Status</label>
+                <div class="checkbox">
+                    <input type="checkbox" class="checkbox checkbox-info checkbox-inline" name="register-spouse-maritalstatus" id="register-spouse-maritalstatus-never">
+                    <label for="register-spouse-maritalstatus-never">Never married</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" class="checkbox checkbox-info checkbox-inline" name="register-spouse-maritalstatus" id="register-spouse-maritalstatus-divorced">
+                    <label for="register-spouse-maritalstatus-divorced">Divorced</label>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" class="checkbox checkbox-info checkbox-inline" name="register-spouse-maritalstatus" id="register-spouse-maritalstatus-widowed">
+                    <label for="register-spouse-maritalstatus-widowed">Widowed</label>
+                </div>
+            </div>
+            <div class="form-group col-xs-6">
+                <label class="control-label" for="register-spouse-children">With children?</label>
+                <div>
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" name="register-spouse-children" id="register-spouse-children-yes" value="yes">
+                        <label for="register-spouse-children-yes">Yes</label>
+                    </div>
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" name="register-spouse-children" id="register-spouse-children-no" value="no">
+                        <label for="register-spouse-children-no">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-xs-12">
+                <label class="control-label" for="register-spouse-jewish-education">Minimum Jewish Education</label>
+                <div>
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" class="radio" name="register-spouse-jewish-education" id="register-spouse-jewish-education-hschool">
+                        <label for="register-spouse-jewish-education-hschool">Hebrew School</label>
+                    </div>
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" class="radio" name="register-spouse-jewish-education" id="register-spouse-jewish-education-jdschool">
+                        <label for="register-spouse-jewish-education-jdschool">Jewish Day School</label>
+                    </div>
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" class="radio" name="register-spouse-jewish-education" id="register-spouse-jewish-education-yhschool">
+                        <label for="register-spouse-jewish-education-yhschool">Yeshiva High School</label>
+                    </div>
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" class="radio" name="register-spouse-jewish-education" id="register-spouse-jewish-education-yeshsemi">
+                        <label for="register-spouse-jewish-education-yeshsemi">Post High School Yeshiva/Seminary</label>
+                    </div>
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" class="radio" name="register-spouse-jewish-education" id="register-spouse-jewish-education-college">
+                        <label for="register-spouse-education-college">College</label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group col-xs-12">
+                <label class="control-label" for="register-spouse-education">Minimum Secular Education</label>
+                <div>
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" class="radio" name="register-spouse-education" id="register-spouse-education-yhschool">
+                        <label for="register-spouse-education-yhschool">High School</label>
+                    </div>
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" class="radio" name="register-spouse-education" id="register-spouse-education-college">
+                        <label for="register-spouse-education-college">College</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-xs-12">
+                <label class="control-label" for="register-spouse-tv">Television</label>
+                <div>
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" name="register-spouse-tv" id="register-spouse-tv-yes" value="yes">
+                        <label for="register-spouse-tv-yes">Will allow in my home</label>
+                    </div>
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" name="register-spouse-tv" id="register-spouse-tv-movies" value="movies">
+                        <label for="register-spouse-tv-movies">Will not allow in my home, but I will go out to a movie</label>
+                    </div>
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" name="register-spouse-tv" id="register-spouse-tv-no" value="no">
+                        <label for="register-spouse-tv-no">Do not want at all</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-xs-6">
+                <label class="control-label" for="register-spouse-relocate">Relocation</label>
+                <div>
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" name="register-spouse-relocate" id="register-spouse-relocate-yes" value="yes">
+                        <label for="register-spouse-relocate-yes">I am willing to relocate</label>
+                    </div>
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" name="register-spouse-relocate" id="register-spouse-relocate-no" value="no">
+                        <label for="register-spouse-relocate-no">I am not willing to relocate</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-xs-6">
+                <label class="control-label" for="register-spouse-aliyah">Aliyah</label>
+                <div>
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" name="register-spouse-aliyah" id="register-spouse-aliyah-yes" value="yes">
+                        <label for="register-spouse-aliyah-yes">I would consider making aliyah</label>
+                    </div>
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" name="register-spouse-aliyah" id="register-spouse-aliyah-no" value="no">
+                        <label for="register-spouse-aliyah-no">I would not consider making aliyah</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" data-name="essays">
+            <h2>More About Me</h2>
+            <div class="col-xs-12 align-bottom">
+                <textarea cols="50" class="form-control" id="register-lifestyle-shul-essay" placeholder="Do you attend a regular shiur? Please Elaborate."></textarea>
+            </div>
+            <div class="col-xs-12 align-bottom">
+                <textarea cols="50" class="form-control" id="register-personal-hobbies-essay" placeholder="What are your hobbies/special interests?"></textarea>
+            </div>
+            <div class="col-xs-12 align-bottom">
+                <textarea cols="50" class="form-control" id="register-personal-vacation-essay" placeholder="How do you like to spend your free time/vacation?"></textarea>
+            </div>
+        </div>
+        <div data-name="references" class="row">
+            <h2>References</h2>
+            <div class="form-group col-xs-12">
+                <div class="form-group col-xs-8">
+                    <input type="text" class="form-control" id="register-reference-1-fullname" placeholder="1. Name">
+                </div>
+                <div class="form-group col-xs-4">
+                    <input type="text" class="form-control" id="register-reference-1-relationship" placeholder="Relationship">
+                </div>
+                <div class="form-group col-xs-6">
+                    <input type="text" class="form-control" id="register-reference-1-location" placeholder="City/State">
+                </div>
+                <div class="form-group col-xs-6">
+                    <input type="text" class="form-control" id="register-reference-1-phone" placeholder="Phone Number">
+                </div>
+            </div>
+            <div class="form-group col-xs-12">
+                <div class="form-group col-xs-8">
+                    <input type="text" class="form-control" id="register-reference-2-fullname" placeholder="2. Name">
+                </div>
+                <div class="form-group col-xs-4">
+                    <input type="text" class="form-control" id="register-reference-2-relationship" placeholder="Relationship">
+                </div>
+                <div class="form-group col-xs-6">
+                    <input type="text" class="form-control" id="register-reference-2-location" placeholder="City/State">
+                </div>
+                <div class="form-group col-xs-6">
+                    <input type="text" class="form-control" id="register-reference-2-phone" placeholder="Phone Number">
+                </div>
+            </div>
+            <div class="form-group col-xs-12">
+                <div class="form-group col-xs-8">
+                    <input type="text" class="form-control" id="register-reference-3-fullname" placeholder="3. Name">
+                </div>
+                <div class="form-group col-xs-4">
+                    <input type="text" class="form-control" id="register-reference-3-relationship" placeholder="Relationship">
+                </div>
+                <div class="form-group col-xs-6">
+                    <input type="text" class="form-control" id="register-reference-3-location" placeholder="City/State">
+                </div>
+                <div class="form-group col-xs-6">
+                    <input type="text" class="form-control" id="register-reference-3-phone" placeholder="Phone Number">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+
+</body>
+</html>

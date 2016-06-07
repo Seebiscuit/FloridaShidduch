@@ -1,16 +1,21 @@
 require([
-    "jquery",
     "backbone",
     "app",
+    "routers/routes",
+    "RootView",
     "marionette"
 ],
 
-function ($, Backbone, App) {
+function (Backbone, App, Router, RootView) {
     // Fires after the Application has started and after the initializers have been executed
-    App.on("start", function(options){
+    App.on("start", function (options) {
+        App.router = new Router({
+            controller: new RootView
+        });
+
         if (Backbone.history){
-            // Trigger the initial route and enable HTML5 History API support
-            Backbone.history.start({ pushState: true, root: App.root });
+            // Trigger the initial route
+            Backbone.history.start({ root: App.root });
         }
     });
     // Define your master router on the application namespace and trigger all

@@ -42,11 +42,13 @@ namespace FloridaShiduch.Models
         public string LastName { get; set; }
         public string Gender { get; set; }
         public string Address { get; set; }
+        public string Apartment { get; set; }
         public string City { get; set; }
         public string State { get; set; }
         public string Zip { get; set; }
         public int CountryId { get; set; }
         public string HomePhone { get; set; }
+        public string WorkPhone { get; set; }
         public string CellPhone { get; set; }
     }
 

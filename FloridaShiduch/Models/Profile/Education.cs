@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FloridaShiduch.Models.Profile
 {
-    public class Lifestyle
+    public class Education
     {
         [Key, ForeignKey("ApplicationUser")]
         public string Id { get; set; }
@@ -19,11 +19,12 @@ namespace FloridaShiduch.Models.Profile
         public string Movies { get; set; }
         public string HebrewEducationLevel { get; set; }
         public string SecularEducationLevel { get; set; }
-        public string CollegeName { get; set; }
-        public string DegreeName { get; set; }
+        public string College { get; set; }
+        public string Degree { get; set; }
+        public string JewishEducation { get; set; }
         public string IsraelStudy { get; set; }
-        public string IsraelStudyDuration { get; set; }
-        public string YeshivaName { get; set; }
+        public string IsraelSchool { get; set; }
+        public string Yeshiva { get; set; }
 
         public int? NativeLanguageId { get; set; }
         public int? SpokenLanguageId { get; set; }

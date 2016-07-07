@@ -115,15 +115,31 @@
                         <option value="widowed">Widowed</option>
                     </select>
                 </div>
-                <div class="form-group col-xs-3">
+                <div class="form-group col-xs-2">
+                    <label class="control-label" for="register-personal-children">Do You Have Children?</label>
+                    <div>
+                        <div class="radio radio-info radio-inline">
+                            <input type="radio" name="register-personal-children" id="register-personal-children-yes" value="true">
+                            <label for="register-personal-children-yes">Yes</label>
+                        </div>
+                        <div class="radio radio-info radio-inline">
+                            <input type="radio" name="register-personal-children" id="register-personal-children-no" value="false">
+                            <label for="register-personal-children-no">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <input type="text" id="register-personal-children-number" class="form-control" placeholder="How many?">
+                </div>
+                <div class="form-group col-xs-2">
                     <label class="control-label" for="register-personal-pet">Pet Owner</label>
                     <div>
                         <div class="radio radio-info radio-inline">
-                            <input type="radio" name="register-personal-pet" id="register-personal-pet-yes" value="yes">
+                            <input type="radio" name="register-personal-pet" id="register-personal-pet-yes" value="true">
                             <label for="register-personal-pet-yes">Yes</label>
                         </div>
                         <div class="radio radio-info radio-inline">
-                            <input type="radio" name="register-personal-pet" id="register-personal-pet-no" value="no">
+                            <input type="radio" name="register-personal-pet" id="register-personal-pet-no" value="false">
                             <label for="register-personal-pet-no">No</label>
                         </div>
                     </div>
@@ -132,11 +148,11 @@
                     <label class="control-label" for="register-personal-smoker">Smoker</label>
                     <div>
                         <div class="radio radio-info radio-inline">
-                            <input type="radio" name="register-personal-smoker" id="register-personal-smoker-yes" value="yes">
+                            <input type="radio" name="register-personal-smoker" id="register-personal-smoker-yes" value="true">
                             <label for="register-personal-smoker-yes">Yes</label>
                         </div>
                         <div class="radio radio-info radio-inline">
-                            <input type="radio" name="register-personal-smoker" id="register-personal-smoker-no" value="no">
+                            <input type="radio" name="register-personal-smoker" id="register-personal-smoker-no" value="false">
                             <label for="register-personal-smoker-no">No</label>
                         </div>
                     </div>
@@ -146,9 +162,11 @@
         <div data-name="background" class="row">
             <h2>Background</h2>
             <div class="form-group col-xs-2">
-                <label class="control-label" for="register-background-jfb">Born Jewish</label>
+                <div>
+                    <label class="control-label" for="register-background-jfb">Born Jewish</label>
+                </div>
                 <div class="radio radio-info radio-inline">
-                    <input type="radio" name="register-background-jfb" id="register-background-jfbr-yes" value="true">
+                    <input type="radio" name="register-background-jfb" id="register-background-jfb-yes" value="true">
                     <label for="register-background-jfb-yes">Yes</label>
                 </div>
                 <div class="radio radio-info radio-inline">
@@ -156,7 +174,7 @@
                     <label for="register-background-jfb-no">No</label>
                 </div>
             </div>
-            <div class="form-group col-xs-9">
+            <div class="form-group col-xs-10">
                 <label class="control-label" for="register-background-conversion">Conversion Information</label>
                 <input type="text" class="form-control" id="register-background-conversion" placeholder="Please provide the name of the Rabbi, Beis Din and date of conversion">
             </div>
@@ -205,11 +223,11 @@
                     <label class="control-label" for="register-background-kohen">Kohen</label>
                 </div>
                 <div class="radio radio-info radio-inline">
-                    <input type="radio" name="register-background-kohen" id="register-background-kohen-yes" value="yes">
+                    <input type="radio" name="register-background-kohen" id="register-background-kohen-yes" value="true">
                     <label for="register-background-kohen-yes">I am a Kohen</label>
                 </div>
                 <div class="radio radio-info radio-inline">
-                    <input type="radio" name="register-background-kohen" id="register-background-kohen-bt" value="no">
+                    <input type="radio" name="register-background-kohen" id="register-background-kohen-bt" value="false">
                     <label for="register-background-kohen-no">I am not</label>
                 </div>
             </div>
@@ -218,11 +236,11 @@
                     <label class="control-label" for="register-background-marrykohen">Can you marry a Kohen?</label>
                 </div>
                 <div class="radio radio-info radio-inline">
-                    <input type="radio" name="register-background-kohen" id="register-background-marrykohen-yes" value="yes">
+                    <input type="radio" name="register-background-kohen" id="register-background-marrykohen-yes" value="true">
                     <label for="register-background-marrykohen-yes">Yes</label>
                 </div>
                 <div class="radio radio-info radio-inline">
-                    <input type="radio" name="register-background-marrykohen" id="register-background-marrykohen-bt" value="no">
+                    <input type="radio" name="register-background-marrykohen" id="register-background-marrykohen-no" value="false">
                     <label for="register-background-marrykohen-no">No</label>
                 </div>
             </div>
@@ -372,6 +390,10 @@
                     <input type="radio" class="radio" name="register-education-secular" id="register-education-secular-hschool">
                     <label for="register-education-secular-hschool">High School</label>
                 </div>
+                <div class="radio radio-info">
+                    <input type="radio" class="radio" name="register-education-secular" id="register-education-secular-vocational">
+                    <label for="register-education-secular-vocational">Vocational Training/Associates Degree</label>
+                </div>
                 <div class=" col-xs-12 no-left-padding">
                     <div class="radio radio-info col-xs-3 align-bottom">
                         <input type="radio" class="radio" name="register-education-secular" id="register-education-secular-bachelors">
@@ -381,7 +403,7 @@
                         <input type="text" class="form-control" id="register-education-secular-bachelors-name" placeholder="Name of graduating institution">
                     </div>
                     <div class="col-xs-4 align-bottom">
-                        <input type="text" class="form-control" id="register-education-secular-bachelors-location" placeholder="Location">
+                        <input type="text" class="form-control" id="register-education-secular-bachelors-degree" placeholder="Degree">
                     </div>
                 </div>
                 <div class=" col-xs-12 no-left-padding">
@@ -393,7 +415,7 @@
                         <input type="text" class="form-control" id="register-education-secular-masters-name" placeholder="Name of graduating institution">
                     </div>
                     <div class="col-xs-4 align-bottom">
-                        <input type="text" class="form-control" id="register-education-secular-masters-location" placeholder="Location">
+                        <input type="text" class="form-control" id="register-education-secular-masters-degree" placeholder="Degree">
                     </div>
                 </div>
                 <div class=" col-xs-12 no-left-padding">
@@ -405,7 +427,7 @@
                         <input type="text" class="form-control" id="register-education-secular-doctorate-name" placeholder="Name of graduating institution">
                     </div>
                     <div class="col-xs-4 align-bottom">
-                        <input type="text" class="form-control" id="register-education-secular-doctorate-location" placeholder="Location">
+                        <input type="text" class="form-control" id="register-education-secular-doctorate-degree" placeholder="Degree">
                     </div>
                 </div>
             </div>
@@ -547,11 +569,11 @@
                 <label class="control-label" for="register-spouse-children">With children?</label>
                 <div>
                     <div class="radio radio-info radio-inline">
-                        <input type="radio" name="register-spouse-children" id="register-spouse-children-yes" value="yes">
+                        <input type="radio" name="register-spouse-children" id="register-spouse-children-yes" value="true">
                         <label for="register-spouse-children-yes">Yes</label>
                     </div>
                     <div class="radio radio-info radio-inline">
-                        <input type="radio" name="register-spouse-children" id="register-spouse-children-no" value="no">
+                        <input type="radio" name="register-spouse-children" id="register-spouse-children-no" value="false">
                         <label for="register-spouse-children-no">No</label>
                     </div>
                 </div>
@@ -586,12 +608,16 @@
                 <label class="control-label" for="register-spouse-education">Minimum Secular Education</label>
                 <div>
                     <div class="radio radio-info radio-inline">
-                        <input type="radio" class="radio" name="register-spouse-education" id="register-spouse-education-yhschool">
-                        <label for="register-spouse-education-yhschool">High School</label>
+                        <input type="radio" class="radio" name="register-spouse-education" id="register-spouse-education-hschool">
+                        <label for="register-spouse-education-hschool">High School</label>
                     </div>
                     <div class="radio radio-info radio-inline">
-                        <input type="radio" class="radio" name="register-spouse-education" id="register-spouse-education-college">
-                        <label for="register-spouse-education-college">College</label>
+                        <input type="radio" class="radio" name="register-spouse-education" id="register-spouse-education-vocational">
+                        <label for="register-spouse-education-vocational">Vocational Training/Associates Degree</label>
+                    </div>
+                    <div class="radio radio-info radio-inline">
+                        <input type="radio" class="radio" name="register-spouse-education" id="register-spouse-education-university">
+                        <label for="register-spouse-education-university">University</label>
                     </div>
                 </div>
             </div>
@@ -599,7 +625,7 @@
                 <label class="control-label" for="register-spouse-tv">Television</label>
                 <div>
                     <div class="radio radio-info radio-inline">
-                        <input type="radio" name="register-spouse-tv" id="register-spouse-tv-yes" value="yes">
+                        <input type="radio" name="register-spouse-tv" id="register-spouse-tv-yes" value="true">
                         <label for="register-spouse-tv-yes">Will allow in my home</label>
                     </div>
                     <div class="radio radio-info radio-inline">
@@ -607,7 +633,7 @@
                         <label for="register-spouse-tv-movies">Will not allow in my home, but I will go out to a movie</label>
                     </div>
                     <div class="radio radio-info radio-inline">
-                        <input type="radio" name="register-spouse-tv" id="register-spouse-tv-no" value="no">
+                        <input type="radio" name="register-spouse-tv" id="register-spouse-tv-no" value="false">
                         <label for="register-spouse-tv-no">Do not want at all</label>
                     </div>
                 </div>
@@ -616,11 +642,11 @@
                 <label class="control-label" for="register-spouse-relocate">Relocation</label>
                 <div>
                     <div class="radio radio-info radio-inline">
-                        <input type="radio" name="register-spouse-relocate" id="register-spouse-relocate-yes" value="yes">
+                        <input type="radio" name="register-spouse-relocate" id="register-spouse-relocate-yes" value="true">
                         <label for="register-spouse-relocate-yes">I am willing to relocate</label>
                     </div>
                     <div class="radio radio-info radio-inline">
-                        <input type="radio" name="register-spouse-relocate" id="register-spouse-relocate-no" value="no">
+                        <input type="radio" name="register-spouse-relocate" id="register-spouse-relocate-no" value="false">
                         <label for="register-spouse-relocate-no">I am not willing to relocate</label>
                     </div>
                 </div>
@@ -629,11 +655,11 @@
                 <label class="control-label" for="register-spouse-aliyah">Aliyah</label>
                 <div>
                     <div class="radio radio-info radio-inline">
-                        <input type="radio" name="register-spouse-aliyah" id="register-spouse-aliyah-yes" value="yes">
+                        <input type="radio" name="register-spouse-aliyah" id="register-spouse-aliyah-yes" value="true">
                         <label for="register-spouse-aliyah-yes">I would consider making aliyah</label>
                     </div>
                     <div class="radio radio-info radio-inline">
-                        <input type="radio" name="register-spouse-aliyah" id="register-spouse-aliyah-no" value="no">
+                        <input type="radio" name="register-spouse-aliyah" id="register-spouse-aliyah-no" value="false">
                         <label for="register-spouse-aliyah-no">I would not consider making aliyah</label>
                     </div>
                 </div>
@@ -642,13 +668,13 @@
         <div class="row" data-name="essays">
             <h2>More About Me</h2>
             <div class="col-xs-12 align-bottom">
-                <textarea cols="50" class="form-control" id="register-lifestyle-shul-essay" placeholder="Do you attend a regular shiur? Please Elaborate."></textarea>
+                <textarea cols="50" class="form-control" id="register-essays-character" placeholder="Give a conscise description of yourself."></textarea>
             </div>
             <div class="col-xs-12 align-bottom">
-                <textarea cols="50" class="form-control" id="register-personal-hobbies-essay" placeholder="What are your hobbies/special interests?"></textarea>
+                <textarea cols="50" class="form-control" id="register-essays-vacation" placeholder="How do you like to spend your free time/vacation? Do you have any hobbies/special interests?"></textarea>
             </div>
             <div class="col-xs-12 align-bottom">
-                <textarea cols="50" class="form-control" id="register-personal-vacation-essay" placeholder="How do you like to spend your free time/vacation?"></textarea>
+                <textarea cols="50" class="form-control" id="register-essays-spouse-character" placeholder="Describe what you're looking for in a spouse.'"></textarea>
             </div>
         </div>
         <div data-name="references" class="row">

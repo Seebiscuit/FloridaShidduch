@@ -8,7 +8,8 @@ function (MasterLayout, templates) {
         template: templates.apply.layout,
 
         regions: {
-            registration: '#apply-registration'
+            registration: '#apply-registration',
+            demographics: '#apply-demographics',
         },
 
         initialize: function (options) {
@@ -16,10 +17,12 @@ function (MasterLayout, templates) {
         },
 
         onBeforeShow: function () {
-            this.showView('views/apply/Register', this.getRegion('registration'));
+            //this.showView('views/apply/Register', this.getRegion('registration'));
+            var type = 'demographics';
+            this.showView([
+                'views/apply/Questionnaire'
+                ,'models/Demographics'
+                , 'models/bindings/' + type], this.getRegion(type), { type: type });
         }
-
-
-
     });
 });

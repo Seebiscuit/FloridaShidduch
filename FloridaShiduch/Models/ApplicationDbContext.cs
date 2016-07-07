@@ -28,15 +28,18 @@ namespace FloridaShiduch.Models
             return new ApplicationDbContext();
         }
 
-        public DbSet<Lifestyle> Lifestyles { get; set; }
+        public DbSet<Background> Backgrounds { get; set; }
         public DbSet<CountryName> CountryNames { get; set; }
-        public DbSet<Language> Languages { get; set; }
         public DbSet<Description> Descriptions { get; set; }
+        public DbSet<Essay> Essays { get; set; }
         public DbSet<Family> Familys { get; set; }
+        public DbSet<Lifestyle> Lifestyles { get; set; }
         public DbSet<MaritalStatus> MaritalStatuses { get; set; }
+        public DbSet<Occupation> Occupations { get; set; }
+        public DbSet<OccupationType> OccupationsTypes { get; set; }
         public DbSet<Reference> References { get; set; }
-        public DbSet<ReligionInfo> ReligionInfo { get; set; }
-        public DbSet<RelocationInfo> RelocationInfo { get; set; }
-        public DbSet<VitalInfo> VitalInfo { get; set; }
+        public DbSet<Personal> Personals { get; set; }
+        public DbSet<Spouse> Spouses { get; set; }
+        public DbSet<SpouseMaritalStatus> SpouseMaritalStatuses { get; set; }
     }
 }

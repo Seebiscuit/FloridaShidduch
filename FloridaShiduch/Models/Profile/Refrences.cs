@@ -14,9 +14,8 @@ namespace FloridaShiduch.Models.Profile
         [ForeignKey("ApplicationUser")]
         public string UserId { get; set; }
         public int Rank{ get; set; }
-        public string Title { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string Name { get; set; }
+        public string CityAndState { get; set; }
         public string Phone { get; set; }
         public string Relationship { get; set; }
 

@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace FloridaShiduch.Models
 {
@@ -37,19 +38,42 @@ namespace FloridaShiduch.Models
             return userIdentity;
         }
 
-        // Add Custom Properties:
+        // Custom Properties:
+        [JsonProperty("firstName")]
         public string FirstName { get; set; }
+
+        [JsonProperty("lastName")]
         public string LastName { get; set; }
+        
+        [JsonProperty("gender")]
         public string Gender { get; set; }
+        
+        [JsonProperty("address")]
         public string Address { get; set; }
+        
+        [JsonProperty("apartment")]
         public string Apartment { get; set; }
+        
+        [JsonProperty("city")]
         public string City { get; set; }
+        
+        [JsonProperty("state")]
         public string State { get; set; }
+        
+        [JsonProperty("zip")]
         public string Zip { get; set; }
+        
+        [JsonProperty("countryId")]
         public int CountryId { get; set; }
+        
+        [JsonProperty("homePhone")]
         public string HomePhone { get; set; }
+        
+        [JsonProperty("workPhone")]
         public string WorkPhone { get; set; }
-        public string CellPhone { get; set; }
+        
+        [JsonProperty("mobilePhone")]
+        public string MobilePhone { get; set; }
     }
 
 

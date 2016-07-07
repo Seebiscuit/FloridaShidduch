@@ -7,14 +7,16 @@ using System.Web;
 
 namespace FloridaShiduch.Models.Profile
 {
-    public class VitalInfo
+    public class Essay
     {
         [Key, ForeignKey("ApplicationUser")]
         public string UserId { get; set; }
-        public double Height { get; set; }
-        public string Build { get; set; }
-        public string HairColor { get; set; }
-        public string EyeColor { get; set; }
+        [Column(TypeName = "text")]
+        public string Character { get; set; }
+        [Column(TypeName = "text")]
+        public string SpouseCharacter { get; set; }
+        [Column(TypeName = "text")]
+        public string SpecialInterests { get; set; }
 
         public virtual ApplicationUser ApplicationUser { get; set; }
     }

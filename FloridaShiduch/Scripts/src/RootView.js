@@ -1,72 +1,74 @@
 define(['app', 'marionette'],
     function (app, Marionette) {
-    return Marionette.LayoutView.extend({
-        el: '#content',
+        return Marionette.LayoutView.extend({
+            el: '#content',
 
-        regions: {
-            main: '#main',
-            apply: '#apply',
-            login: '#login'
-        },
+            regions: {
+                main: '#main',
+                apply: '#apply',
+                login: '#login'
+            },
 
-        initialize: function () {
-            this.setupHandlers();
-        },
+            initialize: function () {
+                this.setupHandlers();
+            },
 
-        setupHandlers: function () {
-        },
+            setupHandlers: function () {
+            },
 
-        appChange: function ($current) {
-            this.$previous = this.$current;
-            this.$current = $current;
-            if (this.$previous)
-                this.$previous.hide();
-            this.$current.show();
-        },
+            appChange: function ($current) {
+                this.$previous = this.$current;
+                this.$current = $current;
+                if (this.$previous)
+                    this.$previous.hide();
+                this.$current.show();
+            },
 
-        gotoBookmark: function (bookmark) {
-            if (bookmark)
-                location = '#' + bookmark;
-        },
+            gotoBookmark: function (bookmark) {
+                if (bookmark)
+                    location = '#' + bookmark;
+            },
 
-        showMain: function (bookmark) {
-            var region = this.getRegion('main');
-            if (!region.view) {
-                require(['views/MainLayout'], _.bind(function (MainLayout) {
-                    region.view = new MainLayout;
-                    //region.show(region.view);
+            showMain: function (bookmark) {
+                var region = this.getRegion('main');
+                if (!region.view) {
+                    require(['views/MainLayout'], _.bind(function (MainLayout) {
+                        region.view = new MainLayout;
+                        //region.show(region.view);
+                        this.appChange(region.$el);
+                        this.gotoBookmark(bookmark);
+                    }, this));
+                }
+                else {
                     this.appChange(region.$el);
                     this.gotoBookmark(bookmark);
-                }, this));
-            }
-            else {
-                this.appChange(region.$el);
-                this.gotoBookmark(bookmark);
-            }
-        },
+                }
+            },
 
-        showApply: function () {
-            var region = this.getRegion('apply');
-            if (!region.view) {
-                require(['views/apply/ApplyLayout'], _.bind(function (ApplyLayout) {
-                    region.view = new ApplyLayout;
-                    region.show(region.view);
+            showApply: function (page) {
+                var region = this.getRegion('apply');
+                if (!region.view) {
+                    require(['views/apply/ApplyLayout'], _.bind(function (ApplyLayout) {
+                        region.view = new ApplyLayout({ page: page });
+                        region.show(region.view);
+                        this.appChange(region.$el);
+                    }, this));
+                }
+                else {
+                    region.view.triggerMethod('show:page', page);
+                    this.appChange(region.$el);
+                }
+            },
+
+            getLoggedIn: function () {
+                var region = this.getRegion('login')
+                require(['views/login-register/LoginLayout'], _.bind(function (LoginLayout) {
+                    this.showHomeBanner();
+                    region.view = new LoginLayout;
+                    region.show(region.view)
                     this.appChange(region.$el);
                 }, this));
             }
-            else
-                this.appChange(region.$el);
-        },
 
-        getLoggedIn: function () {
-            var region = this.getRegion('login')
-            require(['views/login-register/LoginLayout'], _.bind(function (LoginLayout) {
-                this.showHomeBanner();
-                region.view = new LoginLayout;
-                region.show(region.view)
-                this.appChange(region.$el);
-            }, this));
-        }
-
-    });
-})
+        });
+    })

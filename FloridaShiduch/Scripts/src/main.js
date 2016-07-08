@@ -3,10 +3,11 @@ require([
     "app",
     "routers/routes",
     "RootView",
+    "underscore.string",
     "marionette"
 ],
 
-function (Backbone, App, Router, RootView) {
+function (Backbone, App, Router, RootView, s) {
     // Fires after the Application has started and after the initializers have been executed
     App.on("start", function (options) {
         App.router = new Router({
@@ -18,6 +19,10 @@ function (Backbone, App, Router, RootView) {
             Backbone.history.start({ root: App.root });
         }
     });
+
+    //Integrate underscore string into underscore
+    _.mixin(s.exports());
+
     // Define your master router on the application namespace and trigger all
     // navigation from this instance.
     App.start();

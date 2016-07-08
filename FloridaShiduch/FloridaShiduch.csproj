@@ -169,6 +169,14 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BackgroundsController.cs" />
+    <Compile Include="Controllers\DescriptionsController.cs" />
+    <Compile Include="Controllers\EssaysController.cs" />
+    <Compile Include="Controllers\LifestylesController.cs" />
+    <Compile Include="Controllers\OccupationsController.cs" />
+    <Compile Include="Controllers\PersonalsController.cs" />
+    <Compile Include="Controllers\ReferencesController.cs" />
+    <Compile Include="Controllers\SpousesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -10,7 +10,7 @@ function (Marionette) {
         // must have the method methodName
         appRoutes: {
             "main/:bookmark": "showMain",
-            "apply": "showApply",
+            "apply/:page": "showApply",
             "*any": "showMain",
         },
 

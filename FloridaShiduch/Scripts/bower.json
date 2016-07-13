@@ -15,7 +15,8 @@
     "bootstrap-formhelpers": "~2.3.0",
     "awesome-bootstrap-checkbox": "~0.3.7",
     "bootstrap-select": "~1.10.0",
-    "underscore.string": "~3.3.4"
+    "underscore.string": "~3.3.4",
+    "rangeslider.js": "~2.1.1"
   },
   "devDependencies": {}
 }

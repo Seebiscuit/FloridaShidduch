@@ -7,6 +7,7 @@
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 @import url(../css/layout.css);
 @import url(../css/style.css);
+@import url(../../scripts/src/bower_components/rangeslider.js/dist/rangeslider.css);
 /* line 9, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/bootstrap/bootstrap/_normalize.scss */
 html {
   font-family: sans-serif;
@@ -9610,40 +9611,43 @@ input[type="radio"] .styled:checked + label::after {
   color: #fff;
 }
 
-/* line 5, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/styles.scss */
+/** 
+  * FORM STYLING 
+**/
+/* line 11, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/styles.scss */
 li {
   list-style: none;
 }
 
-/* line 9, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/styles.scss */
+/* line 15, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/styles.scss */
 .form-group .full-width {
   width: 100%;
 }
 
-/* line 14, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/styles.scss */
+/* line 19, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/styles.scss */
 fieldset p {
   padding-left: 16px;
 }
 
-/* line 19, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/styles.scss */
+/* line 23, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/styles.scss */
 .align-bottom {
   vertical-align: bottom;
   display: inline-block;
   float: none !important;
 }
 
-/* line 26, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/styles.scss */
+/* line 29, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/styles.scss */
 .no-right-padding {
   padding-right: 0;
 }
 
-/* line 31, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/styles.scss */
+/* line 33, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/styles.scss */
 .form-group .radio,
 .form-group .checkbox {
   padding-top: 6px;
 }
 
-/* line 37, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/styles.scss */
+/* line 38, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/styles.scss */
 .align-bottom input[type="text"] {
   margin-bottom: 8px;
 }
@@ -9653,14 +9657,27 @@ fieldset p {
   margin-bottom: 4px;
 }
 
-/* line 47, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/styles.scss */
+/* line 46, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/styles.scss */
 .no-left-padding {
   padding-left: 0px;
 }
 
-/* line 52, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/styles.scss */
+/* line 50, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/styles.scss */
 .radio + .radio, .checkbox + .checkbox {
-  margin-top: 0px !important;
+  margin-top: 0 !important;
+}
+
+/** 
+  * GENERAL
+**/
+/* line 61, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/styles.scss */
+#apply-regions > div.view {
+  display: none;
+}
+
+/* line 64, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/styles.scss */
+#apply-regions > div.view.active {
+  display: block;
 }
 
 /*# sourceMappingURL=styles.css.map */

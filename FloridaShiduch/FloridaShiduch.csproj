@@ -169,6 +169,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApplicationUsersController.cs" />
     <Compile Include="Controllers\BackgroundsController.cs" />
     <Compile Include="Controllers\DescriptionsController.cs" />
     <Compile Include="Controllers\EssaysController.cs" />
@@ -264,6 +265,12 @@
     <Content Include="Content\Images\sing-kesuba.jpg" />
     <Content Include="Content\Images\slider_shadow.png" />
     <Content Include="Content\Images\wedbands.jpg" />
+    <Content Include="Content\Sass\styles.css">
+      <DependentUpon>styles.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\Sass\styles.min.css">
+      <DependentUpon>styles.css</DependentUpon>
+    </Content>
     <Content Include="Content\Styles\styles.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -274,6 +281,20 @@
     <Content Include="Scripts\src\app.js" />
     <Content Include="Scripts\src\config.js" />
     <Content Include="Scripts\lib\Stickit.Bindings.js" />
+    <Content Include="Scripts\src\events\essays.js" />
+    <Content Include="Scripts\src\events\lifestyle.js" />
+    <Content Include="Scripts\src\events\spouse.js" />
+    <Content Include="Scripts\src\events\references.js" />
+    <Content Include="Scripts\src\events\personal.js" />
+    <Content Include="Scripts\src\events\occupation.js" />
+    <Content Include="Scripts\src\events\background.js" />
+    <Content Include="Scripts\src\events\demographics.js" />
+    <Content Include="Scripts\src\models\Spouse.js" />
+    <Content Include="Scripts\src\models\References.js" />
+    <Content Include="Scripts\src\models\Personal.js" />
+    <Content Include="Scripts\src\models\Occupation.js" />
+    <Content Include="Scripts\src\models\Lifestyle.js" />
+    <Content Include="Scripts\src\models\Essays.js" />
     <Content Include="Scripts\src\models\bindings\occupation.js" />
     <Content Include="Scripts\src\models\bindings\lifestyle.js" />
     <Content Include="Scripts\src\models\bindings\background.js" />
@@ -282,6 +303,7 @@
     <Content Include="Scripts\src\models\bindings\spouse.js" />
     <Content Include="Scripts\src\models\bindings\personal.js" />
     <Content Include="Scripts\src\models\bindings\demographics.js" />
+    <Content Include="Scripts\src\models\Background.js" />
     <Content Include="Scripts\src\models\Demographics.js" />
     <Content Include="Scripts\src\routers\routes.js" />
     <Content Include="Scripts\src\templates.js" />
@@ -334,6 +356,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Sass\bootstrap\bootstrap\awesome-bootstrap-checkbox.scss" />
+    <Content Include="Content\Sass\styles.css.map">
+      <DependentUpon>styles.css</DependentUpon>
+    </Content>
     <None Include="Content\Sass\styles.scss" />
   </ItemGroup>
   <ItemGroup>

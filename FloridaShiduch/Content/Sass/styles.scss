@@ -1,57 +1,67 @@
 @import "bootstrap/_bootstrap.scss";
 @import "../css/layout.css";
 @import "../css/style.css";
+@import "../../scripts/src/bower_components/rangeslider.js/dist/rangeslider.css";
+
+
+/** 
+  * FORM STYLING 
+**/
 
 li {
-	list-style: none;	
+    list-style: none;
 }
 
-.form-group .full-width
-{
+.form-group .full-width {
     width: 100%;
 }
 
-fieldset p
-{
+fieldset p {
     padding-left: 16px;
 }
 
-.align-bottom
-{
+.align-bottom {
     vertical-align: bottom;
     display: inline-block;
     float: none !important;
 }
 
-.no-right-padding
-{
+.no-right-padding {
     padding-right: 0;
 }
 
 .form-group .radio,
-.form-group .checkbox
-{
+.form-group .checkbox {
     padding-top: 6px;
 }
 
-.align-bottom input[type="text"]
-{
+.align-bottom input[type="text"] {
     margin-bottom: 8px;
 }
 
-.align-bottm input[type="checkbox"], .align-bottom input[type="checkbox"]+label
-{
+.align-bottm input[type="checkbox"], .align-bottom input[type="checkbox"] + label {
     margin-bottom: 4px;
 }
 
-.no-left-padding
-{
+.no-left-padding {
     padding-left: 0px;
 }
 
-.radio + .radio, .checkbox + .checkbox
-{
-    margin-top: 0px !important;
+.radio + .radio, .checkbox + .checkbox {
+    margin-top: 0 !important;
 }
 
 
+
+/** 
+  * GENERAL
+**/
+
+
+#apply-regions > div.view {
+    display: none;
+
+    &.active {
+        display: block;
+    }
+}

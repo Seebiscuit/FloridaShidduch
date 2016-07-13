@@ -2,11 +2,9 @@
     'use strict';
     // Singleton
     var bindings = new Bindings({
-        bindings: {
-            '#register-essays-character': 'character',
-            '#register-essays-spouse-character': 'spouseCharacter',
-            '#register-essays-specialinterests': 'specialInterests'
-        }
+        '#register-essays-character': 'character',
+        '#register-essays-spouse-character': 'spouseCharacter',
+        '#register-essays-specialinterests': 'specialInterests'
     });
 
     return bindings;

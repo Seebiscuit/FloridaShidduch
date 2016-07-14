@@ -10,16 +10,7 @@ function (Backbone, Marionette, templates) {
             // Deep extend events and handlers and bindings without writing to _proto_ refrences
             var clone, extensions = _.extend(Marionette.getOption(options, 'events') || {}, Marionette.getOption(options, 'bindings'))
 
-            for (var name in extensions) {
-                if (_.isString(extensions[name]) || _.isFunction(extensions[name]))
-                    clone = extensions[name];
-                else if (name in this)
-                    clone = $.extend({}, this[name], extensions[name]);
-                else
-                    clone = $.extend({}, extensions[name]);
-
-                this[name] = clone;
-            }
+            this._extendThisObjectWith(extensions);
 
             Marionette.LayoutView.prototype.constructor.apply(this, arguments);
         },
@@ -59,6 +50,19 @@ function (Backbone, Marionette, templates) {
 
         updateParentContainerClass: function (add, remove) {
             this.$parentEl.removeClass(remove).addClass(add);
+        },
+
+        _extendThisObjectWith: function (obj) {
+            for (var name in obj) {
+                if (_.isString(obj[name]) || _.isFunction(obj[name]))
+                    clone = obj[name];
+                else if (name in this)
+                    clone = $.extend({}, this[name], obj[name]);
+                else
+                    clone = $.extend({}, obj[name]);
+
+                this[name] = clone;
+            }
         }
 
     });

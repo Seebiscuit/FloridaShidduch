@@ -279,6 +279,14 @@
     <Content Include="Scripts\.gitignore" />
     <Content Include="Scripts\Gruntfile.js" />
     <Content Include="Scripts\src\app.js" />
+    <Content Include="Scripts\src\behaviors\background.js" />
+    <Content Include="Scripts\src\behaviors\demographics.js" />
+    <Content Include="Scripts\src\behaviors\essays.js" />
+    <Content Include="Scripts\src\behaviors\lifestyle.js" />
+    <Content Include="Scripts\src\behaviors\occupation.js" />
+    <Content Include="Scripts\src\behaviors\personal.js" />
+    <Content Include="Scripts\src\behaviors\references.js" />
+    <Content Include="Scripts\src\behaviors\spouse.js" />
     <Content Include="Scripts\src\config.js" />
     <Content Include="Scripts\lib\Stickit.Bindings.js" />
     <Content Include="Scripts\src\events\essays.js" />

@@ -1,23 +1,23 @@
-﻿define(['bindings'], function (Bindings) {
+﻿define(['bindings', 'behaviors/demographics'], function (Bindings, DemographicsBehavior) {
     'use strict';
     // Singleton
     var bindings = new Bindings({
-        '#register-fname': 'firstName',
-        '#register-lname': 'lastName',
-        'input[name="register-gender"]': {
+'@ui.firstName': 'firstName',
+'@ui.lastName': 'lastName',
+        '@ui.gender': {
             observe: 'gender',
             afterUpdate: 'setGender'
         },
-        '#register-address-home': 'address',
-        '#register-address-apt': 'apartment',
-        '#register-address-city': 'city',
-        '#register-address-state': 'state',
-        '#register-address-zip': 'zip',
+'@ui.address': 'address',
+'@ui.apartment': 'apartment',
+'@ui.city': 'city',
+'@ui.state': 'state',
+'@ui.zip': 'zip',
         //countryId: 'countryId',
-        '#register-contact-home': 'homePhone',
-        '#register-contact-work': 'workPhone',
-        '#register-contact-mobile': 'mobilePhone'
-    });
+'@ui.homePhone': 'homePhone',
+'@ui.workPhone': 'workPhone',
+'@ui.mobilePhone': 'mobilePhone'
+    }, DemographicsBehavior.prototype.ui);
 
     bindings.setGender = function ($el, val, options) {
         var gender = ['male', 'female'],

@@ -1,17 +1,17 @@
-﻿define(['bindings'], function (Bindings) {
+﻿define(['bindings', 'behaviors/personal'], function (Bindings, PersonalBehavior) {
     'use strict';
     // Singleton
     var bindings = new Bindings({
-        '#birthday': 'birthday',
-        '#register-personal-height-feet': 'feet',
-        '#register-personal-height-inches': 'inches',
-        'input[name="register-build"]': 'build',
-        '#register-personal-martialstatus': 'maritalStatus',
-        '#input[name="register-personal-children"]': 'children',
-        '#register-personal-children-number': 'childrenNumber',
-        'input[name="register-personal-pet"]': 'pets',
-        'input[name="register-personal-smoker"]': 'smoke'
-    });
+        '@ui.birthday': 'birthday',
+        '@ui.feet': 'feet',
+        '@ui.inches': 'inches',
+        '@ui.build': 'build',
+        '@ui.maritalStatus': 'maritalStatus',
+        '@ui.children': 'children',
+        '@ui.childrenNumber': 'childrenNumber',
+        '@ui.pets': 'pets',
+        '@ui.smoke': 'smoke'
+    }, PersonalBehavior.prototype.ui);
 
 
     return bindings;

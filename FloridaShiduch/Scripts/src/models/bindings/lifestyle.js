@@ -1,14 +1,14 @@
-﻿define(['bindings'], function (Bindings) {
+﻿define(['bindings', 'behaviors/lifestyle'], function (Bindings, LifestyleBehavior) {
     'use strict';
     // Singleton
     var bindings = new Bindings({
-        'input[name="register-lifestyle-learning"]': 'learnFrequency',
-        'input[name="register-lifestyle-shul"]': 'shulFrequency',
-        'input[name="register-lifestyle-kashrus"]': 'kashrus',
-        'input[name="register-lifestyle-dress-skirt"]': 'dressCode',
-        'input[name="register-lifestyle-dress-sleeve"]': 'dressCode',
-        'input[name="register-lifestyle-hair"]': 'hairCovering'
-    });
+        '@ui.learnFrequency': 'learnFrequency',
+        '@ui.shulFrequency': 'shulFrequency',
+        '@ui.kashrus': 'kashrus',
+        '@ui.dressCode': 'dressCode',
+        '@ui.dressCode': 'dressCode',
+        '@ui.hairCovering': 'hairCovering'
+    }, LifestyleBehavior.prototype.ui);
 
     return bindings;
 });

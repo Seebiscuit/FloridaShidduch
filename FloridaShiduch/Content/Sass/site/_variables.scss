@@ -1,0 +1,25 @@
+﻿/* EXTENDS BOOTSTRAP */
+$font-size-base: 1rem;
+$font-size-jumbo: ($font-size-base * 5); // ~18px
+$font-size-xlarge: ($font-size-base * 3.25); // ~18px
+$font-size-large: ($font-size-base * 1.25); // ~18px
+$font-size-small: ($font-size-base * 0.85); // ~12px
+
+$font-size-h1: ($font-size-base * 2.6); // ~36px
+$font-size-h2: ($font-size-base * 2.15); // ~30px
+$font-size-h3: ($font-size-base * 1.7); // ~24px
+$font-size-h4: ($font-size-base * 1.25); // ~18px
+$font-size-h5: $font-size-base;
+$font-size-h6: ($font-size-base * 0.85); // ~12px
+
+/* Section Sizes */
+$section-size-base: 5rem;
+
+$section-size-sm: $section-size-base;
+$section-size-md: $section-size-base * 4;
+$section-size-lg: $section-size-base * 5;
+
+$section-size-pad-sm: $section-size-sm / 2;
+$section-size-pad-md: $section-size-md / 2.5;
+$section-size-pad-lg: $section-size-lg / 2.5;
+

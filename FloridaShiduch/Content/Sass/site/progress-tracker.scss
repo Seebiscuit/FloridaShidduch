@@ -1,0 +1,68 @@
+﻿@import "_variables.scss";
+
+.progress-meter {
+    padding: 0;
+}
+
+ol.progress-meter {
+    padding-bottom: 9.5px;
+    list-style-type: none;
+
+    li {
+        display: inline-block;
+        text-align: center;
+        text-shadow: 1px 1px 1px #4a4949;
+        height: 36px;
+        width: 10.8%;
+        font-size: $font-size-small * 0.9;
+        border-bottom-width: 4px;
+        border-bottom-style: solid;
+        color: silver;
+        border-bottom-color: silver;
+        cursor:pointer;
+
+
+        &:before {
+            position: relative;
+            float: right;
+            text-indent: 0;
+            right: -8px;
+            content: "\2B24";
+            font-size: $font-size-base;
+            bottom: -25.95px;
+            color: silver;
+            line-height: 18.05px;
+            text-shadow: none;
+        }
+
+        &.highlight {
+            color: lightblue;
+            border-bottom-color: lightblue;
+
+            &.done {
+                color: lightblue;
+            }
+
+            &:before {
+                color: lightblue;
+            }
+        }
+
+        &.done {
+            color: black;
+            border-bottom-color: yellowgreen;
+
+            &:before {
+                content: "\2713";
+                height: 19px;
+                width: 19px;
+                bottom: -24px;
+                border: none;
+                border-radius: 19px;
+                color: white;
+                background-color: yellowgreen;
+                line-height: 21.85px;
+            }
+        }
+    }
+}

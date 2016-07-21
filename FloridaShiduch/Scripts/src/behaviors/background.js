@@ -1,4 +1,4 @@
-﻿define(['marionette'], function (Marionette) {
+define(['marionette'], function (Marionette) {
     'use strict';
     return Marionette.Behavior.extend({
         ui: {
@@ -10,6 +10,24 @@
             marryCohen: 'input[name="register-background-marrykohen"]',
             ethnicity: '#register-background-ethnicity',
             observance: '#register-background-observance'
+        },
+
+        modelEvents: {
+            'change:bornJewish': 'updateBornJewish',
+            'change:baalTeshuva': 'updateBornJewish',
+            'change:isKohen': 'updateIsBT'
+        },
+
+        updateBornJewish: function (model, val, options) {
+            this.view.updateBoolean(val, ['', 'convert']);
+        },
+
+        updateIsKohen: function (model, val, options) {
+            this.view.updateBoolean(val, ['kohen', '']);
+        },
+
+        updateIsBT: function (model, val, options) {
+            this.view.updateBoolean(val, ['bt', '']);
         }
     });
 

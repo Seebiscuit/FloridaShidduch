@@ -42,6 +42,6 @@ namespace FloridaShiduch.Models
         public DbSet<Spouse> Spouses { get; set; }
         public DbSet<SpouseMaritalStatus> SpouseMaritalStatuses { get; set; }
 
-        public System.Data.Entity.DbSet<FloridaShiduch.Models.ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<FloridaShiduch.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

@@ -1,0 +1,24 @@
+﻿#apply-regions > div.view {
+    display: none;
+
+    &.active {
+        display: block;
+    }
+}
+
+.content-container {
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.container-full {
+    height: 100%;
+}
+
+.container-90 {
+    height: 90%;
+}
+
+.container-10 {
+    height: 90%;
+}

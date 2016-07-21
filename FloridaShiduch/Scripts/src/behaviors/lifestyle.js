@@ -8,6 +8,15 @@
             dressCodeSkirt: 'input[name="register-lifestyle-dress-skirt"]',
             dressCodeSleeve: 'input[name="register-lifestyle-dress-sleeve"]',
             hairCovering: 'input[name="register-lifestyle-hair"]'
+        },
+
+        modelEvents: {
+            'change:shulFrequency': 'updateShulFrequency'
+        },
+
+        updateShulFrequency: function (model, val, options) {
+            val = val == 'other' ? true : false;
+            this.updateBoolean(val, ['other-shul', '']);
         }
     });
 });

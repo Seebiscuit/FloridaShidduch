@@ -3,29 +3,31 @@ require([
     "app",
     "routers/routes",
     "RootView",
+    'user-login',
     "underscore.string",
     "marionette"
 ],
 
-function (Backbone, App, Router, RootView, s) {
+function (Backbone, App, Router, RootView, userLogin, s) {
     // Fires after the Application has started and after the initializers have been executed
     App.on("start", function (options) {
-        App.router = new Router({
-            controller: new RootView
-        });
+        initRadio
+        .then(function () {
+            initSecurity(userLogin);
+    
+            App.router = new Router({
+                controller: new RootView
+            });
 
-        if (Backbone.history){
-            // Trigger the initial route
-            Backbone.history.start({ root: App.root });
-        }
+            if (Backbone.history){
+                // Trigger the initial route
+                Backbone.history.start({ root: App.root });
+            }
+        });
     });
 
     //Integrate underscore string into underscore
     _.mixin(s.exports());
-
-    // Define your master router on the application namespace and trigger all
-    // navigation from this instance.
-    App.start();
 
     // All navigation that is relative should be passed through the navigate
     // method, to be processed by the router. If the link has a `data-bypass`
@@ -48,5 +50,29 @@ function (Backbone, App, Router, RootView, s) {
     $(document).on("click", "a[data-bypass]", function (e) {
         e.preventDefault();
     });
+
+    var initRadio = new Promise(function (resolve) { require(['radios'], resolve) });
+
+    // Add loggin-check to the base Marionette.View constructor to invoke it on all views
+    var initSecurity = function (userlogin) {
+        var ViewConstructor = Backbone.Marionette.View;
+        Backbone.Marionette.View = Backbone.Marionette.View.extend({
+            constructor: function (options) {
+                this.isLoggedIn = userlogin.isLoggedIn();
+                this.isAdmin = userlogin.isLoggedInAdminUser();
+                ViewConstructor.apply(this, arguments);
+            }
+        });
+        var BehaviorConstructor = Backbone.Marionette.Behavior;
+        Backbone.Marionette.Behavior = Backbone.Marionette.Behavior.extend({
+            constructor: function (options) {
+                this.isLoggedIn = userlogin.isLoggedIn();
+                this.isAdmin = userlogin.isLoggedInAdminUser();
+                BehaviorConstructor.apply(this, arguments);
+            }
+        });
+    };
+    
+    App.start();
 
 });

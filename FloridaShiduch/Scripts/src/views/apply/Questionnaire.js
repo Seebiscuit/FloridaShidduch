@@ -8,9 +8,11 @@ function (Backbone, Marionette, templates) {
     return Marionette.LayoutView.extend({
         constructor: function (options) {
             // Deep extend events and handlers and bindings without writing to _proto_ refrences
-            var clone, extensions = _.extend(Marionette.getOption(options, 'events') || {}, Marionette.getOption(options, 'bindings'))
+            var clone, extensions = Marionette.getOption(options, 'bindings');
 
-            this._extendThisObjectWith(extensions);
+            this._addStaticProps(extensions);
+
+            this.behaviors = this._createBehaviorClass(Marionette.getOption(options, 'behaviors'), options);
 
             Marionette.LayoutView.prototype.constructor.apply(this, arguments);
         },
@@ -52,7 +54,7 @@ function (Backbone, Marionette, templates) {
             this.$parentEl.removeClass(remove).addClass(add);
         },
 
-        _extendThisObjectWith: function (obj) {
+        _addStaticProps: function (obj) {
             for (var name in obj) {
                 if (_.isString(obj[name]) || _.isFunction(obj[name]))
                     clone = obj[name];
@@ -63,6 +65,22 @@ function (Backbone, Marionette, templates) {
 
                 this[name] = clone;
             }
+        },
+
+        _createBehaviorClass: function (behaviors, options) {
+            var _behaviors = {};
+
+            behaviors = behaviors.length ? behaviors : [ behaviors ];
+
+            _.each(behaviors, function (b) {
+                _behaviors[b.name] = {
+                    behaviorClass: b.behavior,
+                    options: options
+                };
+
+            });
+
+            return _behaviors;
         }
 
     });

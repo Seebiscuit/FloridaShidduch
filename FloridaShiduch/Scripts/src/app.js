@@ -10,6 +10,7 @@ function (_, Backbone) {
     // Fired just before the Application starts and before the initializers are executed
     App.on("before:start", function (options) {
         this.root = '/';
+        this.getApiRoot = '/api/';
     });
 
     // Return the instantiated app (there should only be one)

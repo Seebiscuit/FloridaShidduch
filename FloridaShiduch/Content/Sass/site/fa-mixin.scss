@@ -1,0 +1,28 @@
+﻿
+@mixin icon($icon, $padding: null) {
+    @extend %icon;
+    content: $icon;
+
+    @if $padding != null {
+        padding: $padding;
+    }
+}
+
+@mixin icon-before($icon, $padding: null) {
+    &:before {
+        @include icon($icon);
+
+        @if $padding != null {
+            padding-right: $padding;
+        }
+    }
+}
+
+%icon {
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    text-decoration: inherit;
+    line-height: 1;
+}

@@ -8,17 +8,18 @@ function (Marionette, when) {
         showView: function (modulearray, region, options) {
             return when.promise(function (resolve, reject) {
                 if (!region.view || options.swap) {
-                    require(modulearray, function (View, Model, bindings, events) {
+                    require(modulearray, function (View, Model, Behavior, bindings) {
                         _.extend(options || {}, {
-                            model: new Model,
+                            model: Model && new Model,
                             bindings: bindings && bindings.getBindings(),
-                            events: events,
-                            $parentEl: this.$el 
+                            behaviors: { behavior: Behavior, name: options.type },
+                            $parentEl: this.$el
                         });
 
                         region.view = new View(options);
                         region.show(region.view);
-
+                        _.delay(options.$el[0].scrollIntoView.bind(options.$el[0]), 10);
+                        
                         resolve();
                     }.bind(this));
                 } else

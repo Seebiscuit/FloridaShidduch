@@ -16,7 +16,11 @@
     "awesome-bootstrap-checkbox": "~0.3.7",
     "bootstrap-select": "~1.10.0",
     "underscore.string": "~3.3.4",
-    "rangeslider.js": "~2.1.1"
+    "rangeslider.js": "~2.1.1",
+    "breakpoint-sass": "~2.7.0",
+    "unslider": "~2.0.3",
+    "picturefill": "~3.0.2",
+    "font-awesome": "~4.6.3"
   },
   "devDependencies": {}
 }

@@ -34,12 +34,13 @@ function (MasterLayout, templates) {
             references: '#apply-references',
             spouse: '#apply-spouse',
             //** UI
-            slider: 'input[type=range]'
+            tracker: '.progress-meter > li'
+            //slider: 'input[type=range]'
         },
 
-        events: {
-            'change @ui.slider': 'onSliderChange'
-        },
+        //events: {
+        //    //'change @ui.slider': 'onSliderChange'
+        //},
 
         viewOptions: ['page'],
 
@@ -51,31 +52,51 @@ function (MasterLayout, templates) {
 
         onBeforeShow: function () {
             // TODO: If registered ? go to this.page : register
-            //this.showView('views/apply/Register', this.getRegion('registration'));
-            this.showQuestionnaireModule(this.page);
+            this.showRegister();
         },
 
         onAttach: function () {
-            this.ui.slider.rangeslider({ polyfill: false });
+            this.setupTracker();
+            //this.ui.slider.rangeslider({ polyfill: false });
+        },
+
+        setupTracker: function () {
+            var tracker = this.ui.tracker,
+                eventSuffix = '.fsi.apply',
+                view = this;
+
+            tracker.on('click' + eventSuffix, function onTrackerClick(e) {
+                var $el = $(this);
+                $el.addClass('highlight');
+                location = '#apply/' + view.pageOrder[(view.currentSlidePos = $(this).index())];
+            })
         },
 
         onShowPage: function (page) {
             this.page = page;
-            // TODO Check if regsitered then go to page
+            // TODO Check if registered then go to page
             // TODO: No page == default ==> current progress
             this.showQuestionnaireModule(page);
+        },
+
+        showRegister: function (type) {
+            this.showView(['views/apply/Register'], this.getRegion('registration'), { $el: this.ui.registration });
         },
 
         showQuestionnaireModule: function (type) {
             var modelType = _.capitalize(type, true);
 
+            if (this.pageOrder.indexOf(type) < 0)
+                // If the page isn't an application page, return
+                return;
+
             this.showView([
                 'views/apply/Questionnaire'
                 , 'models/' + modelType
-                , 'models/bindings/' + type
-                , 'events/' + type], this.getRegion(type), { type: type, $el: this.ui[type] });
+                , 'behaviors/' + type
+                , 'models/bindings/' + type], this.getRegion(type), { type: type, $el: this.ui[type] });
 
-            this.seekSlider(type);
+            this.seekTracker(type);
         },
 
         onSliderChange: function (e) {
@@ -89,8 +110,8 @@ function (MasterLayout, templates) {
             }
         },
 
-        seekSlider: function (type) {
-            this.ui.slider.val(this.pageOrder.indexOf(type));
+        seekTracker: function (type) {
+            this.ui.tracker.eq(this.pageOrder.indexOf(type)).addClass('highlight');
         },
 
         pageOrder: function () {
@@ -100,10 +121,14 @@ function (MasterLayout, templates) {
                 'lifestyle',
                 'occupation',
                 'personal',
+                'essays',
                 'spouse',
-                'references',
-                'essays'
+                'references'
             ]
+        },
+
+        onDestroy: function () {
+            this.ui.tracker.off('fsi.apply');
         }
     });
 });

@@ -1,4 +1,4 @@
-﻿define(['marionette'], function (Marionette) {
+define(['marionette'], function (Marionette) {
     'use strict';
     return Marionette.Behavior.extend({
         ui: {
@@ -13,6 +13,17 @@
             homePhone: '#register-contact-home',
             workPhone: '#register-contact-work',
             mobilePhone: '#register-contact-mobile'
+        },
+
+        modelEvents: {
+            'change:gender': 'updateGender'
+        },
+
+        updateGender: function (model, val, options) {
+            var gender = ['male', 'female'],
+                index = gender.indexOf(val);
+
+            this.view.updateBoolean(!!index, gender);
         }
     });
 });

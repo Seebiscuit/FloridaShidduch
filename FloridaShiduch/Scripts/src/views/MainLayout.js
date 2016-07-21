@@ -9,7 +9,16 @@ function (Marionette) {
 
         template: false,
 
-        initialize: function (options) {}
+        onAttach: function (options) {
+            // Start slider
+            $('header #main-slider').unslider({
+                animation: 'fade',
+                autoplay: true,
+                arrows: false,
+                infinite: true,
+                dots: true
+            });
+        }
 
     });
 });

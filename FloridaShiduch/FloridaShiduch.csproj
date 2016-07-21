@@ -228,7 +228,9 @@
     <Content Include="Content\Images\button2_bg_active.gif" />
     <Content Include="Content\Images\button2_shadow.gif" />
     <Content Include="Content\Images\buttons.png" />
+    <Content Include="Content\Images\calla-tehilim-flowers.jpg" />
     <Content Include="Content\Images\calla-tehillim.jpg" />
+    <Content Include="Content\Images\chosson-calla-ring.jpg" />
     <Content Include="Content\Images\flower-bridge.jpg" />
     <Content Include="Content\Images\footer_logo.jpg" />
     <Content Include="Content\Images\for_scroll.png" />
@@ -265,6 +267,10 @@
     <Content Include="Content\Images\sing-kesuba.jpg" />
     <Content Include="Content\Images\slider_shadow.png" />
     <Content Include="Content\Images\wedbands.jpg" />
+    <Content Include="Content\Images\wedding-bouquet.jpg" />
+    <Content Include="Content\Sass\site\fa-mixin.scss" />
+    <Content Include="Content\Sass\site\progress-tracker.scss" />
+    <None Include="Content\Sass\site\_apply.scss" />
     <Content Include="Content\Sass\styles.css">
       <DependentUpon>styles.scss</DependentUpon>
     </Content>
@@ -278,6 +284,10 @@
     <Content Include="Scripts\.gitattributes" />
     <Content Include="Scripts\.gitignore" />
     <Content Include="Scripts\Gruntfile.js" />
+    <Content Include="Scripts\lib\radios.js" />
+    <Content Include="Scripts\lib\rangeslider.js" />
+    <Content Include="Scripts\lib\store.js" />
+    <Content Include="Scripts\lib\user-login.js" />
     <Content Include="Scripts\src\app.js" />
     <Content Include="Scripts\src\behaviors\background.js" />
     <Content Include="Scripts\src\behaviors\demographics.js" />
@@ -289,14 +299,6 @@
     <Content Include="Scripts\src\behaviors\spouse.js" />
     <Content Include="Scripts\src\config.js" />
     <Content Include="Scripts\lib\Stickit.Bindings.js" />
-    <Content Include="Scripts\src\events\essays.js" />
-    <Content Include="Scripts\src\events\lifestyle.js" />
-    <Content Include="Scripts\src\events\spouse.js" />
-    <Content Include="Scripts\src\events\references.js" />
-    <Content Include="Scripts\src\events\personal.js" />
-    <Content Include="Scripts\src\events\occupation.js" />
-    <Content Include="Scripts\src\events\background.js" />
-    <Content Include="Scripts\src\events\demographics.js" />
     <Content Include="Scripts\src\models\Spouse.js" />
     <Content Include="Scripts\src\models\References.js" />
     <Content Include="Scripts\src\models\Personal.js" />
@@ -367,6 +369,10 @@
     <Content Include="Content\Sass\styles.css.map">
       <DependentUpon>styles.css</DependentUpon>
     </Content>
+    <Content Include="Content\Sass\site\site.scss" />
+    <Content Include="Content\Sass\site\_variables.scss" />
+    <Content Include="Content\Sass\site\_extensions.scss" />
+    <Content Include="Content\Sass\site\_sections.scss" />
     <None Include="Content\Sass\styles.scss" />
   </ItemGroup>
   <ItemGroup>

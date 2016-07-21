@@ -1,0 +1,215 @@
+﻿@import "../bootstrap/_bootstrap.scss";
+@import "../../../scripts/src/bower_components/breakpoint-sass/stylesheets/breakpoint";
+@import "variables";
+@import "extensions";
+@import "sections";
+@import "apply";
+@import "progress-tracker";
+@import "../../../scripts/src/bower_components/font-awesome/scss/variables";
+@import "fa-mixin";
+
+/** 
+  * GENERAL
+**/
+
+// Font size
+$site-large: 14pt;
+$site-medium: 11pt;
+$site-small: 10pt;
+$site-xsmall: 8pt;
+
+// Breakpoints
+// assume min-width (by default) if only a number
+$break-xsmall: 400px;
+// set min-width/max-width if both values are numbers
+$break-small: 500px 800px;
+$break-medium: 600px 800px;
+// if one value is a string, assume a feature/value pair
+$break-large: min-width 1000px;
+// string tests together within parentheses, assume each item is a feature value pair
+$break-tall: (min-height 1000px)
+(orientation portrait)
+;
+
+
+html {
+    @include breakpoint($break-xsmall) {
+        font-size: $site-xsmall;
+    }
+
+    @include breakpoint($break-small) {
+        font-size: $site-small;
+    }
+
+    @include breakpoint($break-medium) {
+        font-size: $site-medium;
+    }
+
+    @include breakpoint($break-large) {
+        font-size: $site-large;
+    }
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: $font-size-base;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Oswald', 'Open Sans', sans-serif;
+}
+
+
+header {
+    height: 50vh;
+    overflow: hidden;
+    position: relative;
+    
+    #main-slider {
+        height: 50vh;
+    }
+}
+
+.black-gradient {
+    background-image: linear-gradient( black, #373737 );
+}
+
+.logo {
+    color: red;
+
+    > span:first-of-type {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+
+    > span + span {
+        font-size: 2rem;
+        color: white;
+    }
+}
+
+div.header-logo {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding-bottom: 20px;
+    z-index: 12;
+}
+
+h2.logo {
+    margin-top: 0;
+    padding-top: 20px;
+
+    > span:first-of-type {
+        font-size: 2rem;
+    }
+}
+
+nav#menu-nav {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+
+    &.affix {
+        position: fixed;
+        top: 10px;
+    }
+
+    #menu {
+        font-family: 'Oswald', sans-serif;
+        font-size: 3rem;
+        font-weight: lighter;
+        font-variant: small-caps;
+        padding-left: 0; 
+
+        li {
+            a {  
+                color: black; 
+            }
+
+            &.active a { 
+                color: $brand-warning;
+            }
+        }
+    }
+}
+
+footer {
+    height: 12vh;
+}
+
+
+.question-block {
+    padding-bottom: 1.1rem;
+    padding-left: 2rem;
+    text-align: left;
+
+    .question:after {
+        @include icon($fa-var-caret-down, 0 0 0 10px)
+    }
+
+    &:hover {
+        & > .answer {
+            display: block;
+        }
+
+        & .question:after {
+            @include icon($fa-var-caret-right, 0 0 0 10px)
+        }
+    }
+}
+
+.answer {
+    display: none;
+}
+
+/** 
+  * FORM STYLING 
+**/
+li {
+    list-style: none;
+}
+
+.form-group .full-width {
+    width: 100%;
+}
+
+fieldset p {
+    padding-left: 16px;
+}
+
+.align-bottom {
+    vertical-align: bottom;
+    display: inline-block;
+    float: none !important;
+}
+
+.no-right-padding {
+    padding-right: 0;
+}
+
+.form-group .radio,
+.form-group .checkbox {
+    padding-top: 6px;
+}
+
+.align-bottom input[type="text"] {
+    margin-bottom: 8px;
+}
+
+.align-bottm input[type="checkbox"], .align-bottom input[type="checkbox"] + label {
+    margin-bottom: 4px;
+}
+
+.no-left-padding {
+    padding-left: 0px;
+}
+
+.radio + .radio, .checkbox + .checkbox {
+    margin-top: 0 !important;
+}

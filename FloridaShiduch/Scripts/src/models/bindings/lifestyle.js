@@ -5,8 +5,8 @@
         '@ui.learnFrequency': 'learnFrequency',
         '@ui.shulFrequency': 'shulFrequency',
         '@ui.kashrus': 'kashrus',
-        '@ui.dressCode': 'dressCode',
-        '@ui.dressCode': 'dressCode',
+        '@ui.dressCodeSkirt': 'dressCode',
+        '@ui.dressCodeSleeve': 'dressCode',
         '@ui.hairCovering': 'hairCovering'
     }, LifestyleBehavior.prototype.ui);
 

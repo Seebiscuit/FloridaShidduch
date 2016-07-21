@@ -9,9 +9,9 @@ function (Marionette) {
         // Format is "route": "methodName" where the router's controller
         // must have the method methodName
         appRoutes: {
-            "main/:bookmark": "showMain",
+            ":bookmark": "navRoutes",
             "apply/:page": "showApply",
-            "*any": "showMain",
+            "*any": "showMain"
         },
 
         // Standard backbone routes. Methods called must be in this object.

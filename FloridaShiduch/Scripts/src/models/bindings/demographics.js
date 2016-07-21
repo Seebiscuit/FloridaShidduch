@@ -2,21 +2,21 @@
     'use strict';
     // Singleton
     var bindings = new Bindings({
-'@ui.firstName': 'firstName',
-'@ui.lastName': 'lastName',
+        '@ui.firstName': 'firstName',
+        '@ui.lastName': 'lastName',
         '@ui.gender': {
             observe: 'gender',
             afterUpdate: 'setGender'
         },
-'@ui.address': 'address',
-'@ui.apartment': 'apartment',
-'@ui.city': 'city',
-'@ui.state': 'state',
-'@ui.zip': 'zip',
+        '@ui.address': 'address',
+        '@ui.apartment': 'apartment',
+        '@ui.city': 'city',
+        '@ui.state': 'state',
+        '@ui.zip': 'zip',
         //countryId: 'countryId',
-'@ui.homePhone': 'homePhone',
-'@ui.workPhone': 'workPhone',
-'@ui.mobilePhone': 'mobilePhone'
+        '@ui.homePhone': 'homePhone',
+        '@ui.workPhone': 'workPhone',
+        '@ui.mobilePhone': 'mobilePhone'
     }, DemographicsBehavior.prototype.ui);
 
     bindings.setGender = function ($el, val, options) {

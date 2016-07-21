@@ -10,12 +10,30 @@ define(['bindings', 'behaviors/occupation'], function (Bindings, OccupationBehav
         '@ui.israelStudy': 'israelStudy',
         '@ui.isrealDuration': 'isrealDuration',
         '@ui.secularEducationLevel': 'secularEducationLevel',
-        '@ui.collegeBachelors': 'college',
-        '@ui.collegeMasters': 'college',
-        '@ui.collegeDoctorate': 'college',
-        '@ui.degreeBachelors': 'degree',
-        '@ui.degreeMasters': 'degree',
-        '@ui.degreeDoctorate': 'degree',
+        '@ui.collegeBachelors': {
+            observe: 'college',
+            updateView: false
+        },
+        '@ui.collegeMasters': {
+            observe: 'college',
+            updateView: false
+        },
+        '@ui.collegeDoctorate': {
+            observe: 'college',
+            updateView: false
+        },
+        '@ui.degreeBachelors': {
+            observe: 'degree',
+            updateView: false
+        },
+        '@ui.degreeMasters': {
+            observe: 'degree',
+            updateView: false
+        },
+        '@ui.degreeDoctorate': {
+            observe: 'degree',
+            updateView: false
+        },
         '@ui.companyName': 'companyName',
         '@ui.jobTitle': 'jobTitle',
         '@ui.jobType': {

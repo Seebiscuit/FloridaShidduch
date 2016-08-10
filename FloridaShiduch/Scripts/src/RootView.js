@@ -25,7 +25,20 @@ define(['app'
             },
 
             initialize: function () {
+                this.setupHandlers();
                 this.render();
+            },
+
+            setupHandlers: function () {
+                var radio = app.radio.view.rootRadio,
+                    _this = this;
+
+                radio.reqres.setHandlers({
+                    'apply:show': {
+                        callback: _this.showApply,
+                        context: _this
+                    }
+                });
             },
 
             onRender: function () {
@@ -40,10 +53,11 @@ define(['app'
                     offset: { top: top, bottom: bottom }
                 });
 
-                this.$el.scrollspy({ target: this.ui.nav.selector.replace(/body\s+/, '') });
+                //this.$el.scrollspy({ target: this.ui.nav.selector.replace(/body\s+/, '') });
 
                 this.ui.nav.on('activate.bs.scrollspy', function () {
-                    location = '#' + $(this).find('li.active > a').prop('href').replace(/^.*#/, ''); console.log(location);
+                    var loc = $(this).find('li.active > a').prop('href').replace(/^.*#/, '');
+                   // if (loc.indexOf('apply') < 0) location = '#' + loc; console.log(loc);
                 })
             },
 
@@ -55,7 +69,7 @@ define(['app'
                 this.$current.show();
                 // UI Change, update scroll position
                 this.ui.nav.affix('checkPosition');
-                this.ui.nav.scrollspy('refresh');
+                //this.ui.nav.scrollspy('refresh');
             },
 
             gotoBookmark: function (bookmark) {

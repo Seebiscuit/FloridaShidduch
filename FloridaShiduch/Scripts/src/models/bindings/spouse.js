@@ -2,19 +2,58 @@
     'use strict';
     // Singleton
     var bindings = new Bindings({
-        '@ui.minAge': 'minAge',
-        '@ui.maxAge': 'maxAge',
-        '@ui.minFeet': 'minFeet',
-        '@ui.minInches': 'minInches',
-        '@ui.maxFeet': 'maxFeet',
-        '@ui.maxInches': 'maxInches',
-        '@ui.maritalStatus': 'maritalStatus',
-        '@ui.allowChildren': 'allowChildren',
-        '@ui.hebrewEducationLevel': 'hebrewEducationLevel',
-        '@ui.secularEducationLevel': 'secularEducationLevel',
-        '@ui.tv': 'tv',
-        '@ui.relocate': 'relocate',
-        '@ui.aliyah': 'aliyah'
+        '@ui.minAge': {
+            observe: 'minAge',
+            setOps: { validate: true }
+        },
+        '@ui.maxAge': {
+            observe: 'maxAge',
+            setOps: { validate: true }
+        },
+        '@ui.minFeet': {
+            observe: 'minFeet',
+            setOps: { validate: true }
+        },
+        '@ui.minInches': {
+            observe: 'minInches',
+            setOps: { validate: true }
+        },
+        '@ui.maxFeet': {
+            observe: 'maxFeet',
+            setOps: { validate: true }
+        },
+        '@ui.maxInches': {
+            observe: 'maxInches',
+            setOps: { validate: true }
+        },
+        '@ui.maritalStatus': {
+            observe: 'maritalStatus',
+            setOps: { validate: true }
+        },
+        '@ui.allowChildren': {
+            observe: 'allowChildren',
+            setOps: { validate: true }
+        },
+        '@ui.hebrewEducationLevel': {
+            observe: 'hebrewEducationLevel',
+            setOps: { validate: true }
+        },
+        '@ui.secularEducationLevel': {
+            observe: 'secularEducationLevel',
+            setOps: { validate: true }
+        },
+        '@ui.tv': {
+            observe: 'tv',
+            setOps: { validate: true }
+        },
+        '@ui.relocate': {
+            observe: 'relocate',
+            setOps: { validate: true }
+        },
+        '@ui.aliyah': {
+            observe: 'aliyah',
+            setOps: { validate: true }
+        }
     }, SpouseBehavior.prototype.ui);
 
 

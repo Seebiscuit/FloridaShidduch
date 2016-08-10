@@ -1,0 +1,15 @@
+﻿#register {
+    .register-login {
+        display: none;
+    }
+
+   &.login {
+       .register-login {
+           display:inline;
+       }
+
+       .register-register {
+           display: none;
+       }
+   }
+}

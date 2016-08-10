@@ -20,14 +20,14 @@ namespace FloridaShiduch.Controllers
         // GET: api/ApplicationUsers
         public IQueryable<ApplicationUser> GetApplicationUsers()
         {
-            return db.ApplicationUsers;
+            return db.Users;
         }
 
         // GET: api/ApplicationUsers/5
         [ResponseType(typeof(ApplicationUser))]
         public async Task<IHttpActionResult> GetApplicationUser(string id)
         {
-            ApplicationUser applicationUser = await db.ApplicationUsers.FindAsync(id);
+            ApplicationUser applicationUser = db.Users.Find(id);
             if (applicationUser == null)
             {
                 return NotFound();
@@ -80,7 +80,7 @@ namespace FloridaShiduch.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.ApplicationUsers.Add(applicationUser);
+            db.Users.Add(applicationUser);
 
             try
             {
@@ -105,13 +105,13 @@ namespace FloridaShiduch.Controllers
         [ResponseType(typeof(ApplicationUser))]
         public async Task<IHttpActionResult> DeleteApplicationUser(string id)
         {
-            ApplicationUser applicationUser = await db.ApplicationUsers.FindAsync(id);
+            ApplicationUser applicationUser = db.Users.Find(id);
             if (applicationUser == null)
             {
                 return NotFound();
             }
 
-            db.ApplicationUsers.Remove(applicationUser);
+            db.Users.Remove(applicationUser);
             await db.SaveChangesAsync();
 
             return Ok(applicationUser);
@@ -128,7 +128,7 @@ namespace FloridaShiduch.Controllers
 
         private bool ApplicationUserExists(string id)
         {
-            return db.ApplicationUsers.Count(e => e.Id == id) > 0;
+            return db.Users.Count(e => e.Id == id) > 0;
         }
     }
 }

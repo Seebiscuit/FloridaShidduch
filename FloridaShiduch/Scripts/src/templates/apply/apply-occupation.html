@@ -18,19 +18,19 @@
             <input type="radio" class="radio" name="register-education-hebrew" id="register-education-hebrew-yeshsemi" value="yeshiva">
             <label for="register-education-hebrew-yeshsemi">Post High School Yeshiva/Seminary</label>
         </div>
-        <div class="col-xs-4 align-bottom">
+        <div class="col-xs-4 align-bottom toggle-yeshiva">
             <input type="text" class="form-control" id="register-education-hebrew-yeshsemi-principal" placeholder="Rosh Yeshiva/Menahales">
         </div>
-        <div class="col-xs-4 align-bottom">
+        <div class="col-xs-4 align-bottom toggle-yeshiva">
             <input type="text" class="form-control" id="register-education-hebrew-yeshsemi-location" placeholder="Location">
         </div>
     </div>
     <div class="checkbox col-xs-12 no-left-padding">
         <div class="checkbox checkbox-info col-xs-3 align-bottom">
-            <input type="checkbox" class="checkbox checkbox-info" name="register-education-hebrew" id="register-education-hebrew-israel" value="true">
+            <input type="checkbox" class="checkbox checkbox-info" name="register-education-hebrew-israel" id="register-education-hebrew-israel">
             <label for="register-education-hebrew-israel">Study in Israel</label>
         </div>
-        <div class="col-xs-3 align-bottom">
+        <div class="col-xs-3 align-bottom toggle-israel-study">
             <input type="text" class="form-control" id="register-education-hebrew-israel-duration" placeholder="How long?">
         </div>
     </div>
@@ -50,10 +50,10 @@
             <input type="radio" class="radio" name="register-education-secular" id="register-education-secular-bachelors" value="bachelors">
             <label for="register-education-secular-bachelors">Bachelors</label>
         </div>
-        <div class="col-xs-4 align-bottom">
+        <div class="col-xs-4 align-bottom toggle-bachelors">
             <input type="text" class="form-control" id="register-education-secular-bachelors-name" placeholder="Name of graduating institution">
         </div>
-        <div class="col-xs-4 align-bottom">
+        <div class="col-xs-4 align-bottom toggle-bachelors">
             <input type="text" class="form-control" id="register-education-secular-bachelors-degree" placeholder="Degree">
         </div>
     </div>
@@ -62,10 +62,10 @@
             <input type="radio" class="radio" name="register-education-secular" id="register-education-secular-masters" value="masters">
             <label for="register-education-secular-masters">Masters</label>
         </div>
-        <div class="col-xs-4 align-bottom">
+        <div class="col-xs-4 align-bottom toggle-masters">
             <input type="text" class="form-control" id="register-education-secular-masters-name" placeholder="Name of graduating institution">
         </div>
-        <div class="col-xs-4 align-bottom">
+        <div class="col-xs-4 align-bottom toggle-masters">
             <input type="text" class="form-control" id="register-education-secular-masters-degree" placeholder="Degree">
         </div>
     </div>
@@ -74,10 +74,10 @@
             <input type="radio" class="radio" name="register-education-secular" id="register-education-secular-doctorate" value="doctorate">
             <label for="register-education-secular-doctorate">Doctorate</label>
         </div>
-        <div class="col-xs-4 align-bottom">
+        <div class="col-xs-4 align-bottom toggle-doctorate">
             <input type="text" class="form-control" id="register-education-secular-doctorate-name" placeholder="Name of graduating institution">
         </div>
-        <div class="col-xs-4 align-bottom">
+        <div class="col-xs-4 align-bottom toggle-doctorate">
             <input type="text" class="form-control" id="register-education-secular-doctorate-degree" placeholder="Degree">
         </div>
     </div>
@@ -90,10 +90,10 @@
         <input type="checkbox" class="checkbox" name="register-occupation" id="register-occupation-working" value="working">
         <label for="register-occupation-working">Working</label>
     </div>
-    <div class="col-xs-4 align-bottom">
+    <div class="col-xs-4 align-bottom toggle-working">
         <input type="text" class="form-control" id="register-occupation-working-firm" placeholder="Company Name">
     </div>
-    <div class="col-xs-4 align-bottom">
+    <div class="col-xs-4 align-bottom toggle-working">
         <input type="text" class="form-control" id="register-occupation-working-title" placeholder="Job Title">
     </div>
 </div>
@@ -114,7 +114,7 @@
         <input type="checkbox" class="checkbox" name="register-occupation" id="register-occupation-other" value="other">
         <label for="register-occupation-other">Other:</label>
     </div>
-    <div class="col-xs-8 align-bottom">
+    <div class="col-xs-8 align-bottom toggle-other-occupation">
         <input type="text" class="form-control" id="register-occupation-other-describe" placeholder="Please describe your current situation">
     </div>
 </div>

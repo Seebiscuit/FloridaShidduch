@@ -23,6 +23,8 @@ function (Backbone, App, Router, RootView, userLogin, s) {
                 // Trigger the initial route
                 Backbone.history.start({ root: App.root });
             }
+
+            mixinBackboneValidation();
         });
     });
 
@@ -53,21 +55,40 @@ function (Backbone, App, Router, RootView, userLogin, s) {
 
     var initRadio = new Promise(function (resolve) { require(['radios'], resolve) });
 
+    // Extend the callbacks to work with Bootstrap, as used in this example
+    // See: http://thedersen.com/projects/backbone-validation/#configuration/callbacks
+    var mixinBackboneValidation = function () {
+        _.extend(Backbone.Validation.callbacks, {
+            valid: function (view, attr, selector) {
+                var $el = view.$('[name$=' + attr.toLowerCase() + ']'),
+                    $group = $el.closest('.form-group');
+
+                $group.removeClass('has-error');
+                $group.find('.help-block').html('').addClass('hidden');
+            },
+            invalid: function (view, attr, error, selector) {
+                var $el = view.$('[name$=' + attr.toLowerCase() + ']'),
+                    $group = $el.closest('.form-group');
+
+                $group.addClass('has-error');
+                $group.find('.help-block').html(error).removeClass('hidden');
+            }
+        });
+    }
     // Add loggin-check to the base Marionette.View constructor to invoke it on all views
     var initSecurity = function (userlogin) {
         var ViewConstructor = Backbone.Marionette.View;
         Backbone.Marionette.View = Backbone.Marionette.View.extend({
             constructor: function (options) {
-                this.isLoggedIn = userlogin.isLoggedIn();
-                this.isAdmin = userlogin.isLoggedInAdminUser();
+                this.state = (this.state || {});
+                this.state.login = userlogin;
                 ViewConstructor.apply(this, arguments);
             }
         });
         var BehaviorConstructor = Backbone.Marionette.Behavior;
         Backbone.Marionette.Behavior = Backbone.Marionette.Behavior.extend({
             constructor: function (options) {
-                this.isLoggedIn = userlogin.isLoggedIn();
-                this.isAdmin = userlogin.isLoggedInAdminUser();
+                this.state = (this.state || {}).login = userlogin;
                 BehaviorConstructor.apply(this, arguments);
             }
         });

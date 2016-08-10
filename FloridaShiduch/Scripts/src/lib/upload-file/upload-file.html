@@ -1,0 +1,26 @@
+﻿<h4 class="modal-title">Upload an image or enter an image URL</h4>
+<div class="file-upload-image-preview" data-hook="image-preview"></div>
+<div class="choose-file-block">
+    <div class="row help-block">
+        <div class="col-md-3">
+            <select class="form-control">
+                <option value="File">Upload File</option>
+                <option value="URL">Save URL</option>
+            </select>
+        </div>
+    </div>
+    <div class="row help-block">
+        <div class="col-md-5">
+            <div class="input-group upload-file">
+                <span class="input-group-btn">
+                    <span class="btn btn-primary btn-file">
+                        Browse&hellip;<input type="file" name="image" class="upload-file btn btn-primary" />
+                    </span>
+                </span>
+                <input type="text" class="form-control" readonly>
+            </div>
+            <input type="text" name="image" class="upload-url form-control" placeholder="Enter image URL" />
+        </div>
+    </div>
+</div>
+<button class="upload btn btn-default">Upload Image</button>

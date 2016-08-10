@@ -1,11 +1,11 @@
-﻿define(['app', 'backbone'], function (app, Backbone) {
+define(['app', 'backbone'], function (app, Backbone) {
     return Backbone.Model.extend({
         idAttribute: 'userId',
 
         urlRoot: '/api/Occupation/',
 
         url: function () {
-            return _.result(this, 'urlRoot') + this.model.get('occupationType');
+            return _.result(this, 'urlRoot') + this.get('occupationType');
         }
     });
 });

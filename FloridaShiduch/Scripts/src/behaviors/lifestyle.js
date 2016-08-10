@@ -16,7 +16,7 @@
 
         updateShulFrequency: function (model, val, options) {
             val = val == 'other' ? true : false;
-            this.updateBoolean(val, ['other-shul', '']);
+            this.updateBoolean(val, ['', 'toggle-shul-other']);
         }
     });
 });

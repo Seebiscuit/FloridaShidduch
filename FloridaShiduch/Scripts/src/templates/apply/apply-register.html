@@ -1,5 +1,11 @@
-<h4>First let's get you registered</h4>
-<h6>or Log in</h6>
+<h4>
+    <span class="register-login">Login</span>
+    <span class="register-register">First let's get you registered</span>
+</h4>
+<h6>
+    <a role="button" tabindex="0" class="register-register" data-hook="login">or Log in</a>
+    <a role="button" tabindex="0" class="register-login" data-hook="register">Register</a>
+</h6>
 
 <div class="col-xs-4 col-xs-offset-4">
     <div class="well well-lg">
@@ -7,17 +13,22 @@
             <label for="register-form-email">
                 Email address
             </label>
-                <input type="email" id="register-form-email" name="register-form-email" class="form-control" placeholder="Email" data-hook="email" />
+            <input type="email" id="register-form-email" name="register-form-email" class="form-control" placeholder="Email" data-hook="email" />
+            <span class="help-block hidden"></span>
         </div>
         <div class="form-group">
             <label for="register-form-password">
                 Password
             </label>
-            <input type="password" id="register-form-password" name="register-form-password" class="form-control" placeholder="Password"/>
+            <input type="password" id="register-form-password" name="register-form-password" class="form-control" placeholder="Password" />
+            <span class="help-block hidden"></span>
+        </div>
+        <div class=" register-register form-group">
             <label for="register-form-repassword">
                 Confirm password
             </label>
-            <input type="password" id="register-form-repassword" name="register-form-repassword" class="form-control" placeholder="Password"/>
+            <input type="password" id="register-form-confirmpass" name="register-form-confirmpass" class="form-control" placeholder="Repeat password" />
+            <span class="help-block hidden"></span>
         </div>
         <button type="submit" id="register-form-submit" name="register-form-submit" class="btn btn-default">Submit</button>
     </div>

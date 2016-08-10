@@ -1,10 +1,11 @@
-define([
-    'masterlayout'
+define([ 'app'
+    , 'masterlayout'
     , 'templates'
+    , 'store'
     , 'slider'
 ],
 
-function (MasterLayout, templates) {
+function (app, MasterLayout, templates, store) {
     return MasterLayout.extend({
         template: templates.apply.layout,
 
@@ -33,6 +34,16 @@ function (MasterLayout, templates) {
             personal: '#apply-personal',
             references: '#apply-references',
             spouse: '#apply-spouse',
+            //** Tracker
+            registrationMeter: '#meter-registration',
+            demographicsMeter: '#meter-demographics',
+            backgroundMeter: '#meter-background',
+            essaysMeter: '#meter-essays',
+            lifestyleMeter: '#meter-lifestyle',
+            occupationMeter: '#meter-occupation',
+            personalMeter: '#meter-personal',
+            referencesMeter: '#meter-references',
+            spouseMeter: '#meter-spouse',
             //** UI
             tracker: '.progress-meter > li'
             //slider: 'input[type=range]'
@@ -48,11 +59,31 @@ function (MasterLayout, templates) {
             this.mergeOptions(options, this.viewOptions);
 
             this.pageOrder = this.pageOrder();
+            this.user = this.state.login;
+
+            this.listenTo(app.radio.view.rootRadio.vent,'module:set-status', this.setProgress);
         },
 
         onBeforeShow: function () {
-            // TODO: If registered ? go to this.page : register
-            this.showRegister();
+            this.showQuestionnaireModule();
+        },
+
+        goToLastProgress: function (isinit) {
+            var firstTodo;
+
+            firstTodo = this._setTrackerStatus() || this.pageOrder[0];
+
+            if (location.hash.indexOf('#apply/' + firstTodo) > -1)
+                // already at this todo, just show it
+                this.showQuestionnaireModule(firstTodo);
+            else
+                location = '#apply/' + firstTodo;
+        },
+
+        setProgress: function (module, status) {
+            store.setItem('progress.' + this.user.get('escapedUserName') + '.' + module + '.status', status);
+
+            if (status) this.ui[(module + 'Meter')].addClass('complete');
         },
 
         onAttach: function () {
@@ -67,36 +98,38 @@ function (MasterLayout, templates) {
 
             tracker.on('click' + eventSuffix, function onTrackerClick(e) {
                 var $el = $(this);
-                $el.addClass('highlight');
+                $el.addClass('active');
                 location = '#apply/' + view.pageOrder[(view.currentSlidePos = $(this).index())];
             })
         },
 
-        onShowPage: function (page) {
-            this.page = page;
-            // TODO Check if registered then go to page
-            // TODO: No page == default ==> current progress
-            this.showQuestionnaireModule(page);
+        onShowPage: function (module) {
+            this.showQuestionnaireModule(module);
         },
 
-        showRegister: function (type) {
-            this.showView(['views/apply/Register'], this.getRegion('registration'), { $el: this.ui.registration });
+        showRegister: function () {
+            this.$el.removeClass('applying');
+            this.showView(['views/apply/Register', 'models/bindings/register'], this.getRegion('registration'), { $el: this.ui.registration });
         },
 
-        showQuestionnaireModule: function (type) {
-            var modelType = _.capitalize(type, true);
+        showQuestionnaireModule: function (module, isinit) {
+            var modelName = _.capitalize(module, true);
 
-            if (this.pageOrder.indexOf(type) < 0)
-                // If the page isn't an application page, return
-                return;
+            if (!this.user.isLoggedIn())
+               return this.showRegister();
+            else if (this.pageOrder.indexOf(module) < 0)
+                // If the page isn't an application page...
+                return this.goToLastProgress();
 
+            this.$el.addClass('applying');
+            
             this.showView([
                 'views/apply/Questionnaire'
-                , 'models/' + modelType
-                , 'behaviors/' + type
-                , 'models/bindings/' + type], this.getRegion(type), { type: type, $el: this.ui[type] });
+                , 'models/' + modelName
+                , 'behaviors/' + module
+                , 'models/bindings/' + module], this.getRegion(module), { module: module, $el: this.ui[module] });
 
-            this.seekTracker(type);
+            if (!isinit) this.seekTracker(module);  // Tracker set on init;
         },
 
         onSliderChange: function (e) {
@@ -110,8 +143,8 @@ function (MasterLayout, templates) {
             }
         },
 
-        seekTracker: function (type) {
-            this.ui.tracker.eq(this.pageOrder.indexOf(type)).addClass('highlight');
+        seekTracker: function (module) {
+            this._setTrackerStatus(module);
         },
 
         pageOrder: function () {
@@ -125,6 +158,42 @@ function (MasterLayout, templates) {
                 'spouse',
                 'references'
             ]
+        },
+
+        _setTrackerStatus: function (module) {
+            var firstTodo, progress = store.getItem('progress.' + this.user.get('escapedUserName'));
+
+            if (!progress) {
+                this.setProgress(this.pageOrder[0], false);
+                return this._setTrackerStatus();
+            }
+            else {
+                _.each(this.pageOrder, function (mod, i) {
+                    if (progress[mod]) {
+                        if (!progress[mod].status) {
+                            // False status, started but not finished
+                            if (!firstTodo) {
+                                firstTodo = mod;
+
+                                if (!module) // Highlight the first todo
+                                    this.ui[(mod + 'Meter')].addClass('active');
+                            }
+
+                            this.ui[(mod + 'Meter')].addClass('incomplete');
+                        }
+                        else
+                            this.ui[(mod + 'Meter')].addClass('complete');
+                    } else {
+                        // Not visited. Mark as 'todo'
+                        this.ui[(mod + 'Meter')].removeClass('incomplete complete active');
+                        // First visit, save progress as incomplete
+                        if (mod == module) this.setProgress(mod, false);
+                    }
+                    if (mod == module) this.ui[(mod + 'Meter')].addClass('active');
+                }.bind(this));
+            }
+
+            return firstTodo;
         },
 
         onDestroy: function () {

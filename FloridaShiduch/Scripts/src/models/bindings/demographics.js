@@ -2,29 +2,52 @@
     'use strict';
     // Singleton
     var bindings = new Bindings({
-        '@ui.firstName': 'firstName',
-        '@ui.lastName': 'lastName',
+        '@ui.firstName': {
+            observe: 'firstName',
+            setOps: { validate: true }
+        },
+        '@ui.lastName': {
+            observe: 'lastName',
+            setOps: { validate: true }
+        },
         '@ui.gender': {
             observe: 'gender',
-            afterUpdate: 'setGender'
+            setOps: { validate: true }
         },
-        '@ui.address': 'address',
-        '@ui.apartment': 'apartment',
-        '@ui.city': 'city',
-        '@ui.state': 'state',
-        '@ui.zip': 'zip',
+        '@ui.address': {
+            observe: 'address',
+            setOps: { validate: true }
+        },
+        '@ui.apartment': {
+            observe: 'apartment',
+            setOps: { validate: true }
+        },
+        '@ui.city': {
+            observe: 'city',
+            setOps: { validate: true }
+        },
+        '@ui.state': {
+            observe: 'state',
+            setOps: { validate: true }
+        },
+        '@ui.zip': {
+            observe: 'zip',
+            setOps: { validate: true }
+        },
         //countryId: 'countryId',
-        '@ui.homePhone': 'homePhone',
-        '@ui.workPhone': 'workPhone',
-        '@ui.mobilePhone': 'mobilePhone'
+        '@ui.homePhone': {
+            observe: 'homePhone',
+            setOps: { validate: true }
+        },
+        '@ui.workPhone': {
+            observe: 'workPhone',
+            setOps: { validate: true }
+        },
+        '@ui.mobilePhone': {
+            observe: 'mobilePhone',
+            setOps: { validate: true }
+        }
     }, DemographicsBehavior.prototype.ui);
-
-    bindings.setGender = function ($el, val, options) {
-        var gender = ['male', 'female'],
-            index = gender.indexOf(val);
-
-        $el.removeClass(gender[Number(!index)]).addClass(val);
-    };
 
     return bindings;
 });

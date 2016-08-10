@@ -14,20 +14,15 @@ define(['marionette'], function (Marionette) {
 
         modelEvents: {
             'change:bornJewish': 'updateBornJewish',
-            'change:baalTeshuva': 'updateBornJewish',
-            'change:isKohen': 'updateIsBT'
+            'change:baalTeshuva': 'updateIsBT',
         },
 
         updateBornJewish: function (model, val, options) {
-            this.view.updateBoolean(val, ['', 'convert']);
-        },
-
-        updateIsKohen: function (model, val, options) {
-            this.view.updateBoolean(val, ['kohen', '']);
+            this.view.updateBoolean(val, ['toggle-convert', '']);
         },
 
         updateIsBT: function (model, val, options) {
-            this.view.updateBoolean(val, ['bt', '']);
+            this.view.updateBoolean(val, ['', 'toggle-bt']);
         }
     });
 

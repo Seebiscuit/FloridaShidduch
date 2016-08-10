@@ -9,10 +9,14 @@ function (Marionette, when) {
             return when.promise(function (resolve, reject) {
                 if (!region.view || options.swap) {
                     require(modulearray, function (View, Model, Behavior, bindings) {
+                        if (Model.getBindings)
+                            // Register uses this pattern
+                            bindings = Model, Model = null;
+
                         _.extend(options || {}, {
                             model: Model && new Model,
                             bindings: bindings && bindings.getBindings(),
-                            behaviors: { behavior: Behavior, name: options.type },
+                            behaviors: { behavior: Behavior, name: options.module },
                             $parentEl: this.$el
                         });
 

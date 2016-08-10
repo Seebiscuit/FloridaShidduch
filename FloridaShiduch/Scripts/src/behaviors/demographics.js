@@ -1,4 +1,4 @@
-define(['marionette'], function (Marionette) {
+define(['marionette', 'upload-file'], function (Marionette, UploadFile) {
     'use strict';
     return Marionette.Behavior.extend({
         ui: {
@@ -24,6 +24,14 @@ define(['marionette'], function (Marionette) {
                 index = gender.indexOf(val);
 
             this.view.updateBoolean(!!index, gender);
+        },
+
+        behaviors: function () { 
+        return {
+            UploadFile: {
+                behaviorClass: UploadFile
+            }
+        }
         }
     });
 });

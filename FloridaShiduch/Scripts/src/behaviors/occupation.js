@@ -3,7 +3,8 @@ define(['marionette'], function (Marionette) {
     return Marionette.Behavior.extend({
         ui: {
             hebrewEducationLevel: 'input[name="register-education-hebrew"]',
-            yeshiva: '#register-education-hebrew-yeshsemi-principal',
+            yeshiva: '#register-education-hebrew-yeshsemi',
+            yeshivaPrincipal: '#register-education-hebrew-yeshsemi-principal',
             yeshivaLocation: '#register-education-hebrew-yeshsemi-location',
             israelStudy: '#register-education-hebrew-israel',
             isrealDuration: '#register-education-hebrew-israel-duration',
@@ -17,36 +18,39 @@ define(['marionette'], function (Marionette) {
             companyName: '#register-occupation-working-firm',
             jobTitle: '#register-occupation-working-title',
             jobType: 'input[name="register-occupation"]',
-            jobTypeOther: '#register-occupation-other-describe'
+            jobTypeOther: '#register-occupation-other',
+            jobTypeOtherDesc: '#register-occupation-other-describe'
         },
 
         modelEvents: {
             'change:hebrewEducationLevel': 'updateYeshiva',
             'change:israelStudy': 'updateIsraelStudy',
             'change:secularEducationLevel': 'updateCollege',
-            'change:jobType': 'updateOccupation'
+            'change:jobType': 'updateOccupation',
+            'change:jobTypeOther': 'updateOccupation'
         },
 
         updateYeshiva: function (model, val, options) {
-            val = val == 'yeshiva' ? true : false;
-            this.view.updateBoolean(val, ['yeshiva', '']);
+            this.view.updateBoolean(val == 'yeshiva', ['', 'toggle-yeshiva']);
         },
 
         updateIsraelStudy: function (model, val, options) {
-            this.view.updateBoolean(val, ['israel-study', '']);
+            this.view.updateBoolean(val, ['', 'toggle-israel-study']);
         },
 
         updateCollege: function (model, val, options) {
             var index, classes, remove,
-                colleges = ['bachelors', 'masters', 'doctorate'];
+                colleges = ['toggle-bachelors', 'toggle-masters', 'toggle-doctorate'];
+
+            val = 'toggle-' + val;
 
             if ((index = colleges.indexOf(val)) + 1) {
                 remove = colleges.slice(), remove.splice(index, 1);
                 classes = [val, remove.join(' ')];
-                val = true;
+                val = false;
             } else {
                 classes = [colleges.join(' '), ''];
-                val = false;
+                val = true;
             }
 
             this.view.updateBoolean(val, classes);
@@ -54,9 +58,9 @@ define(['marionette'], function (Marionette) {
 
         updateOccupation: function (model, val, options) {
             // Update 'working' inputs
-            this.view.updateBoolean(!!(val.indexOf('working') + 1), ['working', '']);
+            this.view.updateBoolean(!!(val.indexOf('working') + 1), ['', 'toggle-working']);
             // Update 'other' inputs
-            this.view.updateBoolean(!!(val.indexOf('other') + 1), ['other-occupation', '']);
+            this.view.updateBoolean(!!(val.indexOf('other') + 1), ['', 'toggle-other-occupation']);
         }
     });
 });

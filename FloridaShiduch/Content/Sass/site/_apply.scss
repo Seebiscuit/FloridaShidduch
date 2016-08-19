@@ -4,6 +4,10 @@
     &.active {
         display: block;
     }
+
+    [class*="toggle-"] + [class*="toggle-"] {
+        margin-top: .3rem;
+    }
 }
 
 .content-container {

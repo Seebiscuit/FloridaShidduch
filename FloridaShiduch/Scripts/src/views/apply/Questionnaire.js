@@ -19,6 +19,12 @@ function (app, Backbone, Marionette, templates) {
             this.onChange = _.debounce(this.onChange.bind(this), 250);
         },
 
+        regions: {
+
+        },
+
+        className: 'row',
+
         getTemplate: function () {
             return templates.apply[this.getOption('module')];
         },
@@ -27,10 +33,6 @@ function (app, Backbone, Marionette, templates) {
 
         modelEvents: {
             change: 'onChange'
-        },
-
-        regions: {
-
         },
 
         viewOptions: ['$parentEl', 'module'],

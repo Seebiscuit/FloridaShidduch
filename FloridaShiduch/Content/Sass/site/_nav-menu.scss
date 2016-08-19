@@ -1,0 +1,55 @@
+﻿@import "_variables.scss";
+
+nav#menu-nav {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+
+    &.affix {
+        position: fixed;
+        top: 10px;
+    }
+
+    ul {
+        font-family: 'Oswald', sans-serif;
+        font-size: $font-size-xlarge;
+        font-weight: lighter;
+        font-variant: small-caps;
+        padding-left: 0;
+
+        li {
+            a {
+                color: black;
+            }
+
+            &.active a {
+                color: $brand-warning;
+            }
+        }
+
+        @include breakpoint($break-small) {
+        }
+    }
+
+    @include breakpoint($break-small) {
+        left: 0;
+        right: 0;
+        margin: auto;
+
+        &.affix {
+            position: fixed;
+            top: 0;
+        }
+
+        ul {
+            text-align: center;
+            background-color: rgba(222, 222, 222, 0.70);
+            text-shadow: 1px 1px 1px white;
+
+            li {
+                display: inline-block;
+                font-size: $font-size-xlarge * .65;
+            }
+        }
+    }
+}

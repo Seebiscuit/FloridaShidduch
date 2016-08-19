@@ -18,7 +18,6 @@ define(['marionette'], function (Marionette) {
             companyName: '#register-occupation-working-firm',
             jobTitle: '#register-occupation-working-title',
             jobType: 'input[name="register-occupation"]',
-            jobTypeOther: '#register-occupation-other',
             jobTypeOtherDesc: '#register-occupation-other-describe'
         },
 
@@ -27,7 +26,6 @@ define(['marionette'], function (Marionette) {
             'change:israelStudy': 'updateIsraelStudy',
             'change:secularEducationLevel': 'updateCollege',
             'change:jobType': 'updateOccupation',
-            'change:jobTypeOther': 'updateOccupation'
         },
 
         updateYeshiva: function (model, val, options) {

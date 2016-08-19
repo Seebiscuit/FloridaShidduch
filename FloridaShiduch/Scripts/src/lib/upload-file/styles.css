@@ -1,46 +1,52 @@
-﻿.image-preview {
+﻿.file-upload-component {
+    border: 1px solid lightgray;
+    padding: 10px;
+    margin: 15px 0;
+    text-align: center;
 }
 
-.file-upload-component > .file-upload-image-preview,
-.file-upload-component.preview > .choose-file-block {
-    display: none;
-}
-.file-upload-component.preview > .file-upload-image-preview {
-    display: block;
-}
+    .file-upload-component button.upload {
+        text-align: center;
+    }
 
-.file-upload-component .upload-url,
-.file-upload-component.upload-url .upload-file {
-  display: none;
-}
-.file-upload-component.upload-url .upload-url {
-  display: inline;
-}
+    .file-upload-component .image-preview-container {
+        border: 1px solid lightgray;
+        margin-bottom: 1rem;
+    }
 
-.file-upload-component canvas {
-    height: 350px;
-    width: 300px;
-    border: 1px solid gray;
-}
+    .file-upload-component .file-upload-preview,
+    .file-upload-component.preview > .choose-file-block,
+    .file-upload-component .removeable,
+    .file-upload-component .upload-url,
+    .file-upload-component.upload-url .upload-file {
+        display: none;
+    }
+
+    .file-upload-component.preview .file-upload-preview {
+        display: inline-block;
+    }
+
+    .file-upload-component.upload-url .upload-url {
+        display: inline;
+    }
 
 .btn-file {
     position: relative;
     overflow: hidden;
 }
 
-.btn-file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;
-    background: white;
-    cursor: inherit;
-    display: block;
-}
-
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }

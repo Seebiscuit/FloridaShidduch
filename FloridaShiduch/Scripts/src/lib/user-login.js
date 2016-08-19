@@ -9,7 +9,7 @@ define(['app', 'backbone', 'store'], function User(app, Backbone, store) {
         register: function (email, password, confirmpassword) {
             this.url = app.getApiRoot + 'Account/Register';
             return this.postUser({
-                userName: email,
+                email: email,
                 password: password,
                 confirmPassword: confirmpassword
             }, null, 'registration');

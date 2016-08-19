@@ -1,4 +1,20 @@
-﻿/* EXTENDS BOOTSTRAP */
+﻿/* GENERAL */
+// Font size
+$site-large: 18px;
+$site-medium: 14px;
+$site-small: 13px;
+$site-xsmall: 8pt;
+
+// Breakpoints
+$break-small: max-width 767px;
+$break-medium: 768px 1200px;
+$break-large: min-width 1200px;
+// string tests together within parentheses, assume each item is a feature value pair
+$break-tall: (min-height 1000px)
+(orientation portrait)
+;
+
+/* EXTENDS BOOTSTRAP */
 $font-size-base: 1rem;
 $font-size-jumbo: ($font-size-base * 5); // ~18px
 $font-size-xlarge: ($font-size-base * 3.25); // ~18px
@@ -18,6 +34,7 @@ $section-size-base: 5rem;
 $section-size-sm: $section-size-base;
 $section-size-md: $section-size-base * 4;
 $section-size-lg: $section-size-base * 5;
+$section-size-xlg: $section-size-base * 10;
 
 $section-size-pad-sm: $section-size-sm / 2;
 $section-size-pad-md: $section-size-md / 2.5;

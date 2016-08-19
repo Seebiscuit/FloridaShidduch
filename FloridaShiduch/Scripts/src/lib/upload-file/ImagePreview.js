@@ -12,10 +12,6 @@ define(['app', 'marionette', 'text!lib/upload-file/image-preview.html'],
 
             className: 'image-preview center-block editing',
 
-            attributes: {
-                style: ['height:', HEIGHT, 'width:', WIDTH].join('')
-            },
-
             ui: {
                 canvas: 'canvas',
                 caption: 'figcaption',
@@ -27,6 +23,7 @@ define(['app', 'marionette', 'text!lib/upload-file/image-preview.html'],
 
             events: {
                 'mousedown @ui.canvas': 'onMouseDown',
+                'touchstart @ui.canvas': 'onMouseDown',
                 'click @ui.caption': 'enableWriteCaption',
                 'change @ui.captionInput': 'writeCaption',
                 'input @ui.sizeSlider': 'changeDimensions'
@@ -37,8 +34,8 @@ define(['app', 'marionette', 'text!lib/upload-file/image-preview.html'],
             initialize: function imagePreviewInitialize(options) {
                 this.mergeOptions(options, this.viewOptions);
 
-                $(window).on('mousemove.image-preview', this.onMouseMove.bind(this));
-                $(window).on('mouseup.image-preview', this.onMouseUp.bind(this));
+                $(document).on('mousemove.image-preview touchmove.image-preview', this.onMouseMove.bind(this));
+                $(document).on('mouseup.image-preview touchend.image-preview', this.onMouseUp.bind(this));
             },
 
             PADDING: 30,
@@ -118,7 +115,9 @@ define(['app', 'marionette', 'text!lib/upload-file/image-preview.html'],
 
             onMouseDown: function (e) {
 //                this['d' + this.axis.free] = this['dLimit_' + this.axis.free];
-                
+                if (e.originalEvent.touches)
+                    e = e.originalEvent.touches[0];
+
                 this['p' + this.axis.free] = e['page' + this.axis.free.toUpperCase()]; console.log('onMouseDown | p' + this.axis.free, this['p' + this.axis.free])
 
                 this.isDragging = true;
@@ -130,6 +129,8 @@ define(['app', 'marionette', 'text!lib/upload-file/image-preview.html'],
 
             onMouseMove: function (e) {
                 if (this.isDragging) { 
+                if (e.originalEvent.touches)
+                    e = e.originalEvent.touches[0];
                 this['d' + this.axis.free] = e['page' + this.axis.free.toUpperCase()] - this['p' + this.axis.free],
                 // Apply limit
                 this['dLimit_' + this.axis.free] = this.axis.getRange(this['d' + this.axis.free], this['dLimit_' + this.axis.free]);

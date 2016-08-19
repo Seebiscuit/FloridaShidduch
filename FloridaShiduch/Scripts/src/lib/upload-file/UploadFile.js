@@ -1,19 +1,22 @@
 define(['app', 'marionette', 'text!lib/upload-file/upload-file.html'], function UploadFile(app, Mn, template) {
     "use strict"
+    const HEIGHT = 350, WIDTH = 300;
+    
     return Mn.LayoutView.extend({
         template: _.template(template),
 
         className: 'file-upload-component upload',
 
         regions: {
-            imagePreview: '[data-hook="image-preview"]'
+            imagePreview: '@ui.imagePreview'
         },
 
         ui: {
+            imagePreview: '[data-hook="image-preview"]',
             options: 'select',
             imageInput: 'input[name="image"]',
             urlInput: 'input[name="image"]',
-            uploadButton: 'button.upload'
+            uploadButton: '[data-hook="upload"]'
         },
 
         events: {
@@ -25,10 +28,11 @@ define(['app', 'marionette', 'text!lib/upload-file/upload-file.html'], function 
         viewOptions: [],
 
         initialize: function uploadFileInitialize(options) {
-            this.mergeOptions(options, this.viewOptions)
+            this.mergeOptions(options, this.viewOptions);
         },
 
         onAttach: function () {
+            this.ui.imagePreview.css({ height: HEIGHT, width: WIDTH });
         },
 
         focusInput: function (e) {
@@ -36,17 +40,16 @@ define(['app', 'marionette', 'text!lib/upload-file/upload-file.html'], function 
         },
 
         upload: function (e) {
-            var file = this.ui.imageInput.get(0).files[0]
+            var file = this.imagePreview.ui.canvas.get(0).toDataURL("image/jpeg").replace('data:image/jpeg;base64,', '');
             if (file) {
                 var formData = new FormData();
                 formData.append('file', file);
                 $.ajax({
-                    url: app.getApiRoot + 'SaveFile/',
+                    url: app.getApiRoot + 'UserFiles/',
                     type: "post",
                     data: formData,
                     processData: false,
                     contentType: false,
-                    success: _.bind(this.previewImage, this),
                     error: function () {
                         $("#file_upload_result").html('there was an error while submitting');
                     }
@@ -57,9 +60,9 @@ define(['app', 'marionette', 'text!lib/upload-file/upload-file.html'], function 
         previewImage: function previewImage(file, e) {
             var region = this.getRegion('imagePreview');
             require(['lib/upload-file/ImagePreview'], function showImagePreview(ImagePreview) {
-                region.view = new ImagePreview({ src: e.target.result, file: file });
+                this.imagePreview = region.view = new ImagePreview({ src: e.target.result, file: file });
                 region.show(region.view);
-            });
+            }.bind(this));
             this.$el.addClass('preview');
         },
 

@@ -3,8 +3,10 @@
 @import "variables";
 @import "extensions";
 @import "sections";
+@import "nav-menu";
 @import "register";
 @import "apply";
+@import "misc";
 @import "progress-tracker";
 @import "../../../scripts/src/bower_components/font-awesome/scss/variables";
 @import "fa-mixin";
@@ -13,31 +15,8 @@
   * GENERAL
 **/
 
-// Font size
-$site-large: 14pt;
-$site-medium: 11pt;
-$site-small: 10pt;
-$site-xsmall: 8pt;
-
-// Breakpoints
-// assume min-width (by default) if only a number
-$break-xsmall: 400px;
-// set min-width/max-width if both values are numbers
-$break-small: 500px 800px;
-$break-medium: 600px 800px;
-// if one value is a string, assume a feature/value pair
-$break-large: min-width 1000px;
-// string tests together within parentheses, assume each item is a feature value pair
-$break-tall: (min-height 1000px)
-(orientation portrait)
-;
-
 
 html {
-    @include breakpoint($break-xsmall) {
-        font-size: $site-xsmall;
-    }
-
     @include breakpoint($break-small) {
         font-size: $site-small;
     }
@@ -70,7 +49,7 @@ header {
     height: 50vh;
     overflow: hidden;
     position: relative;
-    
+
     #main-slider {
         height: 50vh;
     }
@@ -111,32 +90,18 @@ h2.logo {
     }
 }
 
-nav#menu-nav {
-    position: absolute;
-    z-index: 1;
-    right: 0;
 
-    &.affix {
-        position: fixed;
-        top: 10px;
+.form-control {
+    &::-webkit-input-placeholder {
+        font-size: $font-size-small;
     }
 
-    #menu {
-        font-family: 'Oswald', sans-serif;
-        font-size: 3rem;
-        font-weight: lighter;
-        font-variant: small-caps;
-        padding-left: 0; 
+    &::-moz-placeholder {
+        font-size: $font-size-small;
+    }
 
-        li {
-            a {  
-                color: black; 
-            }
-
-            &.active a { 
-                color: $brand-warning;
-            }
-        }
+    &:-ms-input-placeholder {
+        font-size: $font-size-small;
     }
 }
 
@@ -190,8 +155,20 @@ fieldset p {
     float: none !important;
 }
 
+.no-top-padding {
+    padding-top: 0 !important;
+}
+
+.no-top-margin {
+    margin-top: 0 !important;
+}
+
 .no-right-padding {
-    padding-right: 0;
+    padding-right: 0 !important;
+}
+
+.no-right-margin {
+    margin-right: 0 !important;
 }
 
 .form-group .radio,
@@ -208,7 +185,11 @@ fieldset p {
 }
 
 .no-left-padding {
-    padding-left: 0px;
+    padding-left: 0 !important;
+}
+
+.no-left-margin {
+    margin-left: 0 !important;
 }
 
 .radio + .radio, .checkbox + .checkbox {

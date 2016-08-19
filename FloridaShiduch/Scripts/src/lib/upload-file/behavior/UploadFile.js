@@ -1,9 +1,6 @@
 define(['marionette', 'lib/upload-file/UploadFile'], function (Marionette, UploadFile) {
     'use strict';
     return Marionette.Behavior.extend({
-        initialize: function (options) {
-        },
-
         onRender: function () {
             // Inject region...
             this.view.addRegions({

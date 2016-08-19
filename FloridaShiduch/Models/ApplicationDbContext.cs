@@ -28,6 +28,7 @@ namespace FloridaShiduch.Models
             return new ApplicationDbContext();
         }
 
+        public DbSet<UserFile> UserFiles { get; set; }
         public DbSet<Background> Backgrounds { get; set; }
         public DbSet<CountryName> CountryNames { get; set; }
         public DbSet<Description> Descriptions { get; set; }

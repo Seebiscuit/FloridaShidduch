@@ -1,6 +1,4 @@
-﻿
-
-/**
+﻿/**
   * BOOTSTRAP EXTENSIONS
 **/
 .no-gutter > [class*='col-'] {
@@ -30,4 +28,17 @@ h5 {
 
 h6 {
     font-size: $font-size-h6;
+}
+
+
+
+/**
+  * BOOTSTRAP RADIO EXTENSIONS
+**/
+
+.radio.radio-info,
+.checkbox.checkbox-info {
+    + .row {
+        margin-bottom: 0.3rem;
+    }
 }

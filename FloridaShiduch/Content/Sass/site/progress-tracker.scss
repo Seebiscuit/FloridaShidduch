@@ -1,6 +1,7 @@
 ﻿@import "../bootstrap/bootstrap/variables";
 @import "_variables.scss";
 
+
 .progress-meter {
     padding: 0;
 }
@@ -11,28 +12,42 @@ ol.progress-meter {
 
     li {
         display: inline-block;
+        font-size: .598rem;
         text-align: center;
         height: 36px;
         width: 10.8%;
-        font-size: $font-size-small * 0.9;
+        font-size: $font-size-small * 0.7;
+        font-weight: bold;
         border-bottom-width: 4px;
         border-bottom-style: solid;
         color: $brand-primary;
         border-bottom-color: $brand-primary;
-        cursor:pointer;
+        cursor: pointer;
 
+        @include breakpoint($break-medium) {
+            font-size: $font-size-small * 0.78;
+        }
+
+        @include breakpoint($break-small) {
+            font-size: $font-size-small * 0.7;
+        }
 
         &:before {
             position: relative;
             float: right;
             text-indent: 0;
-            right: -8px;
+            right: -10px;
             content: "\2B24";
             font-size: $font-size-base;
-            bottom: -25.95px;
+            bottom: -32px;
             color: $brand-primary;
-            line-height: 18.05px;
+            line-height: 0;
             text-shadow: none;
+
+            @include breakpoint($break-small) {
+                right: -7.5px;
+                bottom: -34px;
+            }
         }
 
         &.active {

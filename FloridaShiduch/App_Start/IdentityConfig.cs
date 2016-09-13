@@ -118,12 +118,6 @@ namespace FloridaShiduch
             {
                 user = new ApplicationUser { UserName = name, Email = name };
 
-                // Set the new custom properties:
-                user.Address = address;
-                user.City = city;
-                user.State = state;
-                user.Zip = postalCode;
-
                 var result = userManager.Create(user, password);
                 //result = userManager.SetLockoutEnabled(user.Id, false);
             }
@@ -163,12 +157,6 @@ namespace FloridaShiduch
                     UserName = vanillaUserName,
                     Email = vanillaUserName
                 };
-
-                // Set the new custom properties:
-                vanillaUser.Address = address;
-                vanillaUser.City = city;
-                vanillaUser.State = state;
-                vanillaUser.Zip = postalCode;
 
                 var result = userManager.Create(vanillaUser, vanillaUserPassword);
                 result = userManager.SetLockoutEnabled(vanillaUser.Id, false);

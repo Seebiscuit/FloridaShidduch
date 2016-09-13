@@ -1,8 +1,10 @@
-﻿define(['app', 'backbone'], function (app, Backbone) {
+define(['app', 'backbone'], function (app, Backbone) {
     return Backbone.Model.extend({
         urlRoot: function () {
-            return app.getApiRoot + 'Background/'
+            return app.getApiRoot + 'Backgrounds/'
         },
+
+        idAttribute: 'userId',
 
         validation: {
             bornJewish: {

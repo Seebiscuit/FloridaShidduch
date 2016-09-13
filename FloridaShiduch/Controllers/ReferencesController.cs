@@ -11,6 +11,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using FloridaShiduch.Models;
 using FloridaShiduch.Models.Profile;
+using Microsoft.AspNet.Identity;
 
 namespace FloridaShiduch.Controllers
 {
@@ -84,7 +85,7 @@ namespace FloridaShiduch.Controllers
             db.References.Add(reference);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = reference.Id }, reference);
+            return CreatedAtRoute("DefaultApi", new { id = User.Identity.GetUserId() }, reference);
         }
 
         // DELETE: api/References/5

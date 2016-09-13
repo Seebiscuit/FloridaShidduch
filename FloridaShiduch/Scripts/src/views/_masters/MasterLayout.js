@@ -31,6 +31,7 @@ function (Marionette, when) {
 
                 this.$('> div.active').removeClass('active');
                 options.$el.addClass('active');
+
             }.bind(this));
         }
     });

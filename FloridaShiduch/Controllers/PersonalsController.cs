@@ -11,6 +11,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using FloridaShiduch.Models;
 using FloridaShiduch.Models.Profile;
+using Microsoft.AspNet.Identity;
 
 namespace FloridaShiduch.Controllers
 {
@@ -99,7 +100,7 @@ namespace FloridaShiduch.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = personal.UserId }, personal);
+            return CreatedAtRoute("DefaultApi", new { id = User.Identity.GetUserId() }, personal);
         }
 
         // DELETE: api/Personals/5

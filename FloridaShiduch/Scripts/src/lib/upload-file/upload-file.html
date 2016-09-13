@@ -25,5 +25,10 @@
         </div>
     </div>
 </div>
-
-<div class="upload"><button class="file-upload-preview btn btn-default" data-hook="upload">Upload Image</button></div>
+<div class="file-upload-preview">
+    <button class="btn btn-block btn-default uf-upload" data-hook="upload">Upload Image</button>
+    <button class="btn btn-block btn-info uf-uploading" disabled data-hook="uploading"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i> Uploading...</button>
+    <button class="btn btn-block btn-success animate uf-complete" disabled data-hook="done">Done!</button>
+    <button class="btn btn-block btn-danger uf-error" data-hook="done"><i class="fa fa-exclamation-circle"></i> Try Again!</button>
+    <button class="btn btn-block btn-primary uf-uploaded" data-hook="change">Change</button>
+</div>

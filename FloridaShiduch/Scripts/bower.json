@@ -21,7 +21,8 @@
     "unslider": "~2.0.3",
     "picturefill": "~3.0.2",
     "font-awesome": "~4.6.3",
-    "backbone.validation": "backbone-validation#~0.11.5"
+    "backbone.validation": "backbone-validation#~0.11.5",
+    "animate-sass": "~0.6.6"
   },
   "devDependencies": {}
 }

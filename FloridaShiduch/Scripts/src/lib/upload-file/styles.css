@@ -14,21 +14,55 @@
         margin-bottom: 1rem;
     }
 
+    .file-upload-component.uf-preview .file-upload-preview {
+        display: inline-block;
+    }
+
+    .file-upload-component .file-upload-preview {
+        width: 20%;
+    }
+
+    .file-upload-component.uf-upload .file-upload-preview {
+        width: 40%;
+    }
+
+    .file-upload-component.uf-upload .btn-block {
+        width: 45%;
+    }
+
+    .file-upload-component.uf-upload .file-upload-preview .btn-block + .btn-block {
+        float: right;
+        margin:auto;
+    }
+
+    .file-upload-component .file-upload-preview .uf-upload,
+    .file-upload-component .file-upload-preview .uf-uploading,
+    .file-upload-component .file-upload-preview .uf-complete,
+    .file-upload-component .file-upload-preview .uf-error,
+    .file-upload-component .file-upload-preview .uf-uploaded {
+        display: none;
+    }
+
+    .file-upload-component.uf-upload .file-upload-preview .uf-upload,
+    .file-upload-component.uf-upload .file-upload-preview .uf-uploaded,
+    .file-upload-component.uf-uploading .file-upload-preview .uf-uploading,
+    .file-upload-component.uf-complete .file-upload-preview .uf-complete,
+    .file-upload-component.uf-error .file-upload-preview .uf-error,
+    .file-upload-component.uf-uploaded .file-upload-preview .uf-uploaded {
+        display: inline-block;
+    }
+
     .file-upload-component .file-upload-preview,
-    .file-upload-component.preview > .choose-file-block,
+    .file-upload-component.uf-preview > .choose-file-block,
     .file-upload-component .removeable,
     .file-upload-component .upload-url,
     .file-upload-component.upload-url .upload-file {
         display: none;
     }
 
-    .file-upload-component.preview .file-upload-preview {
-        display: inline-block;
-    }
-
-    .file-upload-component.upload-url .upload-url {
-        display: inline;
-    }
+        .file-upload-component.upload-url .upload-url {
+            display: inline;
+        }
 
 .btn-file {
     position: relative;

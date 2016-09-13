@@ -26,7 +26,8 @@ define(['app', 'backbone', 'store'], function User(app, Backbone, store) {
                     data: "userName=" + email + "&password=" + password +  // Nasty hack to get /Token to accept payload
                       "&grant_type=password"
                 })
-            .then(function () { /* app.radios.rootChannel.request('user:login')*/ });
+            // .then(function () { /* app.radios.rootChannel.request('user:login')*/ })
+            ;
 
             //TODO: Set up activity listener and logout user after inactivity;
         },
@@ -36,9 +37,7 @@ define(['app', 'backbone', 'store'], function User(app, Backbone, store) {
          * @return {Promise} ajax 
          */
         logout: function userLogin(user) {
-            this.clear();
             this.removeLogin();
-            window.location.reload();
         },
 
         postUser: function (user, options, type) {
@@ -51,7 +50,7 @@ define(['app', 'backbone', 'store'], function User(app, Backbone, store) {
 
                             if (type == 'registration') {
                                 this.unset('confirmPassword');
-                                this.login(this.get('userName'), password);
+                               return this.login(this.get('userName'), password);
                             } 
 
                             return userdata;
@@ -110,7 +109,8 @@ define(['app', 'backbone', 'store'], function User(app, Backbone, store) {
         },
 
         removeLogin: function setLogin() {
-            store.setItem('login', '');
+            if (this.get('userName'))
+                store.setItem(LOGINGPATH + this.get('userName').replace('.', '\\.'), '');
         },
 
         parse: function (resp) {

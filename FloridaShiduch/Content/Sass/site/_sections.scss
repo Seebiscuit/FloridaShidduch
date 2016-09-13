@@ -206,10 +206,13 @@ section {
         > div {
             text-align: left;
 
-            h3,
-            h4 {
+            .component-title, .component-subtitle {
                 text-align: center;
-                margin-bottom: 45px;
+                margin-bottom: 2rem;
+
+                ~ .component-subtitle {
+                    margin-top: -$font-size-h6;
+                }
 
                 > span {
                     text-align: center;
@@ -238,7 +241,7 @@ section {
         &.toggle-working .toggle-working,
         &.toggle-other-occupation .toggle-other-occupation,
         &.toggle-yeshiva .toggle-yeshiva,
-        &.toggle-children .toggle-children, 
+        &.toggle-children .toggle-children,
         &.toggle-israel-study .toggle-israel-study {
             display: block;
         }

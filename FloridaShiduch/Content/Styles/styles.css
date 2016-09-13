@@ -13153,6 +13153,199 @@ input[type="radio"] .styled:checked + label::after {
   color: #fff;
 }
 
+/*!
+Animate.css - http://daneden.me/animate
+Licensed under the MIT license - http://opensource.org/licenses/MIT
+Copyright (c) 2015 Daniel Eden
+*/
+/* line 8, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/animate/helpers/_base.scss */
+body {
+  -webkit-backface-visibility: hidden;
+}
+
+/* line 12, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/animate/helpers/_base.scss */
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+/* line 16, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/animate/helpers/_base.scss */
+.animated.infinite {
+  animation-iteration-count: infinite;
+}
+
+/* line 20, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/animate/helpers/_base.scss */
+.animated.hinge {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+}
+
+/* line 24, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/animate/helpers/_base.scss */
+.animated.bounceIn, .animated.bounceOut {
+  -webkit-animation-duration: 0.75s;
+  animation-duration: 0.75s;
+}
+
+/* line 29, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/animate/helpers/_base.scss */
+.animated.flipOutX, .animated.flipOutY {
+  -webkit-animation-duration: 0.75s;
+  animation-duration: 0.75s;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* line 8, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/animate/animations/fade-enter/_fadeIn.scss */
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* line 8, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/animate/animations/fade-exit/_fadeOut.scss */
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+
+@-webkit-keyframes slideInLeft {
+  0% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* line 25, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/animate/animations/slide-enter/_slideInLeft.scss */
+.slideInLeft {
+  -webkit-animation-name: slideInLeft;
+  animation-name: slideInLeft;
+}
+
+@-webkit-keyframes slideInRight {
+  0% {
+    -webkit-transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* line 25, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/animate/animations/slide-enter/_slideInRight.scss */
+.slideInRight {
+  -webkit-animation-name: slideInRight;
+  animation-name: slideInRight;
+}
+
+@-webkit-keyframes slideOutLeft {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes slideOutLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+/* line 25, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/animate/animations/slide-exit/_slideOutLeft.scss */
+.slideOutLeft {
+  -webkit-animation-name: slideOutLeft;
+  animation-name: slideOutLeft;
+}
+
+@-webkit-keyframes slideOutRight {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translate3d(100%, 0, 0);
+  }
+}
+
+@keyframes slideOutRight {
+  0% {
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+/* line 25, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/animate/animations/slide-exit/_slideOutRight.scss */
+.slideOutRight {
+  -webkit-animation-name: slideOutRight;
+  animation-name: slideOutRight;
+}
+
 /* GENERAL */
 /* EXTENDS BOOTSTRAP */
 /* Section Sizes */
@@ -13425,30 +13618,33 @@ section > div {
 }
 
 /* line 209, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_sections.scss */
-#apply #apply-regions > div h3,
-#apply #apply-regions > div h4 {
+#apply #apply-regions > div .component-title, #apply #apply-regions > div .component-subtitle {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* line 213, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_sections.scss */
+#apply #apply-regions > div .component-title ~ .component-subtitle, #apply #apply-regions > div .component-subtitle ~ .component-subtitle {
+  margin-top: -0.85rem;
+}
+
+/* line 217, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_sections.scss */
+#apply #apply-regions > div .component-title > span, #apply #apply-regions > div .component-subtitle > span {
   text-align: center;
   margin-bottom: 45px;
 }
 
-/* line 214, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_sections.scss */
-#apply #apply-regions > div h3 > span,
-#apply #apply-regions > div h4 > span {
-  text-align: center;
-  margin-bottom: 45px;
-}
-
-/* line 221, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_sections.scss */
+/* line 224, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_sections.scss */
 #apply #apply-regions .male, #apply #apply-regions .female {
   display: none;
 }
 
-/* line 225, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_sections.scss */
+/* line 228, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_sections.scss */
 #apply #apply-regions [class*="toggle-"] {
   display: none;
 }
 
-/* line 229, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_sections.scss */
+/* line 232, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_sections.scss */
 #apply #apply-regions.male .male,
 #apply #apply-regions.female .female,
 #apply #apply-regions.toggle-shul-other .toggle-shul-other,
@@ -13541,39 +13737,41 @@ nav#menu-nav ul li.active a {
   display: none;
 }
 
-/* line 1, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_apply.scss */
+/* line 2, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_apply.scss */
 #apply-regions > div.view {
+  /*border: 1px solid lightgray;
+        padding-top:2rem;
+        padding-bottom:2rem;*/
+}
+
+/* line 6, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_apply.scss */
+#apply-regions > div.view.fadeOut {
   display: none;
 }
 
-/* line 4, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_apply.scss */
-#apply-regions > div.view.active {
-  display: block;
-}
-
-/* line 8, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_apply.scss */
+/* line 10, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_apply.scss */
 #apply-regions > div.view [class*="toggle-"] + [class*="toggle-"] {
   margin-top: .3rem;
 }
 
-/* line 13, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_apply.scss */
-.content-container {
+/* line 15, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_apply.scss */
+#apply-regions .content-container {
   overflow-y: auto;
   margin-bottom: 20px;
 }
 
-/* line 18, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_apply.scss */
-.container-full {
+/* line 20, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_apply.scss */
+#apply-regions .container-full {
   height: 100%;
 }
 
-/* line 22, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_apply.scss */
-.container-90 {
+/* line 24, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_apply.scss */
+#apply-regions .container-90 {
   height: 90%;
 }
 
-/* line 26, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_apply.scss */
-.container-10 {
+/* line 28, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/_apply.scss */
+#apply-regions .container-10 {
   height: 90%;
 }
 
@@ -13592,41 +13790,35 @@ nav#menu-nav ul li.active a {
 
 /* line 9, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
 ol.progress-meter {
+  margin-top: 2rem;
   padding-bottom: 9.5px;
   list-style-type: none;
 }
 
-/* line 13, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 14, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
 ol.progress-meter li {
   display: inline-block;
   font-size: .598rem;
   text-align: center;
   height: 36px;
-  width: 10.8%;
-  font-size: 0.595rem;
+  width: 11.9%;
+  font-size: 0.68rem;
   font-weight: bold;
   border-bottom-width: 4px;
   border-bottom-style: solid;
   color: #337ab7;
   border-bottom-color: #337ab7;
   cursor: pointer;
+  /*@include breakpoint($break-medium) {
+            font-size: $font-size-small * 0.78;
+        }
+
+        @include breakpoint($break-small) {
+            font-size: $font-size-small * 0.7;
+        }*/
 }
 
-@media (min-width: 768px) and (max-width: 1200px) {
-  /* line 13, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
-  ol.progress-meter li {
-    font-size: 0.663rem;
-  }
-}
-
-@media (max-width: 767px) {
-  /* line 13, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
-  ol.progress-meter li {
-    font-size: 0.595rem;
-  }
-}
-
-/* line 35, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 36, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
 ol.progress-meter li:before {
   position: relative;
   float: right;
@@ -13641,47 +13833,47 @@ ol.progress-meter li:before {
 }
 
 @media (max-width: 767px) {
-  /* line 35, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+  /* line 36, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
   ol.progress-meter li:before {
     right: -7.5px;
     bottom: -34px;
   }
 }
 
-/* line 53, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 54, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
 ol.progress-meter li.active {
   color: #5bc0de;
   border-bottom-color: #5bc0de;
 }
 
-/* line 57, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 58, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
 ol.progress-meter li.active.done {
   color: #5bc0de;
 }
 
-/* line 61, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 62, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
 ol.progress-meter li.active:before {
   color: #5bc0de;
 }
 
-/* line 66, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 67, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
 ol.progress-meter li.incomplete {
   color: #d9534f;
   border-bottom-color: #d9534f;
 }
 
-/* line 70, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 71, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
 ol.progress-meter li.incomplete:before {
   color: #d9534f;
 }
 
-/* line 75, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 76, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
 ol.progress-meter li.done {
   color: black;
   border-bottom-color: yellowgreen;
 }
 
-/* line 79, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 80, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
 ol.progress-meter li.done:before {
   content: "\2713";
   height: 19px;
@@ -13708,33 +13900,33 @@ ol.progress-meter li.done:before {
   * GENERAL
 **/
 @media (max-width: 767px) {
-  /* line 19, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+  /* line 20, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
   html {
     font-size: 13px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1200px) {
-  /* line 19, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+  /* line 20, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
   html {
     font-size: 14px;
   }
 }
 
 @media (min-width: 1200px) {
-  /* line 19, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+  /* line 20, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
   html {
     font-size: 18px;
   }
 }
 
-/* line 33, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 34, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
 }
 
-/* line 38, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 39, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 h1,
 h2,
 h3,
@@ -13744,41 +13936,53 @@ h6 {
   font-family: 'Oswald', 'Open Sans', sans-serif;
 }
 
-/* line 48, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 49, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 header {
   height: 50vh;
   overflow: hidden;
   position: relative;
 }
 
-/* line 53, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 54, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 header #main-slider {
   height: 50vh;
 }
 
 /* line 58, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+header .login {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 20;
+  padding: 1rem;
+  color: white;
+}
+
+/* line 68, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 .black-gradient {
   background-image: linear-gradient(black, #373737);
 }
 
-/* line 62, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
-.logo {
+/* line 72, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+.header-logo {
   color: red;
 }
 
-/* line 65, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
-.logo > span:first-of-type {
-  font-size: 3rem;
+/* line 75, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+.header-logo > h1 {
+  display: inline;
+  font-size: 2.15rem;
   font-weight: bold;
 }
 
-/* line 70, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
-.logo > span + span {
-  font-size: 2rem;
+/* line 81, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+.header-logo > h2 {
+  display: inline;
+  font-size: 1.7rem;
   color: white;
 }
 
-/* line 76, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 88, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 div.header-logo {
   position: absolute;
   right: 0;
@@ -13787,62 +13991,62 @@ div.header-logo {
   z-index: 12;
 }
 
-/* line 84, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 96, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 h2.logo {
   margin-top: 0;
   padding-top: 20px;
 }
 
-/* line 88, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 100, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 h2.logo > span:first-of-type {
   font-size: 2rem;
 }
 
-/* line 95, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 107, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 .form-control::-webkit-input-placeholder {
   font-size: 0.85rem;
 }
 
-/* line 99, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 111, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 .form-control::-moz-placeholder {
   font-size: 0.85rem;
 }
 
-/* line 103, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 115, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 .form-control:-ms-input-placeholder {
   font-size: 0.85rem;
 }
 
-/* line 108, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 120, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 footer {
   height: 12vh;
 }
 
-/* line 113, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 125, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 .question-block {
   padding-bottom: 1.1rem;
   padding-left: 2rem;
   text-align: left;
 }
 
-/* line 118, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 130, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 .question-block .question:after {
   content: "";
   padding: 0 0 0 10px;
 }
 
-/* line 123, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 135, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 .question-block:hover > .answer {
   display: block;
 }
 
-/* line 127, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 139, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 .question-block:hover .question:after {
   content: "";
   padding: 0 0 0 10px;
 }
 
-/* line 133, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 145, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 .answer {
   display: none;
 }
@@ -13850,75 +14054,75 @@ footer {
 /** 
   * FORM STYLING 
 **/
-/* line 140, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 152, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 li {
   list-style: none;
 }
 
-/* line 144, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 156, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 .form-group .full-width {
   width: 100%;
 }
 
-/* line 148, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 160, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 fieldset p {
   padding-left: 16px;
 }
 
-/* line 152, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 164, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 .align-bottom {
   vertical-align: bottom;
   display: inline-block;
   float: none !important;
 }
 
-/* line 158, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 170, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 .no-top-padding {
   padding-top: 0 !important;
 }
 
-/* line 162, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 174, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 .no-top-margin {
   margin-top: 0 !important;
 }
 
-/* line 166, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 178, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 .no-right-padding {
   padding-right: 0 !important;
 }
 
-/* line 170, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 182, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 .no-right-margin {
   margin-right: 0 !important;
 }
 
-/* line 174, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 186, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 .form-group .radio,
 .form-group .checkbox {
   padding-top: 6px;
 }
 
-/* line 179, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 191, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 .align-bottom input[type="text"] {
   margin-bottom: 8px;
 }
 
-/* line 183, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 195, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 .align-bottm input[type="checkbox"], .align-bottom input[type="checkbox"] + label {
   margin-bottom: 4px;
 }
 
-/* line 187, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 199, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 .no-left-padding {
   padding-left: 0 !important;
 }
 
-/* line 191, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 203, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 .no-left-margin {
   margin-left: 0 !important;
 }
 
-/* line 195, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
+/* line 207, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/site.scss */
 .radio + .radio, .checkbox + .checkbox {
   margin-top: 0 !important;
 }

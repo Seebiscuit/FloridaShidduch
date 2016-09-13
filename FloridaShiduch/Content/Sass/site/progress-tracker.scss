@@ -7,6 +7,7 @@
 }
 
 ol.progress-meter {
+    margin-top: 2rem;
     padding-bottom: 9.5px;
     list-style-type: none;
 
@@ -15,8 +16,8 @@ ol.progress-meter {
         font-size: .598rem;
         text-align: center;
         height: 36px;
-        width: 10.8%;
-        font-size: $font-size-small * 0.7;
+        width: 11.9%;
+        font-size: $font-size-small * 0.8;
         font-weight: bold;
         border-bottom-width: 4px;
         border-bottom-style: solid;
@@ -24,13 +25,13 @@ ol.progress-meter {
         border-bottom-color: $brand-primary;
         cursor: pointer;
 
-        @include breakpoint($break-medium) {
+        /*@include breakpoint($break-medium) {
             font-size: $font-size-small * 0.78;
         }
 
         @include breakpoint($break-small) {
             font-size: $font-size-small * 0.7;
-        }
+        }*/
 
         &:before {
             position: relative;

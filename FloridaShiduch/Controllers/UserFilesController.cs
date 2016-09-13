@@ -77,38 +77,64 @@ namespace FloridaShiduch.Controllers
         }
 
         // POST: api/UserFiles
-        public async Task<IHttpActionResult> PostUserFile()
+        public async Task<IHttpActionResult> PostUserFile([FromBody] ImageString image)
         {
+            UserFile file;
             string imageDir = ConfigurationManager.AppSettings["UploadedImageDir"];
-            var PATH = HttpContext.Current.Server.MapPath("~/" + imageDir);
-            var rootUrl = Request.RequestUri.AbsoluteUri.Replace(Request.RequestUri.AbsolutePath, String.Empty);
+            string name = DateTime.Now.ToString().Replace("/", "-").Replace(" ", "-").Replace(":", "") + ".jpg";
+            string path = HttpContext.Current.Server.MapPath("~/" + imageDir) + name;
 
-            if (Request.Content.IsMimeMultipartContent())
+            try
             {
-                var streamProvider = new CustomMultipartFormDataStreamProvider(PATH);
-                await Request.Content.ReadAsMultipartAsync(streamProvider).ContinueWith(t =>
+                using (FileStream fs = new FileStream(path, FileMode.Create))
                 {
-                    if (t.IsFaulted || t.IsCanceled)
+                    using (BinaryWriter bw = new BinaryWriter(fs))
                     {
-                        throw new HttpResponseException(HttpStatusCode.InternalServerError);
+                        byte[] data = Convert.FromBase64String(image.Image);
+                        bw.Write(data);
+                        bw.Close(); 
                     }
+                    
+                    file = new UserFile(User.Identity.GetUserId(), name, path, fs.Length);
+                }
 
-                    var files = streamProvider.FileData.Select(i =>
-                                {
-                                    var info = new FileInfo(i.LocalFileName);
-                                    return new UserFile(User.Identity.GetUserId(), info.Name, rootUrl + "/" + imageDir + "/" + info.Name, info.Length / 1024);
-                                });
+                db.UserFiles.Add(file);
+                await db.SaveChangesAsync();
 
-                    db.UserFiles.AddRange(files);
-                    db.SaveChangesAsync();
-                });
-
-                return Ok();
+                return Ok("Upload success!");
             }
-            else
+            catch (Exception e)
             {
-                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotAcceptable, "This request is not properly formatted"));
+                
+                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotAcceptable, "This request is not properly formatted. " + e.Message));
             }
+
+            //if (Request.Content.IsMimeMultipartContent())
+            //{
+            //    var streamProvider = new CustomMultipartFormDataStreamProvider(PATH);
+            //    await Request.Content.ReadAsMultipartAsync(streamProvider).ContinueWith(t =>
+            //    {
+            //        if (t.IsFaulted || t.IsCanceled)
+            //        {
+            //            throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            //        }
+
+            //        var files = streamProvider.FileData.Select(i =>
+            //                    {
+            //                        var info = new FileInfo(i.LocalFileName);
+            //                        return new UserFile(User.Identity.GetUserId(), info.Name, rootUrl + "/" + imageDir + "/" + info.Name, info.Length / 1024);
+            //                    });
+
+            //        db.UserFiles.AddRange(files);
+            //        db.SaveChangesAsync();
+            //    });
+
+            //    return Ok();
+            //}
+            //else
+            //{
+            //    throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotAcceptable, "This request is not properly formatted"));
+            //}
         }
 
         // DELETE: api/UserFiles/5

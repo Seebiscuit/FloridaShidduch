@@ -1,4 +1,4 @@
-define([ 'app'
+define(['app'
     , 'masterlayout'
     , 'templates'
     , 'store'
@@ -46,26 +46,22 @@ function (app, MasterLayout, templates, store) {
             spouseMeter: '#meter-spouse',
             //** UI
             tracker: '.progress-meter > li'
-            //slider: 'input[type=range]'
         },
-
-        //events: {
-        //    //'change @ui.slider': 'onSliderChange'
-        //},
 
         viewOptions: ['page'],
 
         initialize: function (options) {
             this.mergeOptions(options, this.viewOptions);
 
-            this.pageOrder = this.pageOrder();
             this.user = this.state.login;
 
-            this.listenTo(app.radio.view.rootRadio.vent,'module:set-status', this.setProgress);
+            this.pageOrder = _.result(this, 'pageOrder');
+
+            this.listenTo(app.radio.view.rootRadio.vent, 'module:set-status', this.setProgress);
         },
 
         onBeforeShow: function () {
-            this.showQuestionnaireModule();
+            this.showQuestionnaireModule(this.page);
         },
 
         goToLastProgress: function (isinit) {
@@ -88,7 +84,6 @@ function (app, MasterLayout, templates, store) {
 
         onAttach: function () {
             this.setupTracker();
-            //this.ui.slider.rangeslider({ polyfill: false });
         },
 
         setupTracker: function () {
@@ -107,22 +102,26 @@ function (app, MasterLayout, templates, store) {
             this.showQuestionnaireModule(module);
         },
 
-        showRegister: function () {
+        showRegister: function (module) {
             this.$el.removeClass('applying');
-            this.showView(['views/apply/Register', 'models/bindings/register'], this.getRegion('registration'), { $el: this.ui.registration });
+            this.showView(['views/apply/Register', 'models/bindings/register'], this.getRegion('registration'), { $el: this.ui.registration, wantsLogin: module == "login"});
         },
 
         showQuestionnaireModule: function (module, isinit) {
-            var modelName = _.capitalize(module, true);
+            var modelName = _.capitalize(module, true)
+            index = this.pageOrder.indexOf(module),
+            transition = [];
 
-            if (!this.user.isLoggedIn())
-               return this.showRegister();
-            else if (this.pageOrder.indexOf(module) < 0)
+            if (module == 'login' || module == 'register' || !this.user.isLoggedIn())
+                return this.showRegister(module);
+            else if (index < 0)
                 // If the page isn't an application page...
                 return this.goToLastProgress();
 
             this.$el.addClass('applying');
-            
+
+            this.index = index; // Know the last index
+
             this.showView([
                 'views/apply/Questionnaire'
                 , 'models/' + modelName
@@ -132,15 +131,41 @@ function (app, MasterLayout, templates, store) {
             if (!isinit) this.seekTracker(module);  // Tracker set on init;
         },
 
-        onSliderChange: function (e) {
-            location = '#apply/' + this.pageOrder[(this.currentSlidePos = this.ui.slider.val())];
-        },
+        showView: function (modulearray, region, options) {
+            var fadeOut;
+            return new Promise(function (resolve, reject) {
+                require(modulearray, function (View, Model, Behavior, bindings) {
+                    
+                    fadeOut = this.$('> div.fadeIn')
+                    
+                    _.defer(showView.bind(this, View, Model, Behavior, bindings));
 
-        onSlide: function (e) {
-            if (!false) {
-                this.ui.slider.val(this.currentSlidePos);
-                this.ui.slider.rangeslider('handleEnd', e);
-            }
+                    fadeOut.removeClass('fadeIn').addClass('fadeOut');
+
+                }.bind(this));
+
+                function showView(View, Model, Behavior, bindings) {
+                    if (Model.getBindings)
+                        // Register uses this pattern
+                        bindings = Model, Model = null;
+
+                    _.extend(options || {}, {
+                        model: Model && new Model,
+                        bindings: bindings && bindings.getBindings(),
+                        behaviors: { behavior: Behavior, name: options.module },
+                        $parentEl: this.$el
+                    });
+
+                    region.view = new View(options);
+                    region.show(region.view);
+
+                    _.delay(options.$el[0].scrollIntoView.bind(options.$el[0]), 10);
+
+                    options.$el.removeClass('fadeOut').addClass('fadeIn');
+
+                    resolve();
+                }
+            }.bind(this));
         },
 
         seekTracker: function (module) {

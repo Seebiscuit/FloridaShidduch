@@ -11,6 +11,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using FloridaShiduch.Models;
 using FloridaShiduch.Models.Profile;
+using Microsoft.AspNet.Identity;
 
 namespace FloridaShiduch.Controllers
 {
@@ -90,7 +91,7 @@ namespace FloridaShiduch.Controllers
             }
             catch (DbUpdateException)
             {
-                if (OccupationExists(occupation.UserId))
+                if (OccupationExists(User.Identity.GetUserId()))
                 {
                     return Conflict();
                 }
@@ -100,7 +101,7 @@ namespace FloridaShiduch.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = occupation.UserId }, occupation);
+            return CreatedAtRoute("DefaultApi", new { id = User.Identity.GetUserId() }, occupation);
         }
 
         // DELETE: api/Occupations/5

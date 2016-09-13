@@ -1,28 +1,31 @@
-﻿#apply-regions > div.view {
-    display: none;
+﻿#apply-regions {
+    > div.view {
+        /*border: 1px solid lightgray;
+        padding-top:2rem;
+        padding-bottom:2rem;*/
+        &.fadeOut {
+            display: none;
+        }
 
-    &.active {
-        display: block;
+        [class*="toggle-"] + [class*="toggle-"] {
+            margin-top: .3rem;
+        }
     }
 
-    [class*="toggle-"] + [class*="toggle-"] {
-        margin-top: .3rem;
+    .content-container {
+        overflow-y: auto;
+        margin-bottom: 20px;
     }
-}
 
-.content-container {
-    overflow-y: auto;
-    margin-bottom: 20px;
-}
+    .container-full {
+        height: 100%;
+    }
 
-.container-full {
-    height: 100%;
-}
+    .container-90 {
+        height: 90%;
+    }
 
-.container-90 {
-    height: 90%;
-}
-
-.container-10 {
-    height: 90%;
+    .container-10 {
+        height: 90%;
+    }
 }

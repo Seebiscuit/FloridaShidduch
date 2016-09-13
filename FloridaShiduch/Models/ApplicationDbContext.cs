@@ -29,6 +29,7 @@ namespace FloridaShiduch.Models
         }
 
         public DbSet<UserFile> UserFiles { get; set; }
+        public DbSet<Demographic> Demographics { get; set; }
         public DbSet<Background> Backgrounds { get; set; }
         public DbSet<CountryName> CountryNames { get; set; }
         public DbSet<Description> Descriptions { get; set; }
@@ -42,6 +43,7 @@ namespace FloridaShiduch.Models
         public DbSet<Personal> Personals { get; set; }
         public DbSet<Spouse> Spouses { get; set; }
         public DbSet<SpouseMaritalStatus> SpouseMaritalStatuses { get; set; }
+
 
         //public DbSet<FloridaShiduch.Models.ApplicationUser> Users { get; set; }
     }

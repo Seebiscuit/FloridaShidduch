@@ -11,15 +11,19 @@ namespace FloridaShiduch.Models
 {
     public class UserFile
     {
-        [Key, ForeignKey("ApplicationUser")]
+        [Key]
+        [JsonProperty("id")]
+        public int id { get; set; }
+
+        [ForeignKey("ApplicationUser")]
         [JsonProperty("userId")]
         public string UserId { get; set; }
 
-        [JsonProperty("path")]
-        public string Path { get; set; }
-
         [JsonProperty("name")]
         public string Name { get; set; }
+
+        [JsonProperty("path")]
+        public string Path { get; set; }
 
         [JsonProperty("size")]
         public long Size { get; set; }

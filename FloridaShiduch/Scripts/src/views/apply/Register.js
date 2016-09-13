@@ -51,11 +51,20 @@ function (app, Marionette, templates, User, userLogin) {
             return base;
         },
 
-        initialize: function () {
+        viewOptions: ['wantsLogin'],
+
+        initialize: function (options) {
+            this.mergeOptions(options, this.viewOptions);
         },
 
         onRender: function () {
-            if (this.isLoggedIn)
+            if (this.wantsLogin) {
+                this.isLoggingIn = true;
+                this.wantsLogin = false;
+                this.$el.addClass('login');
+                userLogin.logout();
+            }
+            else if (this.isLoggedIn)
                 return app.radio.view.root.reqres.request('show:apply');
 
             if (this.userModel)

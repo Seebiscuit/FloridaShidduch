@@ -17,10 +17,12 @@ using FloridaShiduch.Models;
 using FloridaShiduch.Providers;
 using FloridaShiduch.Results;
 using FloridaShiduch.Models.Profile;
+using FloridShiduch.Attributes;
 
 namespace FloridaShiduch.Controllers
 {
     //[Authorize(Roles = "Admin")]
+    [CamelCaseControllerConfigAttribute()]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
@@ -350,7 +352,7 @@ namespace FloridaShiduch.Controllers
                 return GetErrorResult(result);
             }
 
-            return Ok();
+            return Ok(user);
         }
 
         // POST api/Account/RegisterExternal

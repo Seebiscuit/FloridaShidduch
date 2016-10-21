@@ -1,5 +1,5 @@
-﻿define(['app', 'backbone'], function (app, Backbone) {
-    return Backbone.Model.extend({
+﻿define(['app', 'models/AuthenticatedModel'], function (app, AuthenticatedModel) {
+    return AuthenticatedModel.extend({
         idAttribute: 'userId',
 
         urlRoot: '/api/Occupation/'

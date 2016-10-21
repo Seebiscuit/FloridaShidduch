@@ -65,6 +65,22 @@ header {
     }
 }
 
+.body {
+    .logout {
+        display:none;
+    }
+
+    &.logged-in {
+        .login  {
+        display:none;
+        }
+        .logout {
+            display:block;
+        }
+    }
+
+}
+
 .black-gradient {
     background-image: linear-gradient( black, #373737 );
 }

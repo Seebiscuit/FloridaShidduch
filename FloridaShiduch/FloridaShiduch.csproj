@@ -193,6 +193,7 @@
     <Compile Include="Controllers\LifestylesController.cs" />
     <Compile Include="Controllers\OccupationsController.cs" />
     <Compile Include="Controllers\PersonalsController.cs" />
+    <Compile Include="Controllers\ProgressController.cs" />
     <Compile Include="Controllers\ReferencesController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\SpousesController.cs" />
@@ -206,6 +207,8 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ImageString.cs" />
+    <Compile Include="Models\Profile\IncompleteModule.cs" />
+    <Compile Include="Models\Profile\Progress.cs" />
     <Compile Include="Models\Profile\Demographics.cs" />
     <Compile Include="Models\UserFile.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -387,6 +390,7 @@
     <Content Include="Scripts\.gitattributes" />
     <Content Include="Scripts\.gitignore" />
     <Content Include="Scripts\Gruntfile.js" />
+    <Content Include="Scripts\src\lib\CheckProgress.js" />
     <Content Include="Scripts\src\lib\upload-file\behavior\UploadFile.js" />
     <Content Include="Scripts\src\lib\upload-file\image-preview.html" />
     <Content Include="Scripts\src\lib\upload-file\ImagePreview.js" />
@@ -408,6 +412,7 @@
     <Content Include="Scripts\src\behaviors\spouse.js" />
     <Content Include="Scripts\src\config.js" />
     <Content Include="Scripts\src\lib\Stickit.Bindings.js" />
+    <Content Include="Scripts\src\models\AuthenticatedModel.js" />
     <Content Include="Scripts\src\models\bindings\register.js" />
     <Content Include="Scripts\src\models\Spouse.js" />
     <Content Include="Scripts\src\models\References.js" />

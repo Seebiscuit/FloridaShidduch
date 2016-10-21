@@ -11,11 +11,13 @@ nav#menu-nav {
     }
 
     ul {
-        font-family: 'Oswald', sans-serif;
-        font-size: $font-size-xlarge;
-        font-weight: lighter;
-        font-variant: small-caps;
-        padding-left: 0;
+        &#menu {
+            font-family: 'Oswald', sans-serif;
+            font-size: $font-size-xlarge;
+            font-weight: lighter;
+            font-variant: small-caps;
+            padding-left: 0;
+        }
 
         li {
             a {
@@ -24,6 +26,20 @@ nav#menu-nav {
 
             &.active a {
                 color: $brand-warning;
+            }
+        }
+
+        #logout {
+            display: none;
+        }
+
+        &.logged-in {
+            #login {
+                display: none;
+            }
+
+            #logout {
+                display: block;
             }
         }
 

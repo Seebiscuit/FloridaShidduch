@@ -9,8 +9,9 @@ function (Marionette) {
         // Format is "route": "methodName" where the router's controller
         // must have the method methodName
         appRoutes: {
-            ":bookmark": "navRoutes",
+            "logout": "logout",
             "apply/:page": "showApply",
+            ":bookmark": "navRoutes",
             "*any": "showMain"
         },
 

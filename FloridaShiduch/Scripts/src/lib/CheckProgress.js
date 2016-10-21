@@ -1,5 +1,7 @@
 ﻿define(['app', 'models/AuthenticatedModel'], function (app, AuthenticatedModel) {
     return AuthenticatedModel.extend({
-        urlRoot: '/api/References/'
+        urlRoot: function () {
+            return app.getApiRoot + 'Backgrounds/'
+        }
     });
-});
+})

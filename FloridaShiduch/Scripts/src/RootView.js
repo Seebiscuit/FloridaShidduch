@@ -33,6 +33,9 @@ define(['app'
                 var radio = app.radio.view.rootRadio,
                     _this = this;
 
+                this.listenTo(app.radio.view.rootRadio.vent, 'user:logged-in', this.onUserLogin);
+                this.listenTo(app.radio.view.rootRadio.vent, 'user:logged-out', this.onUserLogout);
+
                 radio.reqres.setHandlers({
                     'apply:show': {
                         callback: _this.showApply,
@@ -42,6 +45,9 @@ define(['app'
             },
 
             onRender: function () {
+                if ((this.isLoggedIn = this.state.login.isLoggedIn()))
+                    this.onUserLogin();
+
                 this.setBoostrapFns();
             },
 
@@ -55,10 +61,10 @@ define(['app'
 
                 //this.$el.scrollspy({ target: this.ui.nav.selector.replace(/body\s+/, '') });
 
-                this.ui.nav.on('activate.bs.scrollspy', function () {
-                    var loc = $(this).find('li.active > a').prop('href').replace(/^.*#/, '');
+                //this.ui.nav.on('activate.bs.scrollspy', function () {
+                    //var loc = $(this).find('li.active > a').prop('href').replace(/^.*#/, '');
                    // if (loc.indexOf('apply') < 0) location = '#' + loc; console.log(loc);
-                })
+                //})
             },
 
             appChange: function ($current) {
@@ -117,16 +123,19 @@ define(['app'
                 }
             },
 
+            onUserLogin: function () {
+                this.$el.addClass('logged-in');
+                this.showApply();
+            },
 
-            getLoggedIn: function () {
-                var region = this.getRegion('login')
-                require(['views/login-register/LoginLayout'], _.bind(function (LoginLayout) {
-                    this.showHomeBanner();
-                    region.view = new LoginLayout;
-                    region.show(region.view)
-                    this.appChange(region.$el);
-                }, this));
+            onUserLogout: function () {
+                this.$el.removeClass('logged-in');
+                this.showApply('login');
+            },
+
+            logout: function () {
+                this.state.login.logout();
+                app.radio.view.rootRadio.vent.trigger('user:logged-out');
             }
-
         });
     })

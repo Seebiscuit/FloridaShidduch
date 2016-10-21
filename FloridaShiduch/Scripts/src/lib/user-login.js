@@ -38,6 +38,7 @@ define(['app', 'backbone', 'store'], function User(app, Backbone, store) {
          */
         logout: function userLogin(user) {
             this.removeLogin();
+            this.attributes =  this._previousAttributes = {};
         },
 
         postUser: function (user, options, type) {

@@ -125,14 +125,14 @@ function (app, Marionette, templates, User, userLogin) {
         register: function (email, password, confirmpassword) {
             userLogin.register(email, password, confirmpassword)
                 .then(function () {
-                    app.radio.view.rootRadio.reqres.request('apply:show');
+                    app.radio.view.rootRadio.vent.trigger('user:logged-in');
                 }.bind(this));
         },
 
         login: function (email, password, confirmpassword) {
             userLogin.login(email, password)
             .then(function () {
-                app.radio.view.rootRadio.reqres.request('apply:show');
+                app.radio.view.rootRadio.vent.trigger('user:logged-in');
             }.bind(this));
         },
 

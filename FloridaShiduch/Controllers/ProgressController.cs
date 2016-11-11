@@ -11,37 +11,73 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using FloridaShiduch.Models;
 using FloridaShiduch.Models.Profile;
-using System.Data.Entity;
+using FloridShiduch.Attributes;
 
 namespace FloridaShiduch.Controllers
 {
+    [CamelCaseControllerConfigAttribute()]
     public class ProgressController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Progress/5
-        [ResponseType(typeof(IncompleteModule))]
-        public async Task<IHttpActionResult> GetIncompleteModule(string id)
+        [ResponseType(typeof(ModuleProgress))]
+        public async Task<IHttpActionResult> GetModuleProgress(string id)
         {
-            IEnumerable<IncompleteModule> incompleteModule = await db.IncompleteModules.Where(i => i.UserId == id).ToListAsync();
-            if (incompleteModule == null)
+            IEnumerable<ModuleProgress> moduleProgress = await db.ModulesProgress.Where(i => i.UserId == id).ToListAsync();
+            if (moduleProgress == null)
             {
                 return NotFound();
             }
 
-            return Ok(incompleteModule);
+            return Ok(moduleProgress);
         }
 
-        // POST: api/Progress
-        [ResponseType(typeof(IncompleteModule))]
-        public async Task<IHttpActionResult> PostIncompleteModule(IncompleteModule incompleteModule)
+        // PUT: api/Progress/5
+        [ResponseType(typeof(void))]
+        public async Task<IHttpActionResult> PutModuleProgress(string id, ModuleProgress moduleProgress)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.IncompleteModules.Add(incompleteModule);
+            if (id != moduleProgress.UserId)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(moduleProgress).State = EntityState.Modified;
+
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ModuleProgressExists(id, moduleProgress.Module))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        // POST: api/Progress
+        [ResponseType(typeof(ModuleProgress))]
+        public async Task<IHttpActionResult> PostModuleProgress(ModuleProgress moduleProgress)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.ModulesProgress.Add(moduleProgress);
 
             try
             {
@@ -49,7 +85,7 @@ namespace FloridaShiduch.Controllers
             }
             catch (DbUpdateException)
             {
-                if (IncompleteModuleExists(incompleteModule.UserId))
+                if (ModuleProgressExists(moduleProgress.ApplicationUser.Id, moduleProgress.Module))
                 {
                     return Conflict();
                 }
@@ -59,23 +95,23 @@ namespace FloridaShiduch.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = incompleteModule.UserId }, incompleteModule);
+            return CreatedAtRoute("DefaultApi", new { id = moduleProgress.UserId }, moduleProgress);
         }
 
-        // DELETE: api/Progress/5
-        [ResponseType(typeof(IncompleteModule))]
-        public async Task<IHttpActionResult> DeleteIncompleteModule(string id, string module)
+        // DELETE: api/Progress/5?module=
+        [ResponseType(typeof(ModuleProgress))]
+        public async Task<IHttpActionResult> DeleteModuleProgress(string id, [FromUri] string module)
         {
-            IncompleteModule incompleteModule = await db.IncompleteModules.SingleOrDefaultAsync(i => i.UserId == id && i.Module == module);
-            if (incompleteModule == null)
+            ModuleProgress moduleProgress = await db.ModulesProgress.SingleOrDefaultAsync(i => i.UserId == id && i.Module == module);
+            if (moduleProgress == null)
             {
                 return NotFound();
             }
 
-            db.IncompleteModules.Remove(incompleteModule);
+            db.ModulesProgress.Remove(moduleProgress);
             await db.SaveChangesAsync();
 
-            return Ok(incompleteModule);
+            return Ok(moduleProgress);
         }
 
         protected override void Dispose(bool disposing)
@@ -87,9 +123,9 @@ namespace FloridaShiduch.Controllers
             base.Dispose(disposing);
         }
 
-        private bool IncompleteModuleExists(string id)
+        private bool ModuleProgressExists(string id, string module)
         {
-            return db.IncompleteModules.Count(e => e.UserId == id) > 0;
+            return db.ModulesProgress.Count(e => e.UserId == id && e.Module == module) > 0;
         }
     }
 }

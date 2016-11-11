@@ -1,92 +1,105 @@
-﻿@import "../bootstrap/bootstrap/variables";
+﻿@import "../../../scripts/src/bower_components/breakpoint-sass/stylesheets/breakpoint";
+@import "../bootstrap/bootstrap/variables";
 @import "_variables.scss";
 
+.progress-meter-container {
+    text-align: center !important;
 
-.progress-meter {
-    padding: 0;
-}
+    .progress-meter {
+        padding: 0;
+    }
 
-ol.progress-meter {
-    margin-top: 2rem;
-    padding-bottom: 9.5px;
-    list-style-type: none;
+    ol.progress-meter {
+        margin-top: 2rem;
+        padding-bottom: 9.5px;
+        list-style-type: none;
+        width: 90%;
 
-    li {
-        display: inline-block;
-        font-size: .598rem;
-        text-align: center;
-        height: 36px;
-        width: 11.9%;
-        font-size: $font-size-small * 0.8;
-        font-weight: bold;
-        border-bottom-width: 4px;
-        border-bottom-style: solid;
-        color: $brand-primary;
-        border-bottom-color: $brand-primary;
-        cursor: pointer;
+        @include breakpoint($break-vsmall) {
+            width: 87%;
+        }
 
-        /*@include breakpoint($break-medium) {
+        li {
+            display: inline-block;
+            font-size: .598rem;
+            text-align: center;
+            height: 36px;
+            width: 11.9%;
+            font-size: $font-size-small * 0.8;
+            font-weight: bold;
+            border-bottom-width: 4px;
+            border-bottom-style: solid;
+            color: $brand-primary;
+            border-bottom-color: $brand-primary;
+            cursor: pointer;
+
+            @include breakpoint($break-vsmall) {
+                width: 10.9%;
+                font-size: $font-size-small * 0.55;
+                vertical-align: text-bottom;
+            }
+            /*@include breakpoint($break-medium) {
             font-size: $font-size-small * 0.78;
         }
 
         @include breakpoint($break-small) {
             font-size: $font-size-small * 0.7;
         }*/
+            &:before {
+                position: relative;
+                float: right;
+                text-indent: 0;
+                right: -10px;
+                content: "\2B24";
+                font-size: $font-size-base;
+                bottom: -32px;
+                color: $brand-primary;
+                line-height: 0;
+                text-shadow: none;
 
-        &:before {
-            position: relative;
-            float: right;
-            text-indent: 0;
-            right: -10px;
-            content: "\2B24";
-            font-size: $font-size-base;
-            bottom: -32px;
-            color: $brand-primary;
-            line-height: 0;
-            text-shadow: none;
-
-            @include breakpoint($break-small) {
-                right: -7.5px;
-                bottom: -34px;
+                @include breakpoint($break-small) {
+                    right: -7.5px;
+                    bottom: -34px;
+                }
             }
-        }
 
-        &.active {
-            color: $brand-info;
-            border-bottom-color: $brand-info;
+            &.active {
+                color: $brand-info;
+                border-bottom-color: $brand-info;
+
+                &.done {
+                    color: $brand-info;
+                }
+
+                &:before {
+                    color: $brand-info;
+                }
+            }
+
+            &.incomplete {
+                color: $brand-danger;
+                border-bottom-color: $brand-danger;
+
+                &:before {
+                    color: $brand-danger;
+                }
+            }
 
             &.done {
-                color: $brand-info;
-            }
+                color: black;
+                border-bottom-color: yellowgreen;
 
-            &:before {
-                color: $brand-info;
-            }
-        }
-
-        &.incomplete {
-            color: $brand-danger;
-            border-bottom-color: $brand-danger;
-
-            &:before {
-                color: $brand-danger;
-            }
-        }
-
-        &.done {
-            color: black;
-            border-bottom-color: yellowgreen;
-
-            &:before {
-                content: "\2713";
-                height: 19px;
-                width: 19px;
-                bottom: -24px;
-                border: none;
-                border-radius: 19px;
-                color: white;
-                background-color: yellowgreen;
-                line-height: 21.85px;
+                &:before {
+                    content: "\2713";
+                    height: 19px;
+                    width: 19px;
+                    bottom: -24px;
+                    border: none;
+                    border-radius: 19px;
+                    color: white;
+                    background-color: yellowgreen;
+                    line-height: 21.85px;
+                }
             }
         }
     }

@@ -9,9 +9,9 @@ define(['app'
             el: 'body',
 
             regions: {
-                main: '#main',
+                main: '@ui.main',
                 apply: '#apply-region',
-                login: '#login'
+                login: '@ui.login'
             },
 
             ui: {
@@ -33,9 +33,6 @@ define(['app'
                 var radio = app.radio.view.rootRadio,
                     _this = this;
 
-                this.listenTo(app.radio.view.rootRadio.vent, 'user:logged-in', this.onUserLogin);
-                this.listenTo(app.radio.view.rootRadio.vent, 'user:logged-out', this.onUserLogout);
-
                 radio.reqres.setHandlers({
                     'apply:show': {
                         callback: _this.showApply,
@@ -45,8 +42,8 @@ define(['app'
             },
 
             onRender: function () {
-                if ((this.isLoggedIn = this.state.login.isLoggedIn()))
-                    this.onUserLogin();
+                if ((this.isLoggedIn = this.state.user.isLoggedIn()))
+                    this.onLogin();
 
                 this.setBoostrapFns();
             },
@@ -123,12 +120,12 @@ define(['app'
                 }
             },
 
-            onUserLogin: function () {
+            onLogin: function () {
                 this.$el.addClass('logged-in');
-                this.showApply();
+               // this.showApply();
             },
 
-            onUserLogout: function () {
+            onLogout: function () {
                 this.$el.removeClass('logged-in');
                 this.showApply('login');
             },

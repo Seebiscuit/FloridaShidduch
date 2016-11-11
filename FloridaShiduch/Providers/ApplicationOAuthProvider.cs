@@ -10,6 +10,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using FloridaShiduch.Models;
+using System.Web;
 
 namespace FloridaShiduch.Providers
 {
@@ -52,10 +53,18 @@ namespace FloridaShiduch.Providers
 
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)
         {
+            var userManager = HttpContext.Current
+                .GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var id = context.Identity.GetUserId();
+
             foreach (KeyValuePair<string, string> property in context.Properties.Dictionary)
             {
                 context.AdditionalResponseParameters.Add(property.Key, property.Value);
             }
+
+            context.AdditionalResponseParameters.Add("id", id);
+
+            context.AdditionalResponseParameters.Add("roles", String.Join(",", userManager.GetRoles(id).ToArray()));
 
             return Task.FromResult<object>(null);
         }

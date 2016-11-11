@@ -19,7 +19,7 @@ namespace FloridaShiduch.Models.Profile
         [JsonProperty("incomplete")]
         public bool Incomplete { get; set; }
 
-        public virtual ICollection<IncompleteModule> IncompleteModules { get; set; }
+        public virtual ICollection<ModuleProgress> IncompleteModules { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

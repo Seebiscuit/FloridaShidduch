@@ -3,17 +3,25 @@ require([
     "app",
     "routers/routes",
     "RootView",
+    "state",
     'user-login',
     "underscore.string",
     "marionette"
 ],
 
-function (Backbone, App, Router, RootView, userLogin, s) {
+function (Backbone, App, Router, RootView, state, userLogin, s) {
     // Fires after the Application has started and after the initializers have been executed
     App.on("start", function (options) {
         initRadio
         .then(function () {
-            initSecurity(userLogin);
+            state.user = userLogin;
+        })
+        .then(function () {
+            return new Promise(function (resolve) {
+                require(['extend-marionette-view'], resolve);
+            });
+        })
+        .then(function () {
     
             App.router = new Router({
                 controller: new RootView
@@ -75,25 +83,7 @@ function (Backbone, App, Router, RootView, userLogin, s) {
             }
         });
     }
-    // Add loggin-check to the base Marionette.View constructor to invoke it on all views
-    var initSecurity = function (userlogin) {
-        var ViewConstructor = Backbone.Marionette.View;
-        Backbone.Marionette.View = Backbone.Marionette.View.extend({
-            constructor: function (options) {
-                this.state = (this.state || {});
-                this.state.login = userlogin;
-                ViewConstructor.apply(this, arguments);
-            }
-        });
-        var BehaviorConstructor = Backbone.Marionette.Behavior;
-        Backbone.Marionette.Behavior = Backbone.Marionette.Behavior.extend({
-            constructor: function (options) {
-                this.state = (this.state || {}).login = userlogin;
-                BehaviorConstructor.apply(this, arguments);
-            }
-        });
-    };
-    
+
     App.start();
 
 });

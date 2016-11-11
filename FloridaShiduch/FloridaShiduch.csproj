@@ -207,7 +207,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ImageString.cs" />
-    <Compile Include="Models\Profile\IncompleteModule.cs" />
+    <Compile Include="Models\Profile\ModuleProgress.cs" />
     <Compile Include="Models\Profile\Progress.cs" />
     <Compile Include="Models\Profile\Demographics.cs" />
     <Compile Include="Models\UserFile.cs" />
@@ -376,6 +376,7 @@
     <Content Include="Content\Sass\animate\helpers\_mixins.scss" />
     <Content Include="Content\Sass\animate\helpers\_settings.scss" />
     <Content Include="Content\Sass\animate\_animate.scss" />
+    <Content Include="Content\Sass\site\pagination-controls.scss" />
     <None Include="Content\Sass\site\_apply.scss" />
     <Content Include="Content\Sass\styles.css">
       <DependentUpon>styles.scss</DependentUpon>
@@ -390,7 +391,10 @@
     <Content Include="Scripts\.gitattributes" />
     <Content Include="Scripts\.gitignore" />
     <Content Include="Scripts\Gruntfile.js" />
-    <Content Include="Scripts\src\lib\CheckProgress.js" />
+    <Content Include="Scripts\src\collections\AuthenticatedCollection.js" />
+    <Content Include="Scripts\src\collections\ModulesProgress.js" />
+    <Content Include="Scripts\src\lib\app-state.js" />
+    <Content Include="Scripts\src\models\ModuleProgress.js" />
     <Content Include="Scripts\src\lib\upload-file\behavior\UploadFile.js" />
     <Content Include="Scripts\src\lib\upload-file\image-preview.html" />
     <Content Include="Scripts\src\lib\upload-file\ImagePreview.js" />
@@ -445,6 +449,7 @@
     <Content Include="Scripts\src\views\apply\Questionnaire.js" />
     <Content Include="Scripts\src\views\apply\Register.js" />
     <Content Include="Scripts\src\views\apply\ApplyLayout.js" />
+    <Content Include="Scripts\src\lib\extend-marionette-view.js" />
     <Content Include="Scripts\src\views\MainLayout.js" />
     <Content Include="Scripts\src\main.js" />
     <Content Include="Scripts\src\RootView.js" />
@@ -462,8 +467,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Sass\site\fonts\" />
     <Folder Include="Scripts\dist\" />
-    <Folder Include="Scripts\src\collections\" />
     <Folder Include="Scripts\src\controllers\" />
     <Folder Include="Scripts\src\regions\" />
     <Folder Include="Scripts\src\test\" />

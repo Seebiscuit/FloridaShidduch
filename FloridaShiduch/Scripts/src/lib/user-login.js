@@ -26,8 +26,7 @@ define(['app', 'backbone', 'store'], function User(app, Backbone, store) {
                     data: "userName=" + email + "&password=" + password +  // Nasty hack to get /Token to accept payload
                       "&grant_type=password"
                 })
-            // .then(function () { /* app.radios.rootChannel.request('user:login')*/ })
-            ;
+            .then(this.trigger.bind(this, 'login'));
 
             //TODO: Set up activity listener and logout user after inactivity;
         },
@@ -38,7 +37,9 @@ define(['app', 'backbone', 'store'], function User(app, Backbone, store) {
          */
         logout: function userLogin(user) {
             this.removeLogin();
-            this.attributes =  this._previousAttributes = {};
+            this.attributes = this._previousAttributes = {};
+
+            this.trigger('logout');
         },
 
         postUser: function (user, options, type) {
@@ -84,8 +85,8 @@ define(['app', 'backbone', 'store'], function User(app, Backbone, store) {
             return false;
         },
 
-        getUserToken: function getUsetToken() {
-            return (this.getUserFromStore() || {}).access_token;
+        getUserToken: function getUserToken() {
+            return (this.getUserFromStore(this.get('userName')) || {}).access_token;
         },
 
         getAuthorization: function () {

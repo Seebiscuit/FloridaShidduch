@@ -89,7 +89,7 @@ namespace FloridaShiduch.Controllers
             }
             catch (DbUpdateException)
             {
-                if (ApplicationUserExists(demographic.UserId))
+                if (ApplicationUserExists(demographic.ApplicationUser.Id))
                 {
                     return Conflict();
                 }
@@ -99,7 +99,7 @@ namespace FloridaShiduch.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = demographic.UserId }, demographic);
+            return CreatedAtRoute("DefaultApi", new { id = demographic.ApplicationUser.Id }, demographic);
         }
 
         // DELETE: api/Demographics/5

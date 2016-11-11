@@ -27,11 +27,11 @@ define(['marionette', 'upload-file'], function (Marionette, UploadFile) {
         },
 
         behaviors: function () { 
-        return {
-            UploadFile: {
-                behaviorClass: UploadFile
+            return {
+                UploadFile: {
+                    behaviorClass: UploadFile
+                }
             }
-        }
         }
     });
 });

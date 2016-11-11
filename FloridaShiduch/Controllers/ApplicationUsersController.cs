@@ -25,7 +25,7 @@ namespace FloridaShiduch.Controllers
 
         // GET: api/ApplicationUsers/5
         [ResponseType(typeof(ApplicationUser))]
-        public async Task<IHttpActionResult> GetApplicationUser(string id)
+        public IHttpActionResult GetApplicationUser(string id)
         {
             ApplicationUser applicationUser = db.Users.Find(id);
             if (applicationUser == null)

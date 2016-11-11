@@ -92,12 +92,6 @@ namespace FloridaShiduch
             const string name = "admin@example.com";
             const string password = "Admin@123456";
 
-            // Some initial values for custom properties:
-            const string address = "1234 Sesame Street";
-            const string city = "Portland";
-            const string state = "OR";
-            const string postalCode = "97209";
-
             const string roleName = "Admin";
             const string roleDescription = "All access pass";
 

@@ -28,7 +28,7 @@ namespace FloridaShiduch.Models
             return new ApplicationDbContext();
         }
 
-        public DbSet<IncompleteModule> IncompleteModules { get; set; }
+        public DbSet<ModuleProgress> ModulesProgress { get; set; }
 
         public DbSet<UserFile> UserFiles { get; set; }
         public DbSet<Demographic> Demographics { get; set; }
@@ -46,7 +46,7 @@ namespace FloridaShiduch.Models
         public DbSet<Spouse> Spouses { get; set; }
         public DbSet<SpouseMaritalStatus> SpouseMaritalStatuses { get; set; }
 
-        public System.Data.Entity.DbSet<FloridaShiduch.Models.ApplicationUser> ApplicationUsers { get; set; }
+        //public System.Data.Entity.DbSet<FloridaShiduch.Models.ApplicationUser> Users { get; set; }
 
 
         //public DbSet<FloridaShiduch.Models.ApplicationUser> Users { get; set; }

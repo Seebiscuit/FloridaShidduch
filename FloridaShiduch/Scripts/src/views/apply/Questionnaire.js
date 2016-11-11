@@ -1,4 +1,4 @@
-define([ 'app'
+define(['app'
     , 'backbone'
     , 'marionette'
     , 'templates'
@@ -23,7 +23,7 @@ function (app, Backbone, Marionette, templates) {
 
         },
 
-        className: 'row',
+        className: 'row pagination-control',
 
         getTemplate: function () {
             return templates.apply[this.getOption('module')];
@@ -35,7 +35,7 @@ function (app, Backbone, Marionette, templates) {
             change: 'onChange'
         },
 
-        viewOptions: ['$parentEl', 'module'],
+        viewOptions: ['$parentEl', 'module', 'modules', 'position'],
 
         initialize: function (options) {
             this.mergeOptions(options, this.viewOptions);
@@ -43,6 +43,10 @@ function (app, Backbone, Marionette, templates) {
             this.saveModel = _.debounce(this.saveModel.bind(this), 1000);
 
             Backbone.Validation.bind(this);
+        },
+
+        ui: {
+            title: '[data-hook="title"]'
         },
 
         onRender: function () {
@@ -55,7 +59,7 @@ function (app, Backbone, Marionette, templates) {
 
         saveModel: function () {
             this.model.save();
-            app.radio.view.rootRadio.vent.trigger('module:set-status', this.module, this.model.isValid())
+            app.radio.view.rootRadio.vent.trigger('module:set-status', this.module, this.model.validate() && this.model.isValid())
         },
         // Used by Behaviors
         updateBoolean: function (val, classes) {
@@ -66,6 +70,33 @@ function (app, Backbone, Marionette, templates) {
         // Used by Behaviors
         updateParentContainerClass: function (add, remove) {
             this.$parentEl.removeClass(remove).addClass(add);
+        },
+
+        templateHelpers: function () {
+            var view = this;
+
+            return {
+                printTitle: function () {
+                    return view.module[0].toUpperCase() + view.module.substr(1);
+                },
+
+                addControls: function (title) {
+                    var prev = Backbone.$('<a><i class="fa fa-caret-left pagination pagination-left"></i></a>'),
+                        next = Backbone.$('<a><i class="fa fa-caret-right pagination pagination-right"></i></a>'),
+                        titleEl = Backbone.$('<h3 class="component-title inline"/>'),
+                        container = Backbone.$('<div class="component-title-container"/>').append(titleEl);
+
+                    titleEl.text(this.printTitle())
+
+                    if (view.position !== 0)
+                        titleEl.before(prev.prop('href', '#apply/' + view.modules[view.position - 1]));
+
+                    if (view.position !== view.modules.length - 1)
+                        titleEl.after(next.prop('href', '#apply/' + view.modules[view.position + 1]));
+
+                    return Backbone.$('<div/>').append(container).html();
+                }
+            }
         },
 
         _addStaticProps: function (obj) {
@@ -84,7 +115,7 @@ function (app, Backbone, Marionette, templates) {
         _createBehaviorClass: function (behaviors, options) {
             var _behaviors = {};
 
-            behaviors = behaviors.length ? behaviors : [ behaviors ];
+            behaviors = behaviors.length ? behaviors : [behaviors];
 
             _.each(behaviors, function (b) {
                 _behaviors[b.name] = {

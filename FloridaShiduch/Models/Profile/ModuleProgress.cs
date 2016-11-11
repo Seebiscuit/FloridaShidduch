@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace FloridaShiduch.Models.Profile
 {
-    public class IncompleteModule
+    public class ModuleProgress
     {
         [Key, Column(Order=0), ForeignKey("ApplicationUser")]
         [JsonProperty("userId")]
@@ -17,6 +17,8 @@ namespace FloridaShiduch.Models.Profile
         [Key, Column(Order = 1)]
         [JsonProperty("module")]
         public string Module { get; set; }
+        [JsonProperty("status")]
+        public string Status { get; set; }
 
         public virtual ApplicationUser ApplicationUser { get; set; }
     }

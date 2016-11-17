@@ -80,10 +80,8 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
 
         setProgress: function (module, status) {
             if (status) this.ui[(module + 'Meter')].addClass('complete');
-            
-            this.handleNavigation(module, status);
 
-            return this.state.progress.add({ module: module, status: status }).save(); // Backbone.add() overridden to persist changes
+            return this.state.progress.add({ module: module, status: status }, { parse:true }).save(); // Backbone.add() overridden to persist changes
         },
 
         onAttach: function () {
@@ -109,13 +107,6 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
         showRegister: function (module) {
             this.$el.removeClass('applying');
             this.showView(['views/apply/Register', 'models/bindings/register'], this.getRegion('registration'), { $el: this.ui.registration, wantsLogin: module == "login" });
-        },
-
-        handleNavigation: function (module, status) {
-            if (status)
-                this.$el.addClass('valid');
-            else
-                this.$el.removeClass('valid');
         },
 
         showQuestionnaireModule: function (module, isinit) {
@@ -151,13 +142,13 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
 
                     fadeOut = this.$('> div.fadeIn')
 
-                    _.defer(showView.bind(this, View, Model, Behavior, bindings));
+                    _.defer(loadView.bind(this, View, Model, Behavior, bindings));
 
                     fadeOut.removeClass('fadeIn').addClass('fadeOut');
 
                 }.bind(this));
 
-                function showView(View, Model, Behavior, bindings) {
+                function loadView(View, Model, Behavior, bindings) {
                     if (Model.getBindings)
                         // Register uses this pattern
                         bindings = Model, Model = null;
@@ -169,7 +160,12 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
                         $parentEl: this.$el
                     });
 
-                    options.model.fetch({ url: _.result(options.model, 'urlRoot') + this.state.user.id }).complete(function () {
+                    if (options.model)
+                        options.model.fetch().complete(showView.bind(this));
+                    else
+                        showView();
+
+                    function showView() {
                         region.view = new View(options);
                         region.show(region.view);
 
@@ -178,7 +174,7 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
                         options.$el.removeClass('fadeOut').addClass('fadeIn');
 
                         resolve();
-                    }.bind(this));
+                    }
                 }
             }.bind(this));
         },
@@ -211,7 +207,7 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
                 else {
                     _.each(this.pageOrder, function (mod, i) {
                         if (progress.get(mod)) {
-                            if (!progress.get(mod).status) {
+                            if (!progress.get(mod).get('status')) {
                                 // False status, started but not finished
                                 if (!firstTodo) {
                                     firstTodo = mod;

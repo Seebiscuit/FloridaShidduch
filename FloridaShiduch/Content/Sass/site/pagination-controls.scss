@@ -3,29 +3,39 @@
 @import "_variables.scss";
 
 
-.pagination-control .pagination{
-    font-size: 4rem;
-    vertical-align: middle;
-    color: $brand-primary;
-    margin: 0 0 .87rem 0;
+.pagination-control {
+    .pagination-control {
+        display: none;
 
-    &.pagination-left {
-        margin-right: 2rem;
+        .valid & {
+            display: inline;
+        }
     }
 
-    &.pagination-right {
-        margin-left: 2rem;
-    }
-
-    @include breakpoint($break-vsmall) {
-        font-size: 1.5rem;
+    .pagination {
+        font-size: 4rem;
+        vertical-align: middle;
+        color: $brand-primary;
+        margin: 0 0 .87rem 0;
 
         &.pagination-left {
-            margin-right: .2rem;
+            margin-right: 2rem;
         }
 
-        &.fa.pagination-right {
-            margin-left: .2rem;
+        &.pagination-right {
+            margin-left: 2rem;
+        }
+
+        @include breakpoint($break-vsmall) {
+            font-size: 1.5rem;
+
+            &.pagination-left {
+                margin-right: .2rem;
+            }
+
+            &.fa.pagination-right {
+                margin-left: .2rem;
+            }
         }
     }
 }

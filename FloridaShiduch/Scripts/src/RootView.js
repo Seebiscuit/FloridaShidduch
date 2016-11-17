@@ -25,6 +25,8 @@ define(['app'
             },
 
             initialize: function () {
+                this.showApply = _.debounce(this.showApply.bind(this), 100);
+
                 this.setupHandlers();
                 this.render();
             },
@@ -122,17 +124,16 @@ define(['app'
 
             onLogin: function () {
                 this.$el.addClass('logged-in');
-               // this.showApply();
+                location = '#apply';
             },
 
             onLogout: function () {
                 this.$el.removeClass('logged-in');
-                this.showApply('login');
+                location = '#initiative';
             },
 
             logout: function () {
-                this.state.login.logout();
-                app.radio.view.rootRadio.vent.trigger('user:logged-out');
+                this.state.user.logout();
             }
         });
     })

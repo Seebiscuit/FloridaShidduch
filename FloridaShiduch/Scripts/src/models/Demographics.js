@@ -1,7 +1,7 @@
 define(['app', 'models/AuthenticatedModel'], function (app, AuthenticatedModel) {
     return AuthenticatedModel.extend({
-        urlRoot: function () {
-            return app.getApiRoot + 'Demographics/'
+        url: function () {
+            return app.getApiRoot + 'Demographics/' + this.user.id;
         },
 
         idAttribute: 'userId',

@@ -79,8 +79,8 @@ namespace FloridaShiduch
         //Create User=Admin@Admin.com with password=Admin@123456 in the Admin role        
         public static void InitializeIdentityForEF(ApplicationDbContext db)
         {
-            db.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction
-            , string.Format("; ALTER DATABASE {0} SET SINGLE_USER WITH ROLLBACK IMMEDIATE", db.Database.Connection.Database));
+            //db.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction
+            //, string.Format("; ALTER DATABASE {0} SET SINGLE_USER WITH ROLLBACK IMMEDIATE", db.Database.Connection.Database));
 
             var userManager = HttpContext.Current
                 .GetOwinContext().GetUserManager<ApplicationUserManager>();

@@ -34,6 +34,8 @@ namespace FloridaShiduch.Controllers
         }
 
         // PUT: api/Progress/5
+        [HttpPost]
+        [HttpPut]
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutModuleProgress(string id, ModuleProgress moduleProgress)
         {
@@ -42,12 +44,10 @@ namespace FloridaShiduch.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != moduleProgress.UserId)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(moduleProgress).State = EntityState.Modified;
+            if (db.ModulesProgress.AsNoTracking().SingleOrDefault(m => m.UserId == id && m.Module == moduleProgress.Module) != null)
+                db.Entry(moduleProgress).State = EntityState.Modified;
+            else
+                db.ModulesProgress.Add(moduleProgress);
 
             try
             {
@@ -66,36 +66,6 @@ namespace FloridaShiduch.Controllers
             }
 
             return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/Progress
-        [ResponseType(typeof(ModuleProgress))]
-        public async Task<IHttpActionResult> PostModuleProgress(ModuleProgress moduleProgress)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.ModulesProgress.Add(moduleProgress);
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (ModuleProgressExists(moduleProgress.ApplicationUser.Id, moduleProgress.Module))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtRoute("DefaultApi", new { id = moduleProgress.UserId }, moduleProgress);
         }
 
         // DELETE: api/Progress/5?module=

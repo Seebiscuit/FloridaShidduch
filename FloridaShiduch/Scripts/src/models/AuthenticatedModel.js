@@ -4,13 +4,11 @@ define(['app', 'backbone', 'state'], function AuthenticatedModel(app, Backbone, 
             this.user = state.user
 
             Backbone.Model.prototype.constructor.apply(this, arguments);
-            
-            this.attributes.applicationUser = this.user;
         },
 
         sync: function (method, collection, options) {
-            var user = this.get('applicationUser');
-            if (!this.user.isLoggedIn()) {
+            var user = this.user;
+            if (!user.isLoggedIn()) {
                 alert('You are not logged in. You will be directed to the login page.')
                 return location = '#login';
             }

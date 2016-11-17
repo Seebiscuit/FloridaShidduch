@@ -13936,7 +13936,17 @@ nav#menu-nav ul.logged-in #logout {
 /* GENERAL */
 /* EXTENDS BOOTSTRAP */
 /* Section Sizes */
-/* line 6, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/pagination-controls.scss */
+/* line 7, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/pagination-controls.scss */
+.pagination-control .pagination-control {
+  display: none;
+}
+
+/* line 10, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/pagination-controls.scss */
+.valid .pagination-control .pagination-control {
+  display: inline;
+}
+
+/* line 15, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/pagination-controls.scss */
 .pagination-control .pagination {
   font-size: 4rem;
   vertical-align: middle;
@@ -13944,26 +13954,26 @@ nav#menu-nav ul.logged-in #logout {
   margin: 0 0 .87rem 0;
 }
 
-/* line 12, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/pagination-controls.scss */
+/* line 21, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/pagination-controls.scss */
 .pagination-control .pagination.pagination-left {
   margin-right: 2rem;
 }
 
-/* line 16, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/pagination-controls.scss */
+/* line 25, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/pagination-controls.scss */
 .pagination-control .pagination.pagination-right {
   margin-left: 2rem;
 }
 
 @media (max-width: 400px) {
-  /* line 6, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/pagination-controls.scss */
+  /* line 15, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/pagination-controls.scss */
   .pagination-control .pagination {
     font-size: 1.5rem;
   }
-  /* line 23, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/pagination-controls.scss */
+  /* line 32, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/pagination-controls.scss */
   .pagination-control .pagination.pagination-left {
     margin-right: .2rem;
   }
-  /* line 27, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/pagination-controls.scss */
+  /* line 36, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/pagination-controls.scss */
   .pagination-control .pagination.fa.pagination-right {
     margin-left: .2rem;
   }

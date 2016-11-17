@@ -74,12 +74,14 @@ namespace FloridaShiduch.Controllers
 
         // POST: api/Demographics
         [ResponseType(typeof(Demographic))]
-        public async Task<IHttpActionResult> PostApplicationUser(Demographic demographic)
+        public async Task<IHttpActionResult> PostApplicationUser(string id, Demographic demographic)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
+            demographic.UserId = id;
 
             db.Demographics.Add(demographic);
 
@@ -89,7 +91,7 @@ namespace FloridaShiduch.Controllers
             }
             catch (DbUpdateException)
             {
-                if (ApplicationUserExists(demographic.ApplicationUser.Id))
+                if (ApplicationUserExists(id))
                 {
                     return Conflict();
                 }
@@ -98,8 +100,12 @@ namespace FloridaShiduch.Controllers
                     throw;
                 }
             }
+            catch (Exception)
+            {
+                throw;
+            }
 
-            return CreatedAtRoute("DefaultApi", new { id = demographic.ApplicationUser.Id }, demographic);
+            return CreatedAtRoute("DefaultApi", new { id = id }, demographic);
         }
 
         // DELETE: api/Demographics/5

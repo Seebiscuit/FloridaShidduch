@@ -18,7 +18,7 @@ namespace FloridaShiduch.Models.Profile
         [JsonProperty("module")]
         public string Module { get; set; }
         [JsonProperty("status")]
-        public string Status { get; set; }
+        public bool Status { get; set; }
 
         public virtual ApplicationUser ApplicationUser { get; set; }
     }

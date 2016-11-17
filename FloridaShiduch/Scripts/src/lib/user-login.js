@@ -35,11 +35,14 @@ define(['app', 'backbone', 'store'], function User(app, Backbone, store) {
          *
          * @return {Promise} ajax 
          */
-        logout: function userLogin(user) {
+        logout: function userLogin(options) {
+            options = options || {};
+
             this.removeLogin();
             this.attributes = this._previousAttributes = {};
 
-            this.trigger('logout');
+            if (!options.silent)
+                this.trigger('logout');
         },
 
         postUser: function (user, options, type) {

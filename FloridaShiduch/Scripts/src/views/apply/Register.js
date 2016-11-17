@@ -62,7 +62,7 @@ function (app, Marionette, templates, User, userLogin) {
                 this.isLoggingIn = true;
                 this.wantsLogin = false;
                 this.$el.addClass('login');
-                userLogin.logout();
+                userLogin.logout({ silent: true });
             }
             else if (this.isLoggedIn)
                 return app.radio.view.root.reqres.request('show:apply');

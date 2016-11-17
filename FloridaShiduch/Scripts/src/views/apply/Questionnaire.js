@@ -23,7 +23,17 @@ function (app, Backbone, Marionette, templates) {
 
         },
 
-        className: 'row pagination-control',
+        className: function (view) {
+            var className = 'row pagination-control';
+
+            if (this.model && this.model.validate) {
+                this.model.validate();
+                if (this.model.isValid())
+                    return className + ' valid'
+            }
+            else
+                return className;
+        },
 
         getTemplate: function () {
             return templates.apply[this.getOption('module')];
@@ -42,7 +52,11 @@ function (app, Backbone, Marionette, templates) {
 
             this.saveModel = _.debounce(this.saveModel.bind(this), 1000);
 
+            this.listenTo(app.radio.view.rootRadio.vent, 'module:set-status', this.handleNavigation);
+
             Backbone.Validation.bind(this);
+
+            this.$el.addClass(_.result(this, 'className'));
         },
 
         ui: {
@@ -53,13 +67,23 @@ function (app, Backbone, Marionette, templates) {
             this.stickit();
         },
 
+        handleNavigation: function (module, status) {
+            if (status)
+                this.$el.addClass('valid');
+            else
+                this.$el.removeClass('valid');
+        },
+
         onChange: function () {
             this.saveModel();
         },
 
         saveModel: function () {
-            this.model.save();
-            app.radio.view.rootRadio.vent.trigger('module:set-status', this.module, this.model.validate() && this.model.isValid())
+            var isValid = this.model.isValid(true);
+
+            if (isValid) this.model.save();
+
+            app.radio.view.rootRadio.vent.trigger('module:set-status', this.module, isValid)
         },
         // Used by Behaviors
         updateBoolean: function (val, classes) {

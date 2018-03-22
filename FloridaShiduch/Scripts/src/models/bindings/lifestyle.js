@@ -1,4 +1,4 @@
-﻿define(['bindings', 'behaviors/lifestyle'], function (Bindings, LifestyleBehavior) {
+define(['bindings', 'behaviors/lifestyle'], function (Bindings, LifestyleBehavior) {
     'use strict';
     // Singleton
     var bindings = new Bindings({
@@ -14,19 +14,20 @@
             observe: 'kashrus',
             setOps: { validate: true }
         },
-        '@ui.dressCodeSkirt': {
-            observe: 'dressCode',
+        '@ui.skirtLenth': {
+            observe: 'skirtLength',
             setOps: { validate: true }
         },
-        '@ui.dressCodeSleeve': {
-            observe: 'dressCode',
+        '@ui.sleeveLength': {
+            observe: 'sleeveLength',
             setOps: { validate: true }
         },
         '@ui.hairCovering': {
             observe: 'hairCovering',
             setOps: { validate: true }
         }
-    }, LifestyleBehavior.prototype.ui);
+    },
+        LifestyleBehavior.prototype.ui);
 
     return bindings;
 });

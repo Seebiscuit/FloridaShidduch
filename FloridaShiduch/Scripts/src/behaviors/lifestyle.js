@@ -2,12 +2,12 @@ define(['marionette'], function (Marionette) {
     'use strict';
     return Marionette.Behavior.extend({
         ui: {
-            learnFrequency: 'input[name="register-lifestyle-learning"]',
-            shulFrequency: 'input[name="register-lifestyle-shul"]',
-            kashrus: 'input[name="register-lifestyle-kashrus"]',
-            dressCodeSkirt: 'input[name="register-lifestyle-dress-skirts"]',
-            dressCodeSleeve: 'input[name="register-lifestyle-dress-sleeve"]',
-            hairCovering: 'input[name="register-lifestyle-hair"]'
+            learnFrequency: 'input[name="learnfrequency"]',
+            shulFrequency: 'input[name="shulfrequency"]',
+            kashrus: 'input[name="kashrus"]',
+            dressCodeSkirt: 'input[name="skirtlength"]',
+            dressCodeSleeve: 'input[name="sleevelength"]',
+            hairCovering: 'input[name="haircovering"]'
         },
 
         modelEvents: {
@@ -16,7 +16,10 @@ define(['marionette'], function (Marionette) {
 
         updateShulFrequency: function (model, val, options) {
             val = val == 'other' ? true : false;
+
             this.view.updateBoolean(val, ['', 'toggle-shul-other']);
+
+            this.view.saveUserPrefs('shul', val ? 'toggle-shul-other' : '');
         }
     });
 });

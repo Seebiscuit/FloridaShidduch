@@ -1,7 +1,9 @@
 ﻿define(['app', 'models/AuthenticatedModel'], function (app, AuthenticatedModel) {
     return AuthenticatedModel.extend({
-        idAttribute: 'userId',
+        url: function () {
+            return app.getApiRoot + 'Lifestyles/' + this.user.id;
+        },
 
-        urlRoot: '/api/Lifestyle/'
+        idAttribute: 'userId'
     });
 });

@@ -65,7 +65,7 @@ function (app, Marionette, templates, User, userLogin) {
                 userLogin.logout({ silent: true });
             }
             else if (this.isLoggedIn)
-                return app.radio.view.root.reqres.request('show:apply');
+                return app.radio.view.root.reqres.request('apply:show');
 
             if (this.userModel)
                 Backbone.Validation.unbind(this, { model: this.userModel });

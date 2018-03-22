@@ -12,7 +12,8 @@ define(['app', 'backbone', 'store'], function User(app, Backbone, store) {
                 email: email,
                 password: password,
                 confirmPassword: confirmpassword
-            }, null, 'registration');
+            }, null, 'registration')
+            .then(this.trigger.bind(this, 'register'));
         },
 
         login: function userLogin(email, password) {

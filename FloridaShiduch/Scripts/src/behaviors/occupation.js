@@ -17,23 +17,29 @@ define(['marionette'], function (Marionette) {
             degreeDoctorate: '#register-education-secular-doctorate-degree',
             companyName: '#register-occupation-working-firm',
             jobTitle: '#register-occupation-working-title',
-            jobType: 'input[name="register-occupation"]',
-            jobTypeOtherDesc: '#register-occupation-other-describe'
+            occupationTypes: 'input[name="register-occupation"]',
+            occupationTypeOther: '#register-occupation-other-describe'
         },
 
         modelEvents: {
             'change:hebrewEducationLevel': 'updateYeshiva',
             'change:israelStudy': 'updateIsraelStudy',
             'change:secularEducationLevel': 'updateCollege',
-            'change:jobType': 'updateOccupation',
+            'change:occupationTypes': 'updateOccupation',
         },
 
         updateYeshiva: function (model, val, options) {
-            this.view.updateBoolean(val == 'yeshiva', ['', 'toggle-yeshiva']);
+            val = val == 'yeshiva';
+
+            this.view.updateBoolean(val, ['', 'toggle-yeshiva']);
+
+            this.view.saveUserPrefs('yeshiva', val ? 'toggle-yeshiva' : '');
         },
 
         updateIsraelStudy: function (model, val, options) {
             this.view.updateBoolean(val, ['', 'toggle-israel-study']);
+
+            this.view.saveUserPrefs('israel-study', val ? 'toggle-israel-study' : '');
         },
 
         updateCollege: function (model, val, options) {
@@ -52,6 +58,8 @@ define(['marionette'], function (Marionette) {
             }
 
             this.view.updateBoolean(val, classes);
+
+            this.view.saveUserPrefs('college', classes[Number(val)]);
         },
 
         updateOccupation: function (model, val, options) {
@@ -59,6 +67,9 @@ define(['marionette'], function (Marionette) {
             this.view.updateBoolean(!!(val.indexOf('working') + 1), ['', 'toggle-working']);
             // Update 'other' inputs
             this.view.updateBoolean(!!(val.indexOf('other') + 1), ['', 'toggle-other-occupation']);
+
+            this.view.saveUserPrefs('working', val.indexOf('working') + 1 ? 'toggle-working' : '');
+            this.view.saveUserPrefs('working',  val.indexOf('other') + 1 ? 'toggle-other-occupation' : '');
         }
     });
 });

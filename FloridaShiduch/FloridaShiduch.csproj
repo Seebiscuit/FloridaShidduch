@@ -206,6 +206,7 @@
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\AutoCompleteUserData.cs" />
     <Compile Include="Models\ImageString.cs" />
     <Compile Include="Models\Profile\ModuleProgress.cs" />
     <Compile Include="Models\Profile\Progress.cs" />
@@ -446,6 +447,9 @@
     <Content Include="Scripts\src\templates\apply\apply-essays.html" />
     <Content Include="Scripts\src\templates\apply\apply-references.html" />
     <Content Include="Scripts\src\templates\apply\apply-spouse.html" />
+    <Content Include="Scripts\src\templates\edit-profile-view.html" />
+    <Content Include="Scripts\src\templates\start-profile.html" />
+    <Content Include="Scripts\src\views\EditProfileView.js" />
     <Content Include="Scripts\src\views\apply\Questionnaire.js" />
     <Content Include="Scripts\src\views\apply\Register.js" />
     <Content Include="Scripts\src\views\apply\ApplyLayout.js" />
@@ -453,6 +457,7 @@
     <Content Include="Scripts\src\views\MainLayout.js" />
     <Content Include="Scripts\src\main.js" />
     <Content Include="Scripts\src\RootView.js" />
+    <Content Include="Scripts\src\views\StartProfile.js" />
     <Content Include="Scripts\src\views\_masters\MasterLayout.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -464,6 +469,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="_apply-master.html" />
+    <Content Include="Scripts\src\main.js.vsspell" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

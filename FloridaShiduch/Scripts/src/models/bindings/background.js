@@ -1,9 +1,10 @@
-﻿define(['bindings', 'behaviors/background'], function (Bindings, BackgroundBehavior) {
+define(['bindings', 'behaviors/background'], function (Bindings, BackgroundBehavior) {
     'use strict';
     // Singleton
     var bindings = new Bindings({
         '@ui.bornJewish': {
             observe: 'bornJewish',
+            onSet: 'bindings.returnBool',
             setOps: { validate: true }
         },
         '@ui.conversionInfo': {
@@ -12,6 +13,7 @@
         },
         '@ui.baalTeshuva': {
             observe: 'baalTeshuva',
+            onSet: 'bindings.returnBool',
             setOps: { validate: true }
         },
         '@ui.btTime': {
@@ -20,10 +22,12 @@
         },
         '@ui.isKohen': {
             observe: 'isKohen',
+            onSet: 'bindings.returnBool',
             setOps: { validate: true }
         },
         '@ui.marryCohen': {
             observe: 'marryCohen',
+            onSet: 'bindings.returnBool',
             setOps: { validate: true }
         },
         '@ui.ethnicity': {
@@ -34,7 +38,18 @@
             observe: 'observance',
             setOps: { validate: true }
         }
-    }, BackgroundBehavior.prototype.ui);
+    },
+    BackgroundBehavior.prototype.ui,
+    {
+        methods: {
+            returnBool: function (val, options) {
+                if (val === "false" || val === "0" || val === 0 || val === false)
+                    return false;
+
+                return true;
+            }
+        }
+    });
 
     return bindings;
 });

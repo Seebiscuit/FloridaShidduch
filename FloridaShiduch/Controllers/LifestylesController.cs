@@ -75,12 +75,14 @@ namespace FloridaShiduch.Controllers
 
         // POST: api/Lifestyles
         [ResponseType(typeof(Lifestyle))]
-        public async Task<IHttpActionResult> PostLifestyle(Lifestyle lifestyle)
+        public async Task<IHttpActionResult> PostLifestyle(string id, Lifestyle lifestyle)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
+            lifestyle.UserId = id;
 
             db.Lifestyles.Add(lifestyle);
 

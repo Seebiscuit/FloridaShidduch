@@ -2,6 +2,12 @@
     return AuthenticatedModel.extend({
         idAttribute: 'userId',
 
-        urlRoot: '/api/Personal/'
+        urlRoot: function () {
+            return app.getApiRoot + 'Personals/'
+        },
+
+        url: function () {
+            return _.result(this, 'urlRoot') + this.user.id;
+        }
     });
 });

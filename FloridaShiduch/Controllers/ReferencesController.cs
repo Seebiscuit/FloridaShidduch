@@ -75,12 +75,14 @@ namespace FloridaShiduch.Controllers
 
         // POST: api/References
         [ResponseType(typeof(Reference))]
-        public async Task<IHttpActionResult> PostReference(Reference reference)
+        public async Task<IHttpActionResult> PostReference(string id, Reference reference)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
+            reference.UserId = id;
 
             db.References.Add(reference);
             await db.SaveChangesAsync();

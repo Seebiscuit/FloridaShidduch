@@ -70,6 +70,21 @@ namespace FloridaShiduch
     public class ApplicationDbInitializer
         : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
     {
+        public override void InitializeDatabase(ApplicationDbContext context)
+        {
+                    if (context.Database.Exists())
+                context.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction,
+                    string.Format(
+                        @"USE [master];
+                        DECLARE @kill varchar(1000) = '';  
+                        SELECT @kill = @kill + 'kill ' + CONVERT(varchar(5), session_id) + ';'  
+                        FROM sys.dm_exec_sessions
+                        WHERE database_id  = db_id('{0}')
+                        EXEC(@kill);", context.Database.Connection.Database));
+
+            base.InitializeDatabase(context);
+        }   
+
         protected override void Seed(ApplicationDbContext context)
         {
             InitializeIdentityForEF(context);
@@ -79,9 +94,6 @@ namespace FloridaShiduch
         //Create User=Admin@Admin.com with password=Admin@123456 in the Admin role        
         public static void InitializeIdentityForEF(ApplicationDbContext db)
         {
-            //db.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction
-            //, string.Format("; ALTER DATABASE {0} SET SINGLE_USER WITH ROLLBACK IMMEDIATE", db.Database.Connection.Database));
-
             var userManager = HttpContext.Current
                 .GetOwinContext().GetUserManager<ApplicationUserManager>();
 
@@ -123,44 +135,61 @@ namespace FloridaShiduch
                 userManager.AddToRole(user.Id, role.Name);
             }
 
-            // Initial Vanilla User:
-            const string vanillaUserName = "vanillaUser@example.com";
-            const string vanillaUserPassword = "Vanilla@123456";
+            InitializeAppUsers(userManager, roleManager);
+        }
 
-            // Add a plain vannilla Users Role:
-            const string usersRoleName = "Users";
-            const string usersRoleDescription = "Plain vanilla User";
+        public static void InitializeAppUsers(ApplicationUserManager userManager, ApplicationRoleManager roleManager)
+        {
+            const string password = "Test1234";
 
-            //Create Role Users if it does not exist
-            var usersRole = roleManager.FindByName(usersRoleName);
-            if (usersRole == null)
+            for (int i = 0; i <= 8; i++)
             {
-                usersRole = new ApplicationRole(usersRoleName);
+                // Initial  User:
+                string username = string.Format("tester{0}@test.com", i);
 
-                // Set the new custom property:
-                usersRole.Description = usersRoleDescription;
-                var userRoleresult = roleManager.Create(usersRole);
-            }
+                // Add a plain vanilla Users Role:
+                const string usersRoleName = "Users";
+                const string usersRoleDescription = "Plain vanilla User";
 
-            // Create Vanilla User:
-            var vanillaUser = userManager.FindByName(vanillaUserName);
-            if (vanillaUser == null)
-            {
-                vanillaUser = new ApplicationUser
+                //Create Role Users if it does not exist
+                var usersRole = roleManager.FindByName(usersRoleName);
+                if (usersRole == null)
                 {
-                    UserName = vanillaUserName,
-                    Email = vanillaUserName
-                };
+                    usersRole = new ApplicationRole(usersRoleName);
 
-                var result = userManager.Create(vanillaUser, vanillaUserPassword);
-                result = userManager.SetLockoutEnabled(vanillaUser.Id, false);
-            }
+                    // Set the new custom property:
+                    usersRole.Description = usersRoleDescription;
+                    var userRoleresult = roleManager.Create(usersRole);
+                }
 
-            // Add vanilla user to Role Users if not already added
-            var rolesForVanillaUser = userManager.GetRoles(vanillaUser.Id);
-            if (!rolesForVanillaUser.Contains(usersRole.Name))
-            {
-                userManager.AddToRole(vanillaUser.Id, usersRole.Name);
+                // Create  User:
+                var user = userManager.FindByName(username);
+                if (user == null)
+                {
+                    user = new ApplicationUser
+                    {
+                        UserName = username,
+                        Email = username
+                    };
+
+                    var result = userManager.Create(user, password);
+                    result = userManager.SetLockoutEnabled(user.Id, false);
+                }
+
+                // Add vanilla user to Role Users if not already added
+                var rolesForUser = userManager.GetRoles(user.Id);
+                if (!rolesForUser.Contains(usersRole.Name))
+                {
+                    userManager.AddToRole(user.Id, usersRole.Name);
+                }
+
+                if (i > 0)
+                {
+                    // Populate data for the new user
+                    var userDataSeed = new AutoCompleteUserData(user.Id, i);
+
+                    userDataSeed.Save(); 
+                }
             }
         }
     }

@@ -1,13 +1,18 @@
 ﻿define(['backbone'], function (Backbone) {
     var extend = Backbone.Model.extend;
 
-    function Bindings(bindings, ui) {
+    function Bindings(bindings, ui, options) {
+        this.options = options || {};
+
         // Store original @ui sticking bindings hash
         this._bindings = bindings;
 
         this.ui = _.result({ ui: ui }, 'ui')
         // Normalized
         this.bindings = Bindings.normalizeUIKeys(this._bindings, this.ui);
+
+        if (this.options.methods)
+            this.bindings = _.extend(this.bindings, options.methods);
     };
 
     Bindings.prototype.getBindings = function () {

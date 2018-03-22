@@ -9,6 +9,10 @@ define(['app'
 ],
 
 function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgress, store) {
+    var PREFSPATH = 'preferences.';
+    var START_PAGE = 'start';
+    var COMPLETE_PAGE = 'edit';
+    
     return MasterLayout.extend({
         template: templates.apply.layout,
 
@@ -61,6 +65,9 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
             this.pageOrder = _.result(this, 'pageOrder');
 
             this.listenTo(app.radio.view.rootRadio.vent, 'module:set-status', this.setProgress);
+            //this.listenTo(this.state.user, 'logout', this._resetApplication)
+
+            this.initUserPrefs();
         },
 
         onBeforeShow: function () {
@@ -69,7 +76,9 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
 
         goToLastProgress: function (isinit) {
             this._setTrackerStatus().then(function (todo) {
-                if (location.hash.indexOf('#apply/' + todo) > -1)
+                if (todo == _.first(this.pageOrder) || todo == _.last(this.pageOrder))
+                    location = '#profile/' + todo;
+                else if (location.hash.indexOf('#apply/' + todo) > -1)
                     // already at this todo, just show it
                     this.showQuestionnaireModule(todo);
                 else
@@ -79,9 +88,9 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
         },
 
         setProgress: function (module, status) {
-            if (status) this.ui[(module + 'Meter')].addClass('complete');
+            if (status) this.ui[(module + 'Meter')].removeClass('incomplete').addClass('complete');
 
-            return this.state.progress.add({ module: module, status: status }, { parse:true }).save(); // Backbone.add() overridden to persist changes
+            return this.state.progress.add({ module: module, status: status }, { parse:true, merge:true }).save(); // Backbone.add() overridden to persist changes
         },
 
         onAttach: function () {
@@ -98,6 +107,14 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
                 $el.addClass('active');
                 location = '#apply/' + view.pageOrder[(view.currentSlidePos = $(this).index())];
             })
+        },
+        
+        initUserPrefs: function () {
+            if (this.state.user.get('userName')) {
+                var prefs = store.getItem(PREFSPATH + this.state.user.get('userName').replace('.', '\\.')) || {};
+
+                this.$el.addClass(_.values(prefs).join(' '));
+            }
         },
 
         onShowPage: function (module) {
@@ -149,6 +166,7 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
                 }.bind(this));
 
                 function loadView(View, Model, Behavior, bindings) {
+                    var _this = this;
                     if (Model.getBindings)
                         // Register uses this pattern
                         bindings = Model, Model = null;
@@ -169,10 +187,16 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
                         region.view = new View(options);
                         region.show(region.view);
 
-                        _.delay(options.$el[0].scrollIntoView.bind(options.$el[0]), 10);
-
                         options.$el.removeClass('fadeOut').addClass('fadeIn');
 
+                        _.delay(function () {
+                            $('html, body').animate({
+                                scrollTop: this.$el.parent().siblings('h3').get(0).getBoundingClientRect().top
+                            }, 900);
+                        }.bind(_this), 10);
+
+                        //_.delay(options.$el[0].scrollIntoView.bind(this.$el.parent().siblings('h3').get(0)), 10);
+                        
                         resolve();
                     }
                 }
@@ -185,6 +209,7 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
 
         pageOrder: function () {
             return [
+                START_PAGE,
                 'demographics',
                 'background',
                 'lifestyle',
@@ -192,12 +217,13 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
                 'personal',
                 'essays',
                 'spouse',
-                'references'
+                'references',
+                COMPLETE_PAGE
             ]
         },
 
         _setTrackerStatus: function (module) {
-            var firstTodo, progress;
+            var nextModule, progress;
             return this._initProgress().then(function () {
                 progress = this.state.progress;
                 if (progress.length < 1) {
@@ -205,37 +231,50 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
                         .then(this._setTrackerStatus.bind(this));
                 }
                 else {
+                    if ((progress.get(nextModule = START_PAGE) && !progress.get(START_PAGE).get('status')) || 
+                        (progress.get(nextModule = COMPLETE_PAGE) && progress.get(COMPLETE_PAGE).get('status')))
+                        return nextModule; 
+
+                    nextModule = null;
                     _.each(this.pageOrder, function (mod, i) {
-                        if (progress.get(mod)) {
-                            if (!progress.get(mod).get('status')) {
-                                // False status, started but not finished
-                                if (!firstTodo) {
-                                    firstTodo = mod;
+                        var progressMod = progress.get(mod);
 
-                                    if (!module) // Highlight the first todo
-                                        this.ui[(mod + 'Meter')].addClass('active');
+                        if (isCurrentModuleInApply(mod)) {
+                            if (progressMod) {
+                                if (!progressMod.get('status')) {
+                                    // False status, started but not finished
+                                    if (!nextModule)
+                                        nextModule = mod;
+
+                                    this.ui[(mod + 'Meter')].addClass('incomplete').removeClass('complete');
                                 }
+                                else
+                                    this.ui[(mod + 'Meter')].removeClass('incomplete').addClass('complete');
+                            } else {
+                                // Not visited. Mark as 'todo'
+                                this.ui[(mod + 'Meter')].removeClass('incomplete complete active');
+                                // First visit, save progress as incomplete
+                                if (mod == module) this.setProgress(mod, false);
 
-                                this.ui[(mod + 'Meter')].addClass('incomplete');
+                                if (!nextModule)
+                                    nextModule = mod;
                             }
-                            else
-                                this.ui[(mod + 'Meter')].addClass('complete');
-                        } else {
-                            // Not visited. Mark as 'todo'
-                            this.ui[(mod + 'Meter')].removeClass('incomplete complete active');
-                            // First visit, save progress as incomplete
-                            if (mod == module) this.setProgress(mod, false);
+
+                            if (mod == module || (!module && nextModule == mod)) 
+                                this.ui[(mod + 'Meter')].addClass('active');
+                            else 
+                                this.ui[(mod + 'Meter')].removeClass('active');
                         }
-                        if (mod == module) this.ui[(mod + 'Meter')].addClass('active');
                     }.bind(this));
                 }
 
-                return firstTodo;
+                return nextModule;
             }.bind(this))
+            .fail(() => console.log("ERROR!"));
         },
 
         _initProgress: function () {
-            if (!this.progressLoaded) {
+            if (!this.progressLoaded || this.progressLoaded.statusCode().status != 200) {
                 this.state.progress = new ModulesProgress;
                 this.progressLoaded = this.state.progress.fetch();
             }
@@ -243,8 +282,16 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
             return this.progressLoaded;
         },
 
+        _resetApplication: function () {
+            delete this.progressLoaded;
+        },
+
         onDestroy: function () {
             this.ui.tracker.off('fsi.apply');
         }
     });
+
+    function isCurrentModuleInApply(mod) {
+        return [START_PAGE, COMPLETE_PAGE].indexOf(mod) < 0
+    }
 });

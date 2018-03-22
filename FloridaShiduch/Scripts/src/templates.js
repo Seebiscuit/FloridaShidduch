@@ -2,6 +2,7 @@
     "use strict";
     return {
         apply: {
+            start: _.template(require('text!templates/start-profile.html')),
             layout: _.template(require('text!templates/apply/apply-layout.html')),
             register: _.template(require('text!templates/apply/apply-register.html')),
             demographics: _.template(require('text!templates/apply/apply-demographics.html')),

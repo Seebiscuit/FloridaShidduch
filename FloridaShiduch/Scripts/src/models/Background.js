@@ -1,7 +1,7 @@
 define(['app', 'models/AuthenticatedModel'], function (app, AuthenticatedModel) {
     return AuthenticatedModel.extend({
-        urlRoot: function () {
-            return app.getApiRoot + 'Backgrounds/'
+        url: function () {
+            return app.getApiRoot + 'Backgrounds/' + this.user.id;
         },
 
         idAttribute: 'userId',
@@ -18,21 +18,30 @@ define(['app', 'models/AuthenticatedModel'], function (app, AuthenticatedModel) 
             baalTeshuva: { required: true },
             btTime: {
                 required: function (value, attr, computedState) {
-                    return !this.get('baalTeshuva');
-                }
+                    return this.get('baalTeshuva');
+                },
+                pattern: 'number',
+                msg: 'Please, enter number of years'
             },
             isKohen: {
                 required: function (value, attr, computedState) {
-                    return !$('body').hasClass('male');
+                    return $('body').hasClass('male');
                 }
             },
             marryCohen: {
                 required: function (value, attr, computedState) {
-                    return !$('body').hasClass('female');
+                    return $('body').hasClass('female');
                 }
             },
             ethnicity: { required: false },
-            observance: { required: true }
+            observance: {
+                required: true,
+                fn: function (value, attr, computedState) {
+                    if (value == 0) {
+                        return 'Please select the style of observance you keep';
+                    }
+                }
+            }
         }
     });
 });

@@ -75,12 +75,14 @@ namespace FloridaShiduch.Controllers
 
         // POST: api/Personals
         [ResponseType(typeof(Personal))]
-        public async Task<IHttpActionResult> PostPersonal(Personal personal)
+        public async Task<IHttpActionResult> PostPersonal(string id, Personal personal)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
+            personal.UserId = id;
 
             db.Personals.Add(personal);
 

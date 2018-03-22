@@ -75,12 +75,14 @@ namespace FloridaShiduch.Controllers
 
         // POST: api/Essays
         [ResponseType(typeof(Essay))]
-        public async Task<IHttpActionResult> PostEssay(Essay essay)
+        public async Task<IHttpActionResult> PostEssay(string id, Essay essay)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
+            essay.UserId = id;
 
             db.Essays.Add(essay);
 

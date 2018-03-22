@@ -75,12 +75,14 @@ namespace FloridaShiduch.Controllers
 
         // POST: api/Backgrounds
         [ResponseType(typeof(Background))]
-        public async Task<IHttpActionResult> PostBackground(Background background)
+        public async Task<IHttpActionResult> PostBackground(string id, Background background)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
+            background.UserId = id;
 
             db.Backgrounds.Add(background);
 

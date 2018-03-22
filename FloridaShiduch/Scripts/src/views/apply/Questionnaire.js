@@ -1,10 +1,12 @@
 define(['app'
+    , 'store'
     , 'backbone'
     , 'marionette'
     , 'templates'
 ],
+function (app, store, Backbone, Marionette, templates) {
+    var PREFSPATH = 'preferences.';
 
-function (app, Backbone, Marionette, templates) {
     return Marionette.LayoutView.extend({
         constructor: function (options) {
             // Deep extend events and handlers and bindings without writing to _proto_ references
@@ -50,7 +52,7 @@ function (app, Backbone, Marionette, templates) {
         initialize: function (options) {
             this.mergeOptions(options, this.viewOptions);
 
-            this.saveModel = _.debounce(this.saveModel.bind(this), 1000);
+            this.saveModel = _.debounce(this.saveModel.bind(this), 500);
 
             this.listenTo(app.radio.view.rootRadio.vent, 'module:set-status', this.handleNavigation);
 
@@ -85,16 +87,21 @@ function (app, Backbone, Marionette, templates) {
 
             app.radio.view.rootRadio.vent.trigger('module:set-status', this.module, isValid)
         },
-        // Used by Behaviors
+        //**=_ Used by Stick It (behaviors) _=**//
         updateBoolean: function (val, classes) {
             val = JSON.parse(val); //Converts to actual boolean
             // Number(true) = 1, Number(false) = 0;
             this.updateParentContainerClass(classes[Number(val)], classes[Number(!val)]);
         },
-        // Used by Behaviors
+
         updateParentContainerClass: function (add, remove) {
             this.$parentEl.removeClass(remove).addClass(add);
         },
+
+        saveUserPrefs: function (key, value) {
+            return store.setItem(PREFSPATH + this.state.user.get('userName').replace('.', '\\.') + '.' + key, value);
+        },
+        //**================================**//
 
         templateHelpers: function () {
             var view = this;

@@ -24,6 +24,8 @@ define(['marionette', 'upload-file'], function (Marionette, UploadFile) {
                 index = gender.indexOf(val);
 
             this.view.updateBoolean(!!index, gender);
+
+            this.view.saveUserPrefs('gender', val);
         },
 
         behaviors: function () { 

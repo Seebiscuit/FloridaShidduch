@@ -22,7 +22,7 @@ namespace FloridaShiduch.Controllers
         // GET: api/Occupations
         public IQueryable<Occupation> GetOccupations()
         {
-            return db.Occupations;
+            return db.Occupations.Include(o => o.OccupationTypes);
         }
 
         // GET: api/Occupations/5
@@ -52,6 +52,9 @@ namespace FloridaShiduch.Controllers
                 return BadRequest();
             }
 
+            occupation.ResetOccupationTypeDBEntries(db);
+            await db.SaveChangesAsync();
+
             db.Entry(occupation).State = EntityState.Modified;
 
             try
@@ -70,17 +73,19 @@ namespace FloridaShiduch.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(occupation);
         }
 
         // POST: api/Occupations
         [ResponseType(typeof(Occupation))]
-        public async Task<IHttpActionResult> PostOccupation(Occupation occupation, string occupationtype)
+        public async Task<IHttpActionResult> PostOccupation(string id, Occupation occupation, string occupationtype)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
+            occupation.UserId = id;
 
             db.Occupations.Add(occupation);
             db.OccupationsTypes.Add(new OccupationType { UserId = occupation.UserId, Type = occupationtype });

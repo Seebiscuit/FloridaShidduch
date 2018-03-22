@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 
 namespace FloridaShiduch.Models.Profile
 {
+    [Table("ModuleProgress")]
     public class ModuleProgress
     {
         [Key, Column(Order=0), ForeignKey("ApplicationUser")]

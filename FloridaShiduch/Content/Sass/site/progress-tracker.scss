@@ -80,6 +80,11 @@
                 color: $brand-danger;
                 border-bottom-color: $brand-danger;
 
+                &.active {
+                    color: $brand-warning;
+                    border-bottom-color: $brand-warning;
+                }
+
                 &:before {
                     color: $brand-danger;
                 }

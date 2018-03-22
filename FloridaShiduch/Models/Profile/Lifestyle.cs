@@ -24,8 +24,11 @@ namespace FloridaShiduch.Models.Profile
         [JsonProperty("kashrus")]
         public string Kashrus { get; set; }
 
-        [JsonProperty("dressCode")]
-        public string DressCode { get; set; }
+        [JsonProperty("skirtLength")]
+        public string SkirtLength { get; set; }
+
+        [JsonProperty("sleeveLength")]
+        public string SleeveLength { get; set; }
 
         [JsonProperty("hairCovering")]
         public string HairCovering { get; set; }

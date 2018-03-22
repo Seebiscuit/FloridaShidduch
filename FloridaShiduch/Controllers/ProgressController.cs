@@ -24,13 +24,13 @@ namespace FloridaShiduch.Controllers
         [ResponseType(typeof(ModuleProgress))]
         public async Task<IHttpActionResult> GetModuleProgress(string id)
         {
-            IEnumerable<ModuleProgress> moduleProgress = await db.ModulesProgress.Where(i => i.UserId == id).ToListAsync();
-            if (moduleProgress == null)
+            IEnumerable<ModuleProgress> modulesProgress = await db.ModulesProgress.Where(i => i.UserId == id).ToListAsync();
+            if (modulesProgress == null)
             {
                 return NotFound();
             }
 
-            return Ok(moduleProgress);
+            return Ok(modulesProgress);
         }
 
         // PUT: api/Progress/5

@@ -75,12 +75,14 @@ namespace FloridaShiduch.Controllers
 
         // POST: api/Spouses
         [ResponseType(typeof(Spouse))]
-        public async Task<IHttpActionResult> PostSpouse(Spouse spouse)
+        public async Task<IHttpActionResult> PostSpouse(string id, Spouse spouse)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
+            spouse.UserId = id;
 
             db.Spouses.Add(spouse);
 

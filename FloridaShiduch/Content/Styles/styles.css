@@ -13910,17 +13910,23 @@ nav#menu-nav ul.logged-in #logout {
 }
 
 /* line 83, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+.progress-meter-container ol.progress-meter li.incomplete.active {
+  color: #f0ad4e;
+  border-bottom-color: #f0ad4e;
+}
+
+/* line 88, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
 .progress-meter-container ol.progress-meter li.incomplete:before {
   color: #d9534f;
 }
 
-/* line 88, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 93, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
 .progress-meter-container ol.progress-meter li.done {
   color: black;
   border-bottom-color: yellowgreen;
 }
 
-/* line 92, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 97, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
 .progress-meter-container ol.progress-meter li.done:before {
   content: "\2713";
   height: 19px;

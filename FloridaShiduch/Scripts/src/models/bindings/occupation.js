@@ -70,11 +70,13 @@ define(['bindings', 'behaviors/occupation'], function (Bindings, OccupationBehav
             observe: 'jobTitle',
             setOps: { validate: true }
         },
-        '@ui.jobType': {
-            observe: 'jobType',
+        '@ui.occupationTypes': {
+            observe: 'occupationTypes',
             updateView: false,
             onSet: function (val, options) {
-                return val;
+                return _.map(val, function (type) {
+                    return { type: type };
+                });
                /* var other = options.view.ui.jobTypeOtherDesc.val()
 
                 val = _.without(val, 'other');
@@ -82,11 +84,11 @@ define(['bindings', 'behaviors/occupation'], function (Bindings, OccupationBehav
             },
             setOps: { validate: true }
         },
-        '@ui.jobTypeOther': {
+        '@ui.occupationTypeOther': {
             observe: 'jobType',
             updateView: false,
             onSet: function (val, options) {
-                return val;
+                return { type: val };
                /* var checks = options.view.ui.jobType.filter(':checked').map(function () { return this.value }).get();
 
                 return checks ? checks.push(val) : [val]; */

@@ -21,14 +21,17 @@ namespace FloridaShiduch.Models.Profile
         [JsonProperty("yeshiva")]
         public string Yeshiva { get; set; }
 
+        [JsonProperty("yeshivaPrincipal")]
+        public string YeshivaPrincipal { get; set; }
+
         [JsonProperty("yeshivaLocation")]
         public string YeshivaLocation { get; set; }
 
         [JsonProperty("israelStudy")]
-        public string IsraelStudy { get; set; }
+        public bool IsraelStudy { get; set; }
 
-        [JsonProperty("isrealDuration")]
-        public string IsrealDuration { get; set; }
+        [JsonProperty("israelDuration")]
+        public double IsraelDuration { get; set; }
 
         [JsonProperty("secularEducationLevel")]
         public string SecularEducationLevel { get; set; }
@@ -45,6 +48,14 @@ namespace FloridaShiduch.Models.Profile
         [JsonProperty("jobTitle")]
         public string JobTitle { get; set; }
 
+        [JsonProperty("occupationTypes")]
+        public virtual ICollection<OccupationType> OccupationTypes { get; set; }
+
         public virtual ApplicationUser ApplicationUser { get; set; }
+
+        public void ResetOccupationTypeDBEntries(ApplicationDbContext db)
+        {
+            db.OccupationsTypes.RemoveRange(db.OccupationsTypes.Where(ot => ot.UserId == this.UserId));
+        }
     }
 }

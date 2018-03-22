@@ -4,83 +4,91 @@
 
 <div class="form-group col-xs-12 col-sm-10 col-sm-offset-1">
     <div>
-        <label class="control-label" for="register-background-jfb">Born Jewish</label>
+        <label class="control-label" for="bornjewish">Born Jewish</label>
     </div>
     <div class="radio radio-info radio-inline">
-        <input type="radio" name="register-background-jfb" id="register-background-jfb-yes" value="true">
+        <input type="radio" name="bornjewish" id="register-background-jfb-yes" value="true">
         <label for="register-background-jfb-yes">Yes</label>
     </div>
     <div class="radio radio-info radio-inline">
-        <input type="radio" name="register-background-jfb" id="register-background-jfb-no" value="false">
+        <input type="radio" name="bornjewish" id="register-background-jfb-no" value="false">
         <label for="register-background-jfb-no">No</label>
     </div>
+    <span class="help-block hidden"></span>
 </div>
 <div class="form-group col-xs-12 col-sm-10 col-sm-offset-1 toggle-convert">
-    <label class="control-label" for="register-background-conversion">Conversion Information</label>
-    <input type="text" class="form-control" id="register-background-conversion" placeholder="Please provide the name of the Rabbi, Beis Din and date of conversion">
+    <label class="control-label" for="conversioninfo">Conversion Information</label>
+    <input type="text" class="form-control" id="register-background-conversion" name="conversioninfo" placeholder="Please provide the name of the Rabbi, Beis Din and date of conversion">
+    <span class="help-block hidden"></span>
 </div>
 <div class="form-group col-xs-12 col-sm-10 col-sm-offset-1">
-    <label class="control-label align-bottom" for="register-background-time">Religious Background</label>
+    <label class="control-label align-bottom" for="baalteshuva">Religious Background</label>
     <div class="">
         <div class="radio radio-info radio-inline col-xs-3 col-sm-4">
-            <input type="radio" name="register-background-bt" id="register-background-time-ffb" value="false">
+            <input type="radio" name="baalteshuva" id="register-background-time-ffb" value="false">
             <label for="register-background-time-ffb">Frum from birth</label>
         </div>
         <div class="radio radio-info radio-inline col-xs-3 col-sm-3 no-right-padding">
-            <input type="radio" name="register-background-bt" id="register-background-time-bt" value="true">
+            <input type="radio" name="baalteshuva" id="register-background-time-bt" value="true">
             <label for="register-background-time-bt">Baal Teshuva</label>
         </div>
 
         <div class="col-xs-5 col-sm-4 col-lg-3 no-left-padding toggle-bt">
-            <input type="text" class="form-control" id="register-background-bt-years" placeholder="From what year?">
+            <input type="text" class="form-control" id="register-background-bt-years" name="bttime" placeholder="From what year?">
         </div>
     </div>
+    <span class="help-block hidden"></span>
 </div>
 <div class="col-xs-12 col-sm-10 col-sm-offset-1">
     <div class="form-group col-xs-6 col-sm-4 col-md-4 col-lg-3 row">
-        <label class="control-label" for="register-background-ethnicity">Ethnicity</label>
-        <select id="register-background-ethnicity" class="form-control">
+        <label class="control-label" for="ethnicity">Ethnicity</label>
+        <select id="register-background-ethnicity" name="ethnicity" class="form-control">
             <option value="ashkenaz">Ashkenaz</option>
             <option value="sephardi">Sephardi</option>
             <option value="teimani">Teimani</option>
         </select>
     </div>
+    <span class="help-block hidden"></span>
 </div>
 <div class="col-xs-12 col-sm-10 col-sm-offset-1">
     <div class="form-group col-xs-9 col-sm-7 col-md-6 col-lg-5 row">
-        <label class="control-label" for="register-background-observance">Style of Observance</label>
-        <select id="register-background-observance" class="form-control">
+        <label class="control-label" for="observance">Style of Observance</label>
+        <select id="register-background-observance" name="observance" class="form-control">
+            <option value="0">-Select-</option>
             <option value="blackhat">Yeshivish Black Hat</option>
             <option value="chassidish">Chassidish</option>
             <option value="modern">Yeshivish Modern</option>
             <option value="liberal">Modern Orthodox Liberal</option>
             <option value="tranditional">Traditional and Growing</option>
         </select>
+        <span class="help-block hidden"></span>
     </div>
 </div>
 <div class="form-group col-xs-12 col-sm-10 col-sm-offset-1 male">
     <div>
-        <label class="control-label" for="register-background-kohen">Kohen</label>
+        <label class="control-label" for="iskohen">Kohen</label>
     </div>
     <div class="radio radio-info radio-inline">
-        <input type="radio" name="register-background-kohen" id="register-background-kohen-yes" value="true">
+        <input type="radio" name="iskohen" id="register-background-kohen-yes" value="true">
         <label for="register-background-kohen-yes">I am a Kohen</label>
     </div>
     <div class="radio radio-info radio-inline">
-        <input type="radio" name="register-background-kohen" id="register-background-kohen-bt" value="false">
+        <input type="radio" name="iskohen" id="register-background-kohen-bt" value="false">
         <label for="register-background-kohen-no">I am not</label>
     </div>
+    <span class="help-block hidden"></span>
 </div>
 <div class="form-group col-xs-12 col-sm-10 col-sm-offset-1 female">
     <div>
-        <label class="control-label" for="register-background-marrykohen">Can you marry a Kohen?</label>
+        <label class="control-label" for="marrykohen">Can you marry a Kohen?</label>
     </div>
     <div class="radio radio-info radio-inline">
-        <input type="radio" name="register-background-marrykohen" id="register-background-marrykohen-yes" value="true">
+        <input type="radio" name="marrykohen" id="register-background-marrykohen-yes" value="true">
         <label for="register-background-marrykohen-yes">Yes</label>
     </div>
     <div class="radio radio-info radio-inline">
         <input type="radio" name="register-background-marrykohen" id="register-background-marrykohen-no" value="false">
         <label for="register-background-marrykohen-no">No</label>
     </div>
+    <span class="help-block hidden"></span>
 </div>

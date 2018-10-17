@@ -1,5 +1,7 @@
-﻿define(['app', 'marionette'], function (app, Mn) {
+﻿define(['app', 'templates', 'marionette'], function (app, templates, Mn) {
     return Mn.LayoutView.extend({
+        template: templates.apply.edit,
+
         pageOrder: [
             'demographics',
             'background',
@@ -12,11 +14,15 @@
         ],
 
         ui: function () {
-            return _.reduce(this.pageOrder, function (memo, module) {
+            var ui = _.reduce(this.pageOrder, function (memo, module) {
                 memo[module] = '[data-region="' + module + '"]';
 
                 return memo;
             }, {});
+
+            ui.headers = 'h4';
+
+            return ui;
         },
 
         regions: function () {
@@ -27,29 +33,40 @@
             }, {});
         },
 
-        onRender: function () {
+        events: {
+            'click @ui.headers': 'onClickHeader'
+        },
 
+        onClickHeader: function (e) {
+            var el = $(e.currentTarget);
+
+            el.toggleClass("open");
+            this.ui.headers.not(el).removeClass("open");
+        },
+
+        onRender: function () {
+            this.showViews();
         },
 
         showViews: function () {
-            _each(this.pageOrder, function (module, index) {
+            this.pageOrder.forEach(function (module, index) {
                 this.showView([
                     'views/apply/Questionnaire'
                     , 'models/' + _.capitalize(module, true)
                     , 'behaviors/' + module
-                    , 'models/bindings/' + module], 
-                    this.getRegion(module), 
-                    { 
-                        module: module, 
-                        modules: this.pageOrder, 
-                        position: index, 
-                        $el: this.ui[module] 
+                    , 'models/bindings/' + module],
+                    this.getRegion(module),
+                    {
+                        module: module,
+                        modules: this.pageOrder,
+                        position: index,
+                        $el: this.ui[module]
                     })
             }.bind(this));
         },
 
         showView: function (moduleArray, region, options) {
-            require(modulearray, function (View, Model, Behavior, bindings) {
+            require(moduleArray, function (View, Model, Behavior, bindings) {
                 if (Model.getBindings)
                     // Register uses this pattern
                     bindings = Model, Model = null;
@@ -64,7 +81,7 @@
                 var readyToShowView = Promise.resolve();
                 if (options.model)
                     readyToShowView = options.model.fetch();
-                
+
                 readyToShowView.then(showView.bind(this), showView.bind(this));
 
                 function showView() {

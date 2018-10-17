@@ -378,6 +378,7 @@
     <Content Include="Content\Sass\animate\helpers\_settings.scss" />
     <Content Include="Content\Sass\animate\_animate.scss" />
     <Content Include="Content\Sass\site\pagination-controls.scss" />
+    <Content Include="Content\Sass\site\edit-profile.scss" />
     <None Include="Content\Sass\site\_apply.scss" />
     <Content Include="Content\Sass\styles.css">
       <DependentUpon>styles.scss</DependentUpon>
@@ -447,7 +448,7 @@
     <Content Include="Scripts\src\templates\apply\apply-essays.html" />
     <Content Include="Scripts\src\templates\apply\apply-references.html" />
     <Content Include="Scripts\src\templates\apply\apply-spouse.html" />
-    <Content Include="Scripts\src\templates\edit-profile-view.html" />
+    <Content Include="Scripts\src\templates\edit-profile.html" />
     <Content Include="Scripts\src\templates\start-profile.html" />
     <Content Include="Scripts\src\views\EditProfileView.js" />
     <Content Include="Scripts\src\views\apply\Questionnaire.js" />

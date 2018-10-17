@@ -68,11 +68,11 @@ namespace FloridaShiduch
 
 
     public class ApplicationDbInitializer
-        : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
+        : DropCreateDatabaseAlways<ApplicationDbContext>
     {
         public override void InitializeDatabase(ApplicationDbContext context)
         {
-                    if (context.Database.Exists())
+            if (context.Database.Exists())
                 context.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction,
                     string.Format(
                         @"USE [master];
@@ -83,7 +83,7 @@ namespace FloridaShiduch
                         EXEC(@kill);", context.Database.Connection.Database));
 
             base.InitializeDatabase(context);
-        }   
+        }
 
         protected override void Seed(ApplicationDbContext context)
         {
@@ -142,7 +142,7 @@ namespace FloridaShiduch
         {
             const string password = "Test1234";
 
-            for (int i = 0; i <= 8; i++)
+            for (int i = 0; i <= 10; i++)
             {
                 // Initial  User:
                 string username = string.Format("tester{0}@test.com", i);
@@ -188,7 +188,7 @@ namespace FloridaShiduch
                     // Populate data for the new user
                     var userDataSeed = new AutoCompleteUserData(user.Id, i);
 
-                    userDataSeed.Save(); 
+                    userDataSeed.Save();
                 }
             }
         }

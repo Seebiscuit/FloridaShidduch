@@ -19,17 +19,11 @@ namespace FloridaShiduch.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/References
-        public IQueryable<Reference> GetReferences()
-        {
-            return db.References;
-        }
-
         // GET: api/References/5
-        [ResponseType(typeof(Reference))]
-        public async Task<IHttpActionResult> GetReference(int id)
+        [ResponseType(typeof(IEnumerable<Reference>))]
+        public async Task<IHttpActionResult> GetReference(string userid)
         {
-            Reference reference = await db.References.FindAsync(id);
+            IEnumerable<Reference> reference = await db.References.Where(r => r.UserId == userid).ToListAsync();
             if (reference == null)
             {
                 return NotFound();
@@ -40,19 +34,15 @@ namespace FloridaShiduch.Controllers
 
         // PUT: api/References/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutReference(int id, Reference reference)
+        public async Task<IHttpActionResult> PutReference(string userid, IEnumerable<Reference> references)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != reference.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(reference).State = EntityState.Modified;
+            foreach (var reference in references)
+                db.Entry(reference).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +50,7 @@ namespace FloridaShiduch.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ReferenceExists(id))
+                if (!ReferenceExists(references.Select(r=>r.Id)))
                 {
                     return NotFound();
                 }
@@ -75,35 +65,41 @@ namespace FloridaShiduch.Controllers
 
         // POST: api/References
         [ResponseType(typeof(Reference))]
-        public async Task<IHttpActionResult> PostReference(string id, Reference reference)
+        public async Task<IHttpActionResult> PostReference(string userid, IEnumerable<Reference> references)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            reference.UserId = id;
+            foreach (var reference in references)
+            {
+                reference.UserId = userid;
 
-            db.References.Add(reference);
+                db.References.Add(reference); 
+            }
+
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = User.Identity.GetUserId() }, reference);
+            return CreatedAtRoute("DefaultApi", new { userid = User.Identity.GetUserId() }, references);
         }
 
         // DELETE: api/References/5
         [ResponseType(typeof(Reference))]
-        public async Task<IHttpActionResult> DeleteReference(int id)
+        public async Task<IHttpActionResult> DeleteReferences(string userid)
         {
-            Reference reference = await db.References.FindAsync(id);
-            if (reference == null)
+            IEnumerable<Reference> references = await db.References.Where(r=>r.UserId==userid).ToListAsync();
+            if (references == null)
             {
                 return NotFound();
             }
 
-            db.References.Remove(reference);
+            foreach (var reference in references)
+                db.References.Remove(reference); 
+            
             await db.SaveChangesAsync();
 
-            return Ok(reference);
+            return Ok(references);
         }
 
         protected override void Dispose(bool disposing)
@@ -115,9 +111,9 @@ namespace FloridaShiduch.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ReferenceExists(int id)
+        private bool ReferenceExists(IEnumerable<int> ids)
         {
-            return db.References.Count(e => e.Id == id) > 0;
+            return db.References.Count(e => ids.Contains(e.Id)) > 0;
         }
     }
 }

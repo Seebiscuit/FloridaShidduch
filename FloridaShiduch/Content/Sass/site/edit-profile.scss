@@ -1,0 +1,60 @@
+﻿@import "variables";
+
+#profile-edit {
+    .component-title-container {
+        display: none;
+    }
+
+    h4 {
+        .fa-caret-up,
+        &.open .fa-caret-down,
+        + .region-display {
+            display: none;
+        }
+
+        &.open {
+            .fa-caret-up {
+                display:inline-block;
+            }
+
+            & + .region-display {
+                display:block;
+            }
+        }
+    }
+}
+
+
+
+/**** Edit Profile Idea
+#profile-edit .component-title-container {
+    display: none;
+}
+
+#profile-edit input[type="radio"]:not(:checked),
+#profile-edit input[type="radio"]:not(:checked) + label,
+#profile-edit input[type="radio"]:checked + label::before,
+#profile-edit input[type="radio"]:checked + label::after {
+     display: none;
+}
+
+#profile-edit input[type="checkbox"]:not(:checked),
+#profile-edit input[type="checkbox"]:not(:checked) + label,
+#profile-edit input[type="checkbox"]:checked + label::before,
+#profile-edit input[type="checkbox"]:checked + label::after {
+     display: none;
+}
+
+#profile-edit select,
+#profile-edit input[type="date"],
+#profile-edit input,
+#profile-edit textarea {
+    background-color: transparent;
+    border: none;
+    border-radius:0;
+    box-shadow: none;
+}
+
+
+
+*/

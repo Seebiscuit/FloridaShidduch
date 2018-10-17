@@ -19,6 +19,7 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
         id: 'apply-regions',
 
         regions: {
+            profileStart: '@ui.profileStartRegion',
             registration: '@ui.registration',
             demographics: '@ui.demographics',
             background: '@ui.background',
@@ -27,11 +28,13 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
             occupation: '@ui.occupation',
             personal: '@ui.personal',
             references: '@ui.references',
-            spouse: '@ui.spouse'
-        },
+            spouse: '@ui.spouse',
+            profileEdit: '@ui.profileEditRegion'
+    },
 
         ui: {
             //** REGIONS
+            profileStartRegion: '#profile-start',
             registration: '#apply-registration',
             demographics: '#apply-demographics',
             background: '#apply-background',
@@ -41,6 +44,7 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
             personal: '#apply-personal',
             references: '#apply-references',
             spouse: '#apply-spouse',
+            profileEditRegion: '#profile-edit',
             //** Tracker
             registrationMeter: '#meter-registration',
             demographicsMeter: '#meter-demographics',
@@ -76,8 +80,8 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
 
         goToLastProgress: function (isinit) {
             this._setTrackerStatus().then(function (todo) {
-                if (todo == _.first(this.pageOrder) || todo == _.last(this.pageOrder))
-                    location = '#profile/' + todo;
+                if (todo == START_PAGE || todo == COMPLETE_PAGE)
+                    this["showProfile" + _.capitalize(todo)]()
                 else if (location.hash.indexOf('#apply/' + todo) > -1)
                     // already at this todo, just show it
                     this.showQuestionnaireModule(todo);
@@ -150,6 +154,34 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
                 , 'models/bindings/' + module], this.getRegion(module), { module: module, modules: this.pageOrder, position: index, $el: this.ui[module] });
 
             if (!isinit) this.seekTracker(module);  // Tracker set on init;
+        },
+
+        showProfileStart: function () {
+            var fadeOut,
+                region = this.getRegion('profileStart');
+
+            require(['views/StartProfile'], _.bind(function (ProfileStart) {
+                this.$('> div.fadeIn').removeClass('fadeIn').addClass('fadeOut');
+
+                region.view = new ProfileStart;
+                region.show(region.view);
+
+                region.$el.removeClass('fadeOut').addClass('fadeIn');
+            }, this));
+        },
+
+        showProfileEdit: function () {
+            var region = this.getRegion('profileEdit');
+
+            require(['views/EditProfileView'], _.bind(function (EditProfileView) {
+                this.$('> div.fadeIn').removeClass('fadeIn').addClass('fadeOut');
+
+                region.view = new EditProfileView;
+                region.show(region.view);
+
+                region.$el.removeClass('fadeOut').addClass('fadeIn');
+
+            }, this));
         },
 
         showView: function (modulearray, region, options) {

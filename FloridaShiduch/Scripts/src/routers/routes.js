@@ -11,8 +11,6 @@ function (Marionette) {
         appRoutes: {
             "logout": "logout",
             "apply/:page": "showApply",
-            "profile/start": "showProfileStart",
-            "profile/edit": "showProfileEdit",
             ":bookmark": "navRoutes",
             "*any": "showMain"
         },

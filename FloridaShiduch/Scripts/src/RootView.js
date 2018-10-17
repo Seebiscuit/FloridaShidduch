@@ -10,20 +10,14 @@ define(['app'
 
             regions: {
                 main: '@ui.main',
-                profileStart: '@ui.profileStartRegion',
                 apply: '#apply-region',
-                profileEdit: '@ui.profileEditRegion',
                 login: '@ui.login'
             },
 
             ui: {
                 // Sections
                 main: '#main',
-                profileStartRegion: '#profile-start-region',
-                profileStart: '#profile-start',
                 apply: '#apply',
-                profileEdit: '#profile-edit',
-                profileEditRegion: '#profile-edit-region',
                 login: '#login',
 
                 nav: 'nav#menu-nav',
@@ -115,16 +109,6 @@ define(['app'
                 }
             },
 
-            showProfileStart: function () {
-                var region = this.getRegion('profileStart');
-
-                require(['views/StartProfile'], _.bind(function (ProfileStart) {
-                    region.view = new ProfileStart;
-                    region.show(region.view);
-                    this.appChange(this.ui.profileStart)
-                }, this));
-            },
-
             showApply: function (page) {
                 var region = this.getRegion('apply');
                 if (!region.view) {
@@ -138,16 +122,6 @@ define(['app'
                     region.view.triggerMethod('show:page', page);
                     this.appChange(this.ui.apply);
                 }
-            },
-
-            showProfileEdit: function () {
-                var region = this.getRegion('profileEdit');
-
-                require(['views/EditProfileView'], _.bind(function (EditProfileView) {
-                    region.view = new EditProfileView;
-                    region.show();
-                    this.appChange(this.ui.profileEdit)
-                }, this));
             },
 
             onLogin: function () {

@@ -9,6 +9,7 @@
 @import "apply";
 @import "misc";
 @import "progress-tracker";
+@import "edit-profile"; 
 @import "pagination-controls";
 @import "../../../scripts/src/bower_components/font-awesome/scss/variables";
 @import "fa-mixin";
@@ -224,3 +225,4 @@ fieldset p {
 .radio + .radio, .checkbox + .checkbox {
     margin-top: 0 !important;
 }
+

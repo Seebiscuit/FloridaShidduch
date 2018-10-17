@@ -14,6 +14,7 @@ namespace FloridaShiduch.Models
         private ApplicationDbContext context = new ApplicationDbContext();
 
         private readonly List<string> PAGE_ORDER = new List<string> {
+            "Start",
             "Demographics",
             "Background",
             "Lifestyle",
@@ -21,7 +22,8 @@ namespace FloridaShiduch.Models
             "Personal",
             "Essays",
             "Spouse",
-            "References"
+            "References",
+            "Edit"
         };
 
         public AutoCompleteUserData(string userid, int pages)
@@ -37,7 +39,8 @@ namespace FloridaShiduch.Models
 
             for (int i = 0; i < levels; i++)
             {
-                thisType.GetMethod("Complete" + PAGE_ORDER[i]).Invoke(this, new object[] { });
+                if (i > 0 && i < levels - 1)
+                    thisType.GetMethod("Complete" + PAGE_ORDER[i]).Invoke(this, new object[] { });
 
                 SetProgress(PAGE_ORDER[i].ToLower());
             }

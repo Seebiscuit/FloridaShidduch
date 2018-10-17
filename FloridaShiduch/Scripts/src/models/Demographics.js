@@ -17,7 +17,7 @@ define(['app', 'models/AuthenticatedModel'], function (app, AuthenticatedModel) 
                 pattern: /(^\d{5}$)|(^\d{5}-\d{4}$)/,
                 required: true,
                 msg: 'Please provide a United States zip code. Zip + 4 are also accepted'
-        },
+            },
             countryId: { required: false },
             homePhone: {
                 pattern: /^[\W_]?\d?[\W_]{0,2}\d{3}[\W_]?\d{3}[\W_]?\d{4}/,

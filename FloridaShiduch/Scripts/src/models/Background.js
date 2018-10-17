@@ -13,7 +13,8 @@ define(['app', 'models/AuthenticatedModel'], function (app, AuthenticatedModel) 
             conversionInfo: {
                 required: function (value, attr, computedState) {
                     return !this.get('bornJewish');
-                }
+                },
+                dependsOn: 'bornJewish'
             },
             baalTeshuva: { required: true },
             btTime: {
@@ -21,17 +22,20 @@ define(['app', 'models/AuthenticatedModel'], function (app, AuthenticatedModel) 
                     return this.get('baalTeshuva');
                 },
                 pattern: 'number',
-                msg: 'Please, enter number of years'
+                msg: 'Please, enter number of years',
+                dependsOn: 'baalTeshuva'
             },
             isKohen: {
                 required: function (value, attr, computedState) {
                     return $('body').hasClass('male');
-                }
+                },
+                dependsOn: 'Demographics.gender.male'
             },
             marryCohen: {
                 required: function (value, attr, computedState) {
                     return $('body').hasClass('female');
-                }
+                },
+                dependsOn: 'Demographics.gender.female'
             },
             ethnicity: { required: false },
             observance: {

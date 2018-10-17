@@ -4,6 +4,12 @@
             return app.getApiRoot + 'Essays/' + this.user.id;
         },
 
-        idAttribute: 'userId'
+        idAttribute: 'userId',
+
+        validation: {
+            character: { required: false },
+            spouseCharacter: { required: false },
+            specialInterests: { required: false }
+        }
     });
 });

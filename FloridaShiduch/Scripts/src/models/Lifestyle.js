@@ -4,6 +4,15 @@
             return app.getApiRoot + 'Lifestyles/' + this.user.id;
         },
 
-        idAttribute: 'userId'
+        idAttribute: 'userId',
+
+        validation: {
+            learnFrequency: { required: false },
+            shulFrequency: { required: false },
+            kashrus: { required: false },
+            dressCodeSkirt: { required: false, dependsOn: 'Demographics.gender.female' },
+            dressCodeSleeve: { required: false, dependsOn: 'Demographics.gender.female' },
+            hairCovering: { required: false, dependsOn: 'Demographics.gender.female' }
+        }
     });
 });

@@ -51,15 +51,19 @@ namespace FloridaShiduch.Controllers
 
         // PUT: api/References/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutReferences(string id, IEnumerable<Reference> references)
+        public async Task<IHttpActionResult> PutReferences(string id, Reference reference)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            foreach (var reference in references)
-                db.Entry(reference).State = EntityState.Modified;
+            if (reference.Id == default(int))
+            {
+                return BadRequest();
+            }
+
+            db.Entry(reference).State = EntityState.Modified;
 
             try
             {
@@ -67,7 +71,7 @@ namespace FloridaShiduch.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ReferenceExists(references.Select(r=>r.Id)))
+                if (!ReferenceExists(reference.Id))
                 {
                     return NotFound();
                 }
@@ -82,23 +86,36 @@ namespace FloridaShiduch.Controllers
 
         // POST: api/References
         [ResponseType(typeof(Reference))]
-        public async Task<IHttpActionResult> PostReferences(string id, IEnumerable<Reference> references)
+        public async Task<IHttpActionResult> PostReferences(string id, Reference reference)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            foreach (var reference in references)
-            {
-                reference.UserId = id;
+            reference.UserId = id;
 
-                db.References.Add(reference); 
-            }
+            db.References.Add(reference);
 
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { userid = User.Identity.GetUserId() }, references);
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                if (ReferenceExists(reference.Id))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return CreatedAtRoute("DefaultApi", new { userid = User.Identity.GetUserId() }, reference);
         }
 
         // DELETE: api/References/5
@@ -128,9 +145,9 @@ namespace FloridaShiduch.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ReferenceExists(IEnumerable<int> ids)
+        private bool ReferenceExists(int id)
         {
-            return db.References.Count(e => ids.Contains(e.Id)) > 0;
+            return db.References.Count(e => e.Id == id) > 0;
         }
     }
 }

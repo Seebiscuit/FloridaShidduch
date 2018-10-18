@@ -3,3 +3,20 @@
         margin-top: 0.3rem;
     }
 }
+
+.btn-float {
+    position: absolute;
+    margin: 0.1rem;
+    
+    &.btn-float-left {
+        right: 0
+    }
+    
+    &.btn-float-top {
+        top: 0
+    }
+}
+
+.btn-round {
+    border-radius: 2rem;
+}

@@ -13805,6 +13805,27 @@ nav#menu-nav ul.logged-in #logout {
   margin-top: 0.3rem;
 }
 
+/* line 7, ../Content/Sass/site/_misc.scss */
+.btn-float {
+  position: absolute;
+  margin: 0.1rem;
+}
+
+/* line 11, ../Content/Sass/site/_misc.scss */
+.btn-float.btn-float-left {
+  right: 0;
+}
+
+/* line 15, ../Content/Sass/site/_misc.scss */
+.btn-float.btn-float-top {
+  top: 0;
+}
+
+/* line 20, ../Content/Sass/site/_misc.scss */
+.btn-round {
+  border-radius: 2rem;
+}
+
 /* GENERAL */
 /* EXTENDS BOOTSTRAP */
 /* Section Sizes */
@@ -13943,34 +13964,34 @@ nav#menu-nav ul.logged-in #logout {
 /* EXTENDS BOOTSTRAP */
 /* Section Sizes */
 /* line 4, ../Content/Sass/site/edit-profile.scss */
-#profile-edit .component-title-container {
+#apply-edit .component-title-container {
   display: none;
 }
 
 /* line 9, ../Content/Sass/site/edit-profile.scss */
-#profile-edit h4 .fa-caret-up,
-#profile-edit h4.open .fa-caret-down,
-#profile-edit h4 + .region-display {
+#apply-edit h4 .fa-caret-up,
+#apply-edit h4.open .fa-caret-down,
+#apply-edit h4 + .region-display {
   display: none;
 }
 
 /* line 16, ../Content/Sass/site/edit-profile.scss */
-#profile-edit h4.open .fa-caret-up {
+#apply-edit h4.open .fa-caret-up {
   display: inline-block;
 }
 
 /* line 20, ../Content/Sass/site/edit-profile.scss */
-#profile-edit h4.open + .region-display {
+#apply-edit h4.open + .region-display {
   display: block;
 }
 
 /* line 26, ../Content/Sass/site/edit-profile.scss */
-#profile-edit progress {
+#apply-edit progress {
   width: 50px;
   float: left;
   height: 8px;
-  margin-right: 10px;
-  margin-top: 5px;
+  margin-right: 1rem;
+  margin-top: 0.45rem;
 }
 
 /**** Edit Profile Idea
@@ -14019,6 +14040,11 @@ nav#menu-nav ul.logged-in #logout {
 }
 
 /* line 15, ../Content/Sass/site/pagination-controls.scss */
+.pagination-control + .pagination-control .component-title-container {
+  display: none;
+}
+
+/* line 19, ../Content/Sass/site/pagination-controls.scss */
 .pagination-control .pagination {
   font-size: 4rem;
   vertical-align: middle;
@@ -14026,26 +14052,26 @@ nav#menu-nav ul.logged-in #logout {
   margin: 0 0 .87rem 0;
 }
 
-/* line 21, ../Content/Sass/site/pagination-controls.scss */
+/* line 25, ../Content/Sass/site/pagination-controls.scss */
 .pagination-control .pagination.pagination-left {
   margin-right: 2rem;
 }
 
-/* line 25, ../Content/Sass/site/pagination-controls.scss */
+/* line 29, ../Content/Sass/site/pagination-controls.scss */
 .pagination-control .pagination.pagination-right {
   margin-left: 2rem;
 }
 
 @media (max-width: 400px) {
-  /* line 15, ../Content/Sass/site/pagination-controls.scss */
+  /* line 19, ../Content/Sass/site/pagination-controls.scss */
   .pagination-control .pagination {
     font-size: 1.5rem;
   }
-  /* line 32, ../Content/Sass/site/pagination-controls.scss */
+  /* line 36, ../Content/Sass/site/pagination-controls.scss */
   .pagination-control .pagination.pagination-left {
     margin-right: .2rem;
   }
-  /* line 36, ../Content/Sass/site/pagination-controls.scss */
+  /* line 40, ../Content/Sass/site/pagination-controls.scss */
   .pagination-control .pagination.fa.pagination-right {
     margin-left: .2rem;
   }
@@ -14133,7 +14159,7 @@ header .login {
   display: none;
 }
 
-/* line 80, ../Content/Sass/site/site.scss */
+/* line 81, ../Content/Sass/site/site.scss */
 .body.logged-in .logout {
   display: block;
 }
@@ -14306,6 +14332,20 @@ fieldset p {
 .radio + .radio,
 .checkbox + .checkbox {
   margin-top: 0 !important;
+}
+
+/* line 231, ../Content/Sass/site/site.scss */
+.apply-questionnaire-collection .row {
+  max-width: 91%;
+  background-color: lightgray;
+  padding-top: 23px;
+  margin: 0px;
+  border-radius: 5px;
+}
+
+/* line 238, ../Content/Sass/site/site.scss */
+.apply-questionnaire-collection .row:nth-child(even) {
+  background-color: transparent;
 }
 
 /*# sourceMappingURL=styles.css.map */

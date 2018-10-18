@@ -9,7 +9,7 @@
 @import "apply";
 @import "misc";
 @import "progress-tracker";
-@import "edit-profile"; 
+@import "edit-profile";
 @import "pagination-controls";
 @import "../../../scripts/src/bower_components/font-awesome/scss/variables";
 @import "fa-mixin";
@@ -70,18 +70,18 @@ header {
 
 .body {
     .logout {
-        display:none;
+        display: none;
     }
 
     &.logged-in {
-        .login  {
-        display:none;
+        .login {
+            display: none;
         }
+
         .logout {
-            display:block;
+            display: block;
         }
     }
-
 }
 
 .black-gradient {
@@ -227,3 +227,16 @@ fieldset p {
     margin-top: 0 !important;
 }
 
+.apply-questionnaire-collection {
+    .row {
+        max-width: 91%;
+        background-color: lightgray;
+        padding-top: 23px;
+        margin: 0px;
+        border-radius: 5px;
+
+        &:nth-child(even) {
+            background-color: transparent;
+        }
+    }
+}

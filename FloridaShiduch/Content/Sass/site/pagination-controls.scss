@@ -12,6 +12,10 @@
         }
     }
 
+    & + .pagination-control .component-title-container {
+        display: none;
+    }
+
     .pagination {
         font-size: 4rem;
         vertical-align: middle;

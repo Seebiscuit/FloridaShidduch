@@ -68,7 +68,7 @@ namespace FloridaShiduch
 
 
     public class ApplicationDbInitializer
-        : DropCreateDatabaseAlways<ApplicationDbContext>
+        : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
     {
         public override void InitializeDatabase(ApplicationDbContext context)
         {

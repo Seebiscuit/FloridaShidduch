@@ -47,7 +47,7 @@ function (app, store, Backbone, Marionette, templates) {
             change: 'onChange'
         },
 
-        viewOptions: ['$parentEl', 'module', 'modules', 'position'],
+        viewOptions: ['$parentEl', 'module', 'modules', 'position', 'title'],
 
         initialize: function (options) {
             this.mergeOptions(options, this.viewOptions);
@@ -108,7 +108,7 @@ function (app, store, Backbone, Marionette, templates) {
 
             return {
                 printTitle: function () {
-                    return view.module[0].toUpperCase() + view.module.substr(1);
+                    return view.title || view.module[0].toUpperCase() + view.module.substr(1);
                 },
 
                 addControls: function (title) {
@@ -126,7 +126,9 @@ function (app, store, Backbone, Marionette, templates) {
                         titleEl.after(next.prop('href', '#apply/' + view.modules[view.position + 1]));
 
                     return Backbone.$('<div/>').append(container).html();
-                }
+                },
+
+                model: view.model
             }
         },
 

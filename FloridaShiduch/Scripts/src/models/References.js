@@ -1,4 +1,4 @@
-﻿define(['app', 'models/AuthenticatedModel'], function (app, AuthenticatedModel) {
+﻿define(['app', 'models/AuthenticatedModel', 'backbone'], function (app, AuthenticatedModel, Backbone) {
     var validationTemplate = {
         rank: { required: false },
         name: { required: false },
@@ -7,15 +7,13 @@
         relationship: { required: false }
     };
 
-    var validation = [1, 2, 3].map(function (n) {
-        var v = {};
-
-        Object.keys(template).forEach(function (key) {
+    var validation = [1, 2, 3].reduce(function (v, n) {
+        Object.keys(validationTemplate).forEach(function (key) {
             v[key + n] = validationTemplate[key];
         })
 
         return v;
-    });
+    }, {});
 
     return AuthenticatedModel.extend({
         idAttribute: 'userId',
@@ -31,27 +29,39 @@
         parse: function (response, options) {
             return response.reduce(function (memo, reference, index) {
                 Object.keys(reference).forEach(function (key) {
-                    memo[key + index + 1] = reference[key];
+                    memo[key + (index + 1)] = reference[key];
                 });
 
                 return memo;
             }, {})
         },
 
+        save: function (attr, options) {
+            this.saving = true;
+
+            return Backbone.Model.prototype.save.apply(this, arguments);
+        },
+
         toJSON: function (options) {
-            var references = [];
 
-            Object.keys(this.attributes).forEach(function (key) {
-                var attrKey = key.substr(0, key.length - 2);
-                var n = parseInt(key[key.length - 1]);
+            if (this.saving) {
+                this.saving = false;
 
-                if (references[n] === undefined)
-                    references[n] = {};
+                var references = [];
 
-                references[n][attrKey] = this.attributes[key];
-            });
+                Object.keys(this.attributes).forEach(function (key) {
+                    var attrKey = key.substr(0, key.length - 2);
+                    var n = parseInt(key[key.length - 1]);
 
-            return references;
+                    if (references[n] === undefined)
+                        references[n] = {};
+
+                    references[n][attrKey] = this.attributes[key];
+                }.bind(this));
+
+                return references;
+            } else
+                return Backbone.Model.prototype.toJSON.apply(this, arguments);
         },
 
         validation: validation

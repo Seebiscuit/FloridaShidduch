@@ -10,9 +10,15 @@
             learnFrequency: { required: false },
             shulFrequency: { required: false },
             kashrus: { required: false },
-            dressCodeSkirt: { required: false, dependsOn: 'Demographics.gender.female' },
-            dressCodeSleeve: { required: false, dependsOn: 'Demographics.gender.female' },
-            hairCovering: { required: false, dependsOn: 'Demographics.gender.female' }
+            dressCodeSkirt: { required: false },
+            dressCodeSleeve: { required: false },
+            hairCovering: { required: false }
+        },
+
+        validationDependencies: {
+            dressCodeSkirt: 'demographics.gender.female',
+            dressCodeSleeve: 'demographics.gender.female',
+            hairCovering: 'demographics.gender.female'
         }
     });
 });

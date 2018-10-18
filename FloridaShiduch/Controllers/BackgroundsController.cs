@@ -27,7 +27,7 @@ namespace FloridaShiduch.Controllers
 
         // GET: api/Backgrounds/5
         [ResponseType(typeof(Background))]
-        public async Task<IHttpActionResult> GetBackground(string id)
+        public async Task<IHttpActionResult> GetBackgrounds(string id)
         {
             Background background = await db.Backgrounds.FindAsync(id);
             if (background == null)

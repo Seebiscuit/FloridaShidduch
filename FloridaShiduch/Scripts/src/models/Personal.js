@@ -17,13 +17,17 @@
             build: { required: false },
             maritalStatus: { required: false },
             children: { required: false },
-            childrenNumber: { required: false,
+            childrenNumber: {
+                required: false,
                 pattern: 'number',
                 msg: 'Please, enter number of children',
-                dependsOn: 'children'
             },
             pets: { required: false },
             smoke: { required: false }
+        },
+
+        validationDependencies: {
+            childrenNumber: 'children'
         }
     });
 });

@@ -4,21 +4,19 @@
         ui: function () {
             var template = {
                 rank: '#rank',
-                name: '#register-reference-#-fullname',
-                cityAndState: '#register-reference-1-location',
-                phone: '#register-reference-1-phone',
-                relationship: '#register-reference-1-relationship'
+                name: '#register-reference-_-fullname',
+                cityAndState: '#register-reference-_-location',
+                phone: '#register-reference-_-phone',
+                relationship: '#register-reference-_-relationship'
             };
 
-            return [1, 2, 3].map(function (n) {
-                var ui = {};
-
+            return [1, 2, 3].reduce(function (ui, n) {
                 Object.keys(template).forEach(function (key) {
-                    ui[key + n] = template[key].replace('#', n);
+                    ui[key + n] = template[key].replace('_', n);
                 })
 
                 return ui;
-            })
+            }, {});
         }
     });
 });

@@ -62,7 +62,7 @@ namespace FloridaShiduch.Controllers
         {
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Database.Initialize(true);
+                ctx.Database.Initialize(force: false);
             }
         }
 

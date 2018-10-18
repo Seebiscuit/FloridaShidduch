@@ -1,4 +1,5 @@
 requirejs.config({
+    waitSeconds: 130,
     deps: ['main', 'jquery', 'picturefill', 'bootstrap', 'bootstrap-form', 'unslider', 'backbone.stickit', 'backbone.validate'],
     paths: {
         backbone: 'bower_components/backbone/backbone',

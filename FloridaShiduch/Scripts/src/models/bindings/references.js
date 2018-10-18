@@ -1,4 +1,4 @@
-﻿define(['bindings', 'behaviors/references'], function (Bindings, ReferencesBehavior) {
+define(['bindings', 'behaviors/references'], function (Bindings, ReferencesBehavior) {
     'use strict';
     // Singleton
     var bindingsTemplate = {
@@ -24,20 +24,18 @@
         }
     };
 
-    var bindings = [1, 2, 3].map(function (n) {
-        var b = {};
-
-        Object.keys(template).forEach(function (key) {
+    var bindings = [1, 2, 3].reduce(function (b, n) {
+        Object.keys(bindingsTemplate).forEach(function (key) {
             b[key + n] = bindingsTemplate[key];
 
             b[key + n].observe = bindingsTemplate[key].observe.replace('#', n)
         })
 
         return b;
-    })
+    }, {})
 
 
-    bindings = new Bindings(b, ReferencesBehavior.prototype.ui);
+    bindings = new Bindings(bindings, ReferencesBehavior.prototype.ui);
 
 
     return bindings;

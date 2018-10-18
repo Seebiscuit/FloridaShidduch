@@ -13,19 +13,19 @@ define(['app', 'backbone', 'models/AuthenticatedModel'], function (app, Backbone
         validation: {
             hebrewEducationLevel: { required: false },
             yeshiva: { required: false },
-            yeshivaPrincipal: { required: false, dependsOn: 'yeshiva' },
-            yeshivaLocation: { required: false, dependsOn: 'yeshiva' },
+            yeshivaPrincipal: { required: false },
+            yeshivaLocation: { required: false },
             israelStudy: { required: false },
-            isrealDuration: { required: false, dependsOn: 'israelStudy' },
+            isrealDuration: { required: false },
             secularEducationLevel: { required: false },
             collegeBachelors: { required: false },
             collegeMasters: { required: false },
             collegeDoctorate: { required: false },
-            degreeBachelors: { required: false, dependsOn: 'collegeBachelors' },
-            degreeMasters: { required: false, dependsOn: 'collegeMasters' },
-            degreeDoctorate: { required: false, dependsOn: 'collegeDoctorate' },
-            companyName: { required: false, dependsOn: 'occupationTypes.working' },
-            jobTitle: { required: false, dependsOn: 'occupationTypes.working' },
+            degreeBachelors: { required: false },
+            degreeMasters: { required: false },
+            degreeDoctorate: { required: false },
+            companyName: { required: false },
+            jobTitle: { required: false },
             occupationTypes: { required: false },
             occupationTypeOther: {
                 required: function (value, attr, computedState) {
@@ -33,9 +33,19 @@ define(['app', 'backbone', 'models/AuthenticatedModel'], function (app, Backbone
                         return type === 'other';
                     });
                 },
-                msg: 'Please, enter an occupation or uncheck \'Other\'',
-                dependsOn: 'occupationTypes.other'
+                msg: 'Please, enter an occupation or uncheck \'Other\''
             }
+        },
+
+        validationDependencies: {
+            yeshivaPrincipal: 'yeshiva',
+            yeshivaLocation: 'yeshiva',
+            degreeBachelors: 'collegeBachelors',
+            degreeMasters: 'collegeMasters',
+            degreeDoctorate: 'collegeDoctorate',
+            companyName: 'occupationTypes.working',
+            jobTitle: 'occupationTypes.working',
+            occupationTypeOther:'occupationTypes.other'
         }
     });
 });

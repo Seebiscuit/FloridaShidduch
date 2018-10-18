@@ -20,10 +20,27 @@ namespace FloridaShiduch.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/References/5
-        [ResponseType(typeof(IEnumerable<Reference>))]
-        public async Task<IHttpActionResult> GetReference(string userid)
+        [ResponseType(typeof(IEnumerable<object>))]
+        public async Task<IHttpActionResult> GetReferences()
         {
-            IEnumerable<Reference> reference = await db.References.Where(r => r.UserId == userid).ToListAsync();
+            IEnumerable<object> reference = await db.References
+                .GroupBy(r => r.UserId)
+                .Select(r => new { userId = r.Key, references = r })
+                .ToListAsync();
+
+            if (reference == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(reference);
+        }
+
+        // GET: api/References/5
+        [ResponseType(typeof(IEnumerable<Reference>))]
+        public async Task<IHttpActionResult> GetReferences(string id)
+        {
+            IEnumerable<Reference> reference = await db.References.Where(r => r.UserId == id).ToListAsync();
             if (reference == null)
             {
                 return NotFound();
@@ -34,7 +51,7 @@ namespace FloridaShiduch.Controllers
 
         // PUT: api/References/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutReference(string userid, IEnumerable<Reference> references)
+        public async Task<IHttpActionResult> PutReferences(string id, IEnumerable<Reference> references)
         {
             if (!ModelState.IsValid)
             {
@@ -65,7 +82,7 @@ namespace FloridaShiduch.Controllers
 
         // POST: api/References
         [ResponseType(typeof(Reference))]
-        public async Task<IHttpActionResult> PostReference(string userid, IEnumerable<Reference> references)
+        public async Task<IHttpActionResult> PostReferences(string id, IEnumerable<Reference> references)
         {
             if (!ModelState.IsValid)
             {
@@ -74,7 +91,7 @@ namespace FloridaShiduch.Controllers
 
             foreach (var reference in references)
             {
-                reference.UserId = userid;
+                reference.UserId = id;
 
                 db.References.Add(reference); 
             }
@@ -86,9 +103,9 @@ namespace FloridaShiduch.Controllers
 
         // DELETE: api/References/5
         [ResponseType(typeof(Reference))]
-        public async Task<IHttpActionResult> DeleteReferences(string userid)
+        public async Task<IHttpActionResult> DeleteReferences(string id)
         {
-            IEnumerable<Reference> references = await db.References.Where(r=>r.UserId==userid).ToListAsync();
+            IEnumerable<Reference> references = await db.References.Where(r=>r.UserId==id).ToListAsync();
             if (references == null)
             {
                 return NotFound();

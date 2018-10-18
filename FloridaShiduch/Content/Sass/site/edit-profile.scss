@@ -14,13 +14,21 @@
 
         &.open {
             .fa-caret-up {
-                display:inline-block;
+                display: inline-block;
             }
 
             & + .region-display {
-                display:block;
+                display: block;
             }
         }
+    }
+
+    progress {
+        width: 50px;
+        float: left;
+        height: 8px;
+        margin-right: 10px;
+        margin-top: 5px;
     }
 }
 

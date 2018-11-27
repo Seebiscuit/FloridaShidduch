@@ -39,7 +39,7 @@ namespace FloridaShiduch.Models
 
             for (int i = 0; i < levels; i++)
             {
-                if (i > 0 && i < levels - 1)
+                if (i > 0 && i <= levels - 1)
                     thisType.GetMethod("Complete" + PAGE_ORDER[i]).Invoke(this, new object[] { });
 
                 SetProgress(PAGE_ORDER[i].ToLower());
@@ -64,7 +64,7 @@ namespace FloridaShiduch.Models
                 UserId = userId,
                 FirstName = "Gary",
                 LastName = "Kaganas",
-                Gender = "M",
+                Gender = "male",
                 Address = "1045 NE 179th Terr.",
                 City = "North Miami Beach",
                 State = "FL",

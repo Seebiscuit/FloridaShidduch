@@ -29,21 +29,18 @@ nav#menu-nav {
             }
         }
 
-        #logout {
+        .logout {
             display: none;
         }
 
-        &.logged-in {
-            #login {
+        .logged-in & {
+            .login {
                 display: none;
             }
 
-            #logout {
+            .logout {
                 display: block;
             }
-        }
-
-        @include breakpoint($break-small) {
         }
     }
 
@@ -64,8 +61,12 @@ nav#menu-nav {
 
             li {
                 display: inline-block;
-                font-size: $font-size-xlarge * .65;
+                font-size: $font-size-large;
             }
+        }
+
+        .login, .logout {
+            font-size: $font-size-large;
         }
     }
 }

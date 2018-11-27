@@ -393,6 +393,7 @@
     <Content Include="Scripts\.gitattributes" />
     <Content Include="Scripts\.gitignore" />
     <Content Include="Scripts\Gruntfile.js" />
+    <Content Include="Scripts\src\behaviors\ModelBehavior.js" />
     <Content Include="Scripts\src\collections\AuthenticatedCollection.js" />
     <Content Include="Scripts\src\collections\ModulesProgress.js" />
     <Content Include="Scripts\src\collections\References.js" />

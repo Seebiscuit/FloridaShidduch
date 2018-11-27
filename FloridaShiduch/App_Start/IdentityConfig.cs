@@ -142,7 +142,7 @@ namespace FloridaShiduch
         {
             const string password = "Test1234";
 
-            for (int i = 0; i <= 10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 // Initial  User:
                 string username = string.Format("tester{0}@test.com", i);

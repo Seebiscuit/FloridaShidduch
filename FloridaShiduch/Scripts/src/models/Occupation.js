@@ -10,6 +10,14 @@ define(['app', 'backbone', 'models/AuthenticatedModel'], function (app, Backbone
             return _.result(this, 'urlRoot') + this.user.id + '?occupationtype=' + this.get('occupationType');
         },
 
+        save: function (attr, options) {
+            options = options || {};
+
+            options.silent = true; // Avoid change events when OccupationTypes come back with populated Id
+            
+            return Backbone.Model.prototype.save.call(this, attr, options);
+        },
+
         validation: {
             hebrewEducationLevel: { required: false },
             yeshiva: { required: false },

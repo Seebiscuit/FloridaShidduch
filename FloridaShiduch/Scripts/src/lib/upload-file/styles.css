@@ -1,8 +1,9 @@
-﻿.file-upload-component {
+.file-upload-component {
     border: 1px solid lightgray;
     padding: 10px;
     margin: 15px 0;
     text-align: center;
+    background-color: aliceblue;
 }
 
     .file-upload-component button.upload {
@@ -12,6 +13,7 @@
     .file-upload-component .image-preview-container {
         border: 1px solid lightgray;
         margin-bottom: 1rem;
+        background-color: white;
     }
 
     .file-upload-component.uf-preview .file-upload-preview {
@@ -32,7 +34,7 @@
 
     .file-upload-component.uf-upload .file-upload-preview .btn-block + .btn-block {
         float: right;
-        margin:auto;
+        margin: auto;
     }
 
     .file-upload-component .file-upload-preview .uf-upload,

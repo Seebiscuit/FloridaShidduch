@@ -33,9 +33,23 @@
             border-bottom-color: $brand-primary;
             cursor: pointer;
 
+            @include breakpoint($break-small) {
+                span {
+                    visibility: hidden;
+                    font-size: $font-size-small;
+                }
+
+                $list: ('demographics','background','lifestyle','occupation','personal','essays','spouse','reference');
+
+                @each $page in $list {
+                    .meter-#{$page} &#meter-#{$page} span {
+                        visibility: visible;
+                    }
+                }
+            }
+
             @include breakpoint($break-vsmall) {
                 width: 10.9%;
-                font-size: $font-size-small * 0.55;
                 vertical-align: text-bottom;
             }
             /*@include breakpoint($break-medium) {
@@ -51,8 +65,8 @@
                 text-indent: 0;
                 right: -10px;
                 content: "\2B24";
-                font-size: $font-size-base;
-                bottom: -32px;
+                font-size: ($font-size-base * 1.5);
+                bottom: -33px;
                 color: $brand-primary;
                 line-height: 0;
                 text-shadow: none;

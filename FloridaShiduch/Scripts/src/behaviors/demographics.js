@@ -1,6 +1,6 @@
-define(['marionette', 'upload-file'], function (Marionette, UploadFile) {
+define(['marionette', "behaviors/ModelBehavior", 'upload-file'], function (Marionette, ModelBehavior, UploadFile) {
     'use strict';
-    return Marionette.Behavior.extend({
+    return ModelBehavior.extend({
         ui: {
             firstName: '#register-fname',
             lastName: '#register-lname',

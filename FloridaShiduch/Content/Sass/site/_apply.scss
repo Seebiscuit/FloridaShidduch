@@ -1,14 +1,16 @@
 ﻿#apply-regions {
-    > div.view {
-        /*border: 1px solid lightgray;
+    #apply-views {
+        > div.view {
+            /*border: 1px solid lightgray;
         padding-top:2rem;
         padding-bottom:2rem;*/
-        &.fadeOut {
-            display: none;
-        }
+            &.fadeOut {
+                display: none;
+            }
 
-        [class*="toggle-"] + [class*="toggle-"] {
-            margin-top: .3rem;
+            [class*="toggle-"] + [class*="toggle-"] {
+                margin-top: .3rem;
+            }
         }
     }
 
@@ -27,5 +29,11 @@
 
     .container-10 {
         height: 90%;
+    }
+
+    #apply-essays {
+        textarea {
+            min-height: 8rem;
+        }
     }
 }

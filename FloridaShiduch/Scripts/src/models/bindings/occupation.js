@@ -72,7 +72,7 @@ define(['bindings', 'behaviors/occupation'], function (Bindings, OccupationBehav
         },
         '@ui.occupationTypes': {
             observe: 'occupationTypes',
-            updateView: false,
+            updateView: true,
             onSet: function (val, options) {
                 return _.map(val, function (type) {
                     return { type: type };
@@ -81,6 +81,11 @@ define(['bindings', 'behaviors/occupation'], function (Bindings, OccupationBehav
 
                 val = _.without(val, 'other');
                 return (other && options.view.$('#register-occupation-other').is(':checked')) ? val.concat(other) : val; */
+            },
+            onGet: function (val, options) {
+                return _.map(val, function (v) {
+                    return v.type;
+                });
             },
             setOps: { validate: true }
         },

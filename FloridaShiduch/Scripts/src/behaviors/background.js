@@ -1,6 +1,6 @@
-define(['marionette'], function (Marionette) {
+define(['marionette', "behaviors/ModelBehavior"], function (Marionette, ModelBehavior) {
     'use strict';
-    return Marionette.Behavior.extend({
+    return ModelBehavior.extend({
         ui: {
             bornJewish: 'input[name="bornjewish"]',
             conversionInfo: '#register-background-conversion',

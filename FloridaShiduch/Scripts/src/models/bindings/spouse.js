@@ -1,4 +1,4 @@
-﻿define(['bindings', 'behaviors/spouse'], function (Bindings, SpouseBehavior) {
+define(['bindings', 'behaviors/spouse'], function (Bindings, SpouseBehavior) {
     'use strict';
     // Singleton
     var bindings = new Bindings({
@@ -28,6 +28,16 @@
         },
         '@ui.maritalStatus': {
             observe: 'maritalStatus',
+            updateView: true,
+            onSet: function (val, options) {
+                if (Array.isArray(val))
+                    return val.join(",");
+
+                return val
+            },
+            onGet: function (val, options) {
+                return (val || "").split(",")
+            },
             setOps: { validate: true }
         },
         '@ui.allowChildren': {

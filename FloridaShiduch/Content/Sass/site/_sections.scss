@@ -5,9 +5,10 @@
     // height: 71vh;
 }
 
-section#content {
-    //height: inherit;
-    overflow-y: visible;
+div#content {
+    @include breakpoint($break-small) {
+        padding-top: 107px;
+    }
 }
 
 section {
@@ -202,30 +203,33 @@ section {
     }
 
     #apply-regions {
+        #apply-views {
+            min-height: 40rem;
 
-        > div {
-            text-align:left;
+            > div {
+                text-align: left;
 
-            .component-title, .component-subtitle {
-                text-align: center;
-                margin-bottom: 2rem;
-
-                ~ .component-subtitle {
-                    margin-top: -$font-size-h6;
-                }
-
-                > span {
+                .component-title, .component-subtitle {
                     text-align: center;
-                    margin-bottom: 45px;
+                    margin-bottom: 2rem;
+
+                    ~ .component-subtitle {
+                        margin-top: -$font-size-h6;
+                    }
+
+                    > span {
+                        text-align: center;
+                        margin-bottom: 45px;
+                    }
+
+                    &.inline {
+                        display: inline-block;
+                    }
                 }
 
-                &.inline {
-                    display: inline-block;
+                .component-title-container {
+                    text-align: center;
                 }
-            }
-
-            .component-title-container {
-                text-align: center;
             }
         }
 

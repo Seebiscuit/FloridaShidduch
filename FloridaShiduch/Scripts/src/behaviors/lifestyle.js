@@ -1,6 +1,6 @@
-define(['marionette'], function (Marionette) {
+define(['marionette', "behaviors/ModelBehavior"], function (Marionette, ModelBehavior) {
     'use strict';
-    return Marionette.Behavior.extend({
+    return ModelBehavior.extend({
         ui: {
             learnFrequency: 'input[name="learnfrequency"]',
             shulFrequency: 'input[name="shulfrequency"]',

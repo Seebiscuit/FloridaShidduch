@@ -1,17 +1,17 @@
 /* GENERAL */
 /* EXTENDS BOOTSTRAP */
 /* Section Sizes */
-/* line 5, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 5, ../Content/Sass/site/progress-tracker.scss */
 .progress-meter-container {
   text-align: center !important;
 }
 
-/* line 8, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 8, ../Content/Sass/site/progress-tracker.scss */
 .progress-meter-container .progress-meter {
   padding: 0;
 }
 
-/* line 12, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 12, ../Content/Sass/site/progress-tracker.scss */
 .progress-meter-container ol.progress-meter {
   margin-top: 2rem;
   padding-bottom: 9.5px;
@@ -20,13 +20,13 @@
 }
 
 @media (max-width: 400px) {
-  /* line 12, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+  /* line 12, ../Content/Sass/site/progress-tracker.scss */
   .progress-meter-container ol.progress-meter {
     width: 87%;
   }
 }
 
-/* line 22, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 22, ../Content/Sass/site/progress-tracker.scss */
 .progress-meter-container ol.progress-meter li {
   display: inline-block;
   font-size: .598rem;
@@ -49,77 +49,116 @@
         }*/
 }
 
+@media (max-width: 767px) {
+  /* line 37, ../Content/Sass/site/progress-tracker.scss */
+  .progress-meter-container ol.progress-meter li span {
+    visibility: hidden;
+    font-size: 0.85rem;
+  }
+  /* line 45, ../Content/Sass/site/progress-tracker.scss */
+  .meter-demographics .progress-meter-container ol.progress-meter li#meter-demographics span {
+    visibility: visible;
+  }
+  /* line 45, ../Content/Sass/site/progress-tracker.scss */
+  .meter-background .progress-meter-container ol.progress-meter li#meter-background span {
+    visibility: visible;
+  }
+  /* line 45, ../Content/Sass/site/progress-tracker.scss */
+  .meter-lifestyle .progress-meter-container ol.progress-meter li#meter-lifestyle span {
+    visibility: visible;
+  }
+  /* line 45, ../Content/Sass/site/progress-tracker.scss */
+  .meter-occupation .progress-meter-container ol.progress-meter li#meter-occupation span {
+    visibility: visible;
+  }
+  /* line 45, ../Content/Sass/site/progress-tracker.scss */
+  .meter-personal .progress-meter-container ol.progress-meter li#meter-personal span {
+    visibility: visible;
+  }
+  /* line 45, ../Content/Sass/site/progress-tracker.scss */
+  .meter-essays .progress-meter-container ol.progress-meter li#meter-essays span {
+    visibility: visible;
+  }
+  /* line 45, ../Content/Sass/site/progress-tracker.scss */
+  .meter-spouse .progress-meter-container ol.progress-meter li#meter-spouse span {
+    visibility: visible;
+  }
+  /* line 45, ../Content/Sass/site/progress-tracker.scss */
+  .meter-reference .progress-meter-container ol.progress-meter li#meter-reference span {
+    visibility: visible;
+  }
+}
+
 @media (max-width: 400px) {
-  /* line 22, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+  /* line 22, ../Content/Sass/site/progress-tracker.scss */
   .progress-meter-container ol.progress-meter li {
     width: 10.9%;
-    font-size: 0.4675rem;
     vertical-align: text-bottom;
   }
 }
 
-/* line 48, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 62, ../Content/Sass/site/progress-tracker.scss */
 .progress-meter-container ol.progress-meter li:before {
   position: relative;
   float: right;
   text-indent: 0;
   right: -10px;
   content: "\2B24";
-  font-size: 1rem;
-  bottom: -32px;
+  font-size: 1.5rem;
+  bottom: -33px;
   color: #337ab7;
   line-height: 0;
   text-shadow: none;
 }
 
 @media (max-width: 767px) {
-  /* line 48, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+  /* line 62, ../Content/Sass/site/progress-tracker.scss */
   .progress-meter-container ol.progress-meter li:before {
     right: -7.5px;
     bottom: -34px;
   }
 }
 
-/* line 66, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 80, ../Content/Sass/site/progress-tracker.scss */
 .progress-meter-container ol.progress-meter li.active {
   color: #5bc0de;
   border-bottom-color: #5bc0de;
 }
 
-/* line 70, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 84, ../Content/Sass/site/progress-tracker.scss */
 .progress-meter-container ol.progress-meter li.active.done {
   color: #5bc0de;
 }
 
-/* line 74, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 88, ../Content/Sass/site/progress-tracker.scss */
 .progress-meter-container ol.progress-meter li.active:before {
   color: #5bc0de;
 }
 
-/* line 79, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 93, ../Content/Sass/site/progress-tracker.scss */
 .progress-meter-container ol.progress-meter li.incomplete {
   color: #d9534f;
   border-bottom-color: #d9534f;
 }
 
-/* line 83, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 97, ../Content/Sass/site/progress-tracker.scss */
 .progress-meter-container ol.progress-meter li.incomplete.active {
   color: #f0ad4e;
   border-bottom-color: #f0ad4e;
 }
 
-/* line 88, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 102, ../Content/Sass/site/progress-tracker.scss */
 .progress-meter-container ol.progress-meter li.incomplete:before {
   color: #d9534f;
 }
 
-/* line 93, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 107, ../Content/Sass/site/progress-tracker.scss */
 .progress-meter-container ol.progress-meter li.done {
   color: black;
   border-bottom-color: yellowgreen;
 }
 
-/* line 97, C:/Users/Gary/Google Drive/Development/Websites/FloridaShiduch/FloridaShiduch/Content/Sass/site/progress-tracker.scss */
+/* line 111, ../Content/Sass/site/progress-tracker.scss */
 .progress-meter-container ol.progress-meter li.done:before {
   content: "\2713";
   height: 19px;

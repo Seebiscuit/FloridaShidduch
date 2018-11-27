@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace FloridaShiduch.Models.Profile
 {
@@ -53,9 +54,16 @@ namespace FloridaShiduch.Models.Profile
 
         public virtual ApplicationUser ApplicationUser { get; set; }
 
-        public void ResetOccupationTypeDBEntries(ApplicationDbContext db)
+        public async Task ResetOccupationTypeDBEntries(ApplicationDbContext db)
         {
-            db.OccupationsTypes.RemoveRange(db.OccupationsTypes.Where(ot => ot.UserId == this.UserId));
+            var occupationTypes = db.OccupationsTypes.Where(ot => ot.UserId == this.UserId);
+            db.OccupationsTypes.RemoveRange(occupationTypes);
+
+            await db.SaveChangesAsync();
+
+            foreach (var type in occupationTypes)
+                // Stop tracking the entity so we can add new ones with same primary key
+                db.Entry(type).State = EntityState.Detached;
         }
     }
 }

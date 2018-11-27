@@ -35,6 +35,13 @@ define(['app'
                 var radio = app.radio.view.rootRadio,
                     _this = this;
 
+                radio.commands.setHandlers({
+                    'update:nav': {
+                        callback: _.debounce(function () { this.ui.nav.affix('checkPosition'); }.bind(this), 100),
+                        context: _this
+                    }
+                });
+
                 radio.reqres.setHandlers({
                     'apply:show': {
                         callback: _this.showApply,
@@ -46,10 +53,23 @@ define(['app'
             },
 
             onRender: function () {
+                this.appChange(this.ui.main);
+
                 if ((this.isLoggedIn = this.state.user.isLoggedIn()))
                     this.onLogin();
 
                 this.setBoostrapFns();
+
+                // Start slider
+                setTimeout(function () {
+                    $('header #main-slider').unslider({
+                        animation: 'fade',
+                        autoplay: true,
+                        arrows: false,
+                        infinite: true,
+                        dots: false
+                    });
+                }, 0);
             },
 
             setBoostrapFns: function () {
@@ -74,8 +94,6 @@ define(['app'
                 if (this.$previous)
                     this.$previous.hide();
                 this.$current.show();
-                // UI Change, update scroll position
-                this.ui.nav.affix('checkPosition');
                 //this.ui.nav.scrollspy('refresh');
             },
 
@@ -115,13 +133,13 @@ define(['app'
                     require(['views/apply/ApplyLayout'], _.bind(function (ApplyLayout) {
                         region.view = new ApplyLayout({ page: page });
                         region.show(region.view);
-                        this.appChange(this.ui.apply);
                     }, this));
                 }
                 else {
                     region.view.triggerMethod('show:page', page);
-                    this.appChange(this.ui.apply);
                 }
+
+                this.appChange(this.ui.apply);
             },
 
             onLogin: function () {
@@ -138,10 +156,8 @@ define(['app'
 
             resetViews: function () {
                 var applyLayoutRegion = this.getRegion('apply');
-                if (applyLayoutRegion.view) {
-                    applyLayoutRegion.view.destroy();
+                if (applyLayoutRegion)
                     delete applyLayoutRegion.view;
-                }
             },
 
             logout: function () {

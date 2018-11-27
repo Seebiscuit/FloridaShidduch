@@ -39,7 +39,7 @@ namespace FloridaShiduch.Controllers
         }
 
         // PUT: api/Occupations/5
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof(Occupation))]
         public async Task<IHttpActionResult> PutOccupation(string id, Occupation occupation)
         {
             if (!ModelState.IsValid)
@@ -47,15 +47,21 @@ namespace FloridaShiduch.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != occupation.UserId)
+            var dbOccupation = db.Occupations.SingleOrDefault(o => o.UserId == id);
+
+            if (id != occupation.UserId || dbOccupation == null)
             {
                 return BadRequest();
             }
 
-            occupation.ResetOccupationTypeDBEntries(db);
-            await db.SaveChangesAsync();
+            db.Entry(dbOccupation).CurrentValues.SetValues(occupation);
 
-            db.Entry(occupation).State = EntityState.Modified;
+            await occupation.ResetOccupationTypeDBEntries(new ApplicationDbContext());
+
+            SanitizeTypes(occupation.OccupationTypes.ToList());
+
+            foreach (var occupationType in occupation.OccupationTypes)
+                db.OccupationsTypes.Add(occupationType);
 
             try
             {
@@ -137,6 +143,17 @@ namespace FloridaShiduch.Controllers
         private bool OccupationExists(string id)
         {
             return db.Occupations.Count(e => e.UserId == id) > 0;
+        }
+
+        private void SanitizeTypes(List<OccupationType> types)
+        {
+            for (int i = 0; i < types.Count; i++)
+            {
+                var type = types[i];
+
+                type.ApplicationUser = null;
+                type.Id = default(int);
+            }
         }
     }
 }

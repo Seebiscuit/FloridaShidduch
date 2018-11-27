@@ -12,7 +12,7 @@ function (_, Backbone) {
         this.root = '/';
         this.getApiRoot = '/api/';
         // DEV ENV ONLY Hit Init route to initialize DB
-        //$.getJSON(this.getApiRoot + 'Account/Init');
+        $.getJSON(this.getApiRoot + 'Account/Init');
     });
 
     // Return the instantiated app (there should only be one)

@@ -54,8 +54,24 @@ header {
     overflow: hidden;
     position: relative;
 
+    @include breakpoint($break-medium) {
+        height: 28vh;
+    }
+
+    @include breakpoint($break-small) {
+        height: 15vh;
+    }
+
     #main-slider {
         height: 50vh;
+
+        @include breakpoint($break-medium) {
+            height: 28vh;
+        }
+
+        @include breakpoint($break-small) {
+            height: 15vh;
+        }
     }
 
     .login {
@@ -65,22 +81,6 @@ header {
         z-index: 20;
         padding: 1rem;
         color: white;
-    }
-}
-
-.body {
-    .logout {
-        display: none;
-    }
-
-    &.logged-in {
-        .login {
-            display: none;
-        }
-
-        .logout {
-            display: block;
-        }
     }
 }
 
@@ -227,6 +227,12 @@ fieldset p {
     margin-top: 0 !important;
 }
 
+.edit-application .not-editing,
+body:not(.edit-application) .editing {
+    display: none;
+}
+
+
 .apply-questionnaire-collection {
     .row {
         max-width: 91%;
@@ -235,7 +241,7 @@ fieldset p {
         margin: 0px;
         border-radius: 5px;
 
-        &:nth-child(even) {
+        &:nth-child(odd) {
             background-color: transparent;
         }
     }

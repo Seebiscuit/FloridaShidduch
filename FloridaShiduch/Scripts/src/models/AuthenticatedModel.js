@@ -17,6 +17,7 @@ define(['app', 'backbone', 'state'], function AuthenticatedModel(app, Backbone, 
             options.beforeSend = function (xhr) {
                 xhr.setRequestHeader('Authorization', ("Bearer " + user.getUserToken()));
             }.bind(this);
+
             return Backbone.Model.prototype.sync.apply(this, arguments);
         }
 

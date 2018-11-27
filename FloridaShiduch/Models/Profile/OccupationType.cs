@@ -19,6 +19,7 @@ namespace FloridaShiduch.Models.Profile
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [JsonProperty("id")]
         public int Id { get; set; }
 
         [JsonProperty("userId")]

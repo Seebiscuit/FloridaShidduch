@@ -84,7 +84,7 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
         },
 
         onBeforeShow: function () {
-            this.showQuestionnaireModule(this.page);
+            this.onShowPage(this.page);
         },
 
         goToLastProgress: function (isinit) {
@@ -136,7 +136,15 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
         },
 
         onShowPage: function (module) {
-            this.showQuestionnaireModule(module);
+            // Navigation guard: goto module, unless we have not started or already finished application
+            this._initProgress().then(function () {
+                progress = this.state.progress;
+                if ((progress.get(nextModule = START_PAGE) && !progress.get(START_PAGE).get('status')) || 
+                    (progress.get(nextModule = COMPLETE_PAGE) && progress.get(COMPLETE_PAGE).get('status')))
+                    module = nextModule; 
+
+                this.showQuestionnaireModule(module);
+            }.bind(this));
         },
 
         showRegister: function (module) {
@@ -187,10 +195,12 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
             var fadeOut,
                 region = this.getRegion('start');
 
+            this.$el.removeClass('applying');
+
             app.router.navigate('#apply/start'); 
 
             require(['views/StartProfile'], _.bind(function (ProfileStart) {
-                this.$('> div.fadeIn').removeClass('fadeIn').addClass('fadeOut');
+                this.$('#apply-views > div.fadeIn').removeClass('fadeIn').addClass('fadeOut');
 
                 region.view = new ProfileStart;
                 region.show(region.view);
@@ -202,10 +212,13 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
         showProfileEdit: function (module) {
             var region = this.getRegion('edit');
 
+            this.$el.removeClass('applying')
+            $('body').addClass('edit-application');
+
             app.router.navigate('#apply/edit'); 
             
             require(['views/EditProfileView'], _.bind(function (EditProfileView) {
-                this.$('> div.fadeIn').removeClass('fadeIn').addClass('fadeOut');
+                this.$('#apply-views > div.fadeIn').removeClass('fadeIn').addClass('fadeOut');
 
                 region.view = new EditProfileView({ module:module });
                 region.show(region.view);
@@ -220,15 +233,15 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
             return new Promise(function (resolve, reject) {
                 require(modulearray, function (View, Model, Behavior, bindings) {
 
-                    fadeOut = this.$('> div.fadeIn')
+                    fadeOut = this.$('#apply-views > div.fadeIn')
 
-                    _.defer(loadView.bind(this, View, Model, Behavior, bindings));
+                    _.defer(loadView.bind(this, View, Model, Behavior, bindings, options));
 
                     fadeOut.removeClass('fadeIn').addClass('fadeOut');
 
                 }.bind(this));
 
-                function loadView(View, Model, Behavior, bindings) {
+                function loadView(View, Model, Behavior, bindings, options) {
                     var _this = this;
                     if (Model.getBindings)
                         // Register uses this pattern
@@ -251,6 +264,14 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
                         region.show(region.view);
 
                         options.$el.removeClass('fadeOut').addClass('fadeIn');
+
+                        app.radio.view.rootRadio.commands.execute('update:nav');
+
+                        $("body")
+                            .removeClass (function (index, className) {
+                                return (className.match (/(^|\s)meter-\S+/g) || []).join(' ');
+                            })
+                            .addClass('meter-' + options.module);
 
                         _.delay(function () {
                             $('html, body').animate({

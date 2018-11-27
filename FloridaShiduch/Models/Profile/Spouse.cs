@@ -33,6 +33,9 @@ namespace FloridaShiduch.Models.Profile
         [JsonProperty("maxInches")]
         public int MaxInches { get; set; }
 
+        [JsonProperty("maritalStatus")]
+        public string MaritalStatus { get; set; }
+
         [JsonProperty("hebrewEducationLevel")]
         public string HebrewEducationLevel { get; set; }
 

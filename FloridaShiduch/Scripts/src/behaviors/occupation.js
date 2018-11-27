@@ -1,6 +1,6 @@
-define(['marionette'], function (Marionette) {
+define(['marionette', "behaviors/ModelBehavior"], function (Marionette, ModelBehavior) {
     'use strict';
-    return Marionette.Behavior.extend({
+    return ModelBehavior.extend({
         ui: {
             hebrewEducationLevel: 'input[name="register-education-hebrew"]',
             yeshiva: '#register-education-hebrew-yeshsemi',
@@ -63,13 +63,15 @@ define(['marionette'], function (Marionette) {
         },
 
         updateOccupation: function (model, val, options) {
+            var isWorking = val.some(function(o) { return o.type === 'working'; });
+            var isOther = val.some(function(o) { return o.type === 'other'; });
             // Update 'working' inputs
-            this.view.updateBoolean(!!(val.indexOf('working') + 1), ['', 'toggle-working']);
+            this.view.updateBoolean(isWorking, ['', 'toggle-working']);
             // Update 'other' inputs
-            this.view.updateBoolean(!!(val.indexOf('other') + 1), ['', 'toggle-other-occupation']);
+            this.view.updateBoolean(isOther, ['', 'toggle-other-occupation']);
 
-            this.view.saveUserPrefs('working', val.indexOf('working') + 1 ? 'toggle-working' : '');
-            this.view.saveUserPrefs('working',  val.indexOf('other') + 1 ? 'toggle-other-occupation' : '');
+            this.view.saveUserPrefs('working', isWorking ? 'toggle-working' : '');
+            this.view.saveUserPrefs('working',  isOther ? 'toggle-other-occupation' : '');
         }
     });
 });

@@ -2,5 +2,8 @@ node_modules
 temp
 dist
 .sass-cache
-src/bower_components
+
+src/bower_components/*
+!src/bower_components/**/dist/
+!src/bower_components/**/lib/
 .tmp/

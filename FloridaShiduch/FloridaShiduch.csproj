@@ -386,7 +386,13 @@
     <Content Include="Content\Sass\styles.min.css">
       <DependentUpon>styles.css</DependentUpon>
     </Content>
+    <Content Include="Content\Styles\edit-profile.css" />
+    <Content Include="Content\Styles\font-awesome.css" />
+    <Content Include="Content\Styles\progress-tracker.css" />
+    <Content Include="Content\Styles\rangeslider.css" />
+    <Content Include="Content\Styles\site.css" />
     <Content Include="Content\Styles\styles.css" />
+    <Content Include="Content\Styles\unslider.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
@@ -476,6 +482,14 @@
     </Content>
     <Content Include="_apply-master.html" />
     <Content Include="Scripts\src\main.js.vsspell" />
+    <Content Include="Content\Styles\edit-profile.css.map" />
+    <Content Include="Content\Styles\font-awesome.css.map" />
+    <Content Include="Content\Styles\progress-tracker.css.map" />
+    <Content Include="Content\Styles\rangeslider.css.map" />
+    <Content Include="Content\Styles\site.css.map" />
+    <Content Include="Content\Styles\styles.css.map" />
+    <Content Include="Content\Styles\unslider.css.map" />
+    <None Include="Properties\PublishProfiles\jewishmatch.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

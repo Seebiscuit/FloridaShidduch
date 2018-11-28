@@ -29,6 +29,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <ExcludeFoldersFromDeployment>Content\Sass</ExcludeFoldersFromDeployment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,6 +38,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <ExcludeFoldersFromDeployment>Content\Sass</ExcludeFoldersFromDeployment>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -409,6 +411,14 @@
     <Content Include="Scripts\src\bower_components\backbone.wreqr\lib\backbone.wreqr.min.js" />
     <Content Include="Scripts\src\bower_components\backbone\backbone-min.js" />
     <Content Include="Scripts\src\bower_components\backbone\backbone.js" />
+    <Content Include="Scripts\src\bower_components\bootstrap-formhelpers\dist\css\bootstrap-formhelpers.css" />
+    <Content Include="Scripts\src\bower_components\bootstrap-formhelpers\dist\css\bootstrap-formhelpers.min.css" />
+    <Content Include="Scripts\src\bower_components\bootstrap-formhelpers\dist\img\bootstrap-formhelpers-countries.flags-LICENSE.txt" />
+    <Content Include="Scripts\src\bower_components\bootstrap-formhelpers\dist\img\bootstrap-formhelpers-countries.flags.png" />
+    <Content Include="Scripts\src\bower_components\bootstrap-formhelpers\dist\img\bootstrap-formhelpers-currencies.flags.png" />
+    <Content Include="Scripts\src\bower_components\bootstrap-formhelpers\dist\img\bootstrap-formhelpers-googlefonts.png" />
+    <Content Include="Scripts\src\bower_components\bootstrap-formhelpers\dist\js\bootstrap-formhelpers.js" />
+    <Content Include="Scripts\src\bower_components\bootstrap-formhelpers\dist\js\bootstrap-formhelpers.min.js" />
     <Content Include="Scripts\src\bower_components\bootstrap-select\dist\css\bootstrap-select.css" />
     <Content Include="Scripts\src\bower_components\bootstrap-select\dist\css\bootstrap-select.min.css" />
     <Content Include="Scripts\src\bower_components\bootstrap-select\dist\js\bootstrap-select.js" />
@@ -518,6 +528,7 @@
     <Content Include="Scripts\src\bower_components\underscore\underscore.js" />
     <Content Include="Scripts\src\bower_components\unslider\dist\css\unslider-dots.css" />
     <Content Include="Scripts\src\bower_components\unslider\dist\css\unslider.css" />
+    <Content Include="Scripts\src\bower_components\unslider\dist\js\unslider-min.js" />
     <Content Include="Scripts\src\bower_components\when\callbacks.js" />
     <Content Include="Scripts\src\bower_components\when\cancelable.js" />
     <Content Include="Scripts\src\bower_components\when\delay.js" />

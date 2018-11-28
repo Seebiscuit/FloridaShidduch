@@ -6,4 +6,6 @@ dist
 src/bower_components/*
 !src/bower_components/**/dist/
 !src/bower_components/**/lib/
+!src/bower_components/when/
+!src/bower_components/font-awesome/fonts/
 .tmp/

@@ -22,7 +22,7 @@ requirejs.config({
         presentation: 'bower_components/legacy/script',
         scroll: 'bower_components/legacy/scroll',
         slider: 'bower_components/rangeslider.js/dist/rangeslider',
-        unslider: 'bower_components/unslider/src/js/unslider',
+        unslider: 'bower_components/unslider/dist/js/unslider-min',
         picturefill: 'bower_components/picturefill/dist/picturefill',
         'user-login': 'lib/user-login',
         'upload-file': 'lib/upload-file/behavior/UploadFile',

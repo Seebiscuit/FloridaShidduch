@@ -1,0 +1,68 @@
+/* GENERAL */
+/* EXTENDS BOOTSTRAP */
+/* Section Sizes */
+/* line 4, ../Content/Sass/site/edit-profile.scss */
+#apply-edit .component-title-container {
+  display: none;
+}
+
+/* line 9, ../Content/Sass/site/edit-profile.scss */
+#apply-edit h4 .fa-caret-up,
+#apply-edit h4.open .fa-caret-down,
+#apply-edit h4 + .region-display {
+  display: none;
+}
+
+/* line 16, ../Content/Sass/site/edit-profile.scss */
+#apply-edit h4.open .fa-caret-up {
+  display: inline-block;
+}
+
+/* line 20, ../Content/Sass/site/edit-profile.scss */
+#apply-edit h4.open + .region-display {
+  display: block;
+}
+
+/* line 26, ../Content/Sass/site/edit-profile.scss */
+#apply-edit progress {
+  width: 50px;
+  float: left;
+  height: 8px;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+/**** Edit Profile Idea
+#profile-edit .component-title-container {
+    display: none;
+}
+
+#profile-edit input[type="radio"]:not(:checked),
+#profile-edit input[type="radio"]:not(:checked) + label,
+#profile-edit input[type="radio"]:checked + label::before,
+#profile-edit input[type="radio"]:checked + label::after {
+     display: none;
+}
+
+#profile-edit input[type="checkbox"]:not(:checked),
+#profile-edit input[type="checkbox"]:not(:checked) + label,
+#profile-edit input[type="checkbox"]:checked + label::before,
+#profile-edit input[type="checkbox"]:checked + label::after {
+     display: none;
+}
+
+#profile-edit select,
+#profile-edit input[type="date"],
+#profile-edit input,
+#profile-edit textarea {
+    background-color: transparent;
+    border: none;
+    border-radius:0;
+    box-shadow: none;
+}
+
+
+
+*/
+
+/*# sourceMappingURL=edit-profile.css.map */

@@ -1,16 +1,18 @@
 {
   "name": "scripts",
   "version": "0.0.0",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-    "requirejs": "^2.3.6",
-    "del-cli": "^0.2.0",
-    "node-sass": "^4.9.4",
-    "postcss-cli": "^6.0.0",
     "autoprefixer": "^9.2.0",
+    "cssnano": "^4.1.4",
+    "del-cli": "^0.2.0",
+    "fs-extra": "^7.0.1",
+    "klaw-sync": "^6.0.0",
+    "node-sass": "^4.9.4",
+    "path": "^0.12.7",
+    "postcss-cli": "^6.0.0",
     "postcss-flexboxfixer": "0.0.5",
-    "cssnano": "^4.1.4"
+    "requirejs": "^2.3.6"
   },
   "scripts": {
     "scss": "npm run scss:clean && node-sass ../Content/Sass/styles.scss -o ../Content/Styles --source-map true --output-style expanded --source-comments true",

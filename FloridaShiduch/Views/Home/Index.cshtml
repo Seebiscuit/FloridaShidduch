@@ -1,0 +1,259 @@
+﻿
+@{
+    ViewBag.Title = "Florida Shidduch Initiative";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+@section styles {
+    @Styles.Render("~/bundle/css/main")
+}
+
+@section scripts{
+    <script data-main="@Scripts.Url("~/bundles/main")" src="/scripts/src/bower_components/requirejs/require.js"></script>
+}
+
+
+<!-- header -->
+<header class="row black-gradient">
+    <div class="header-logo col-lg-3 col-md-4 col-sm-6">
+        <h1 class="logo">
+            FSI
+        </h1>
+        <h2>
+            Florida Shidduch Initiative
+        </h2>
+    </div>
+    <div id="main-slider">
+        <ul>
+            <li>
+                <picture>
+                    <source media="(min-height: 36em)"
+                            srcset="content/images/calla-tehilim-flowers.jpg  1900w"
+                            sizes="100vw" />
+                    <img src="content/images/calla-tehilim-flowers.jpg" />
+                </picture>
+            </li>
+            <li>
+
+                <picture>
+                    <source media="(min-height: 36em)"
+                            srcset="content/Images/chosson-calla-ring.jpg 1900w"
+                            sizes="100vw" />
+                    <img src="content/Images/chosson-calla-ring.jpg" />
+                </picture>
+            </li>
+            <li>
+
+                <picture>
+                    <source media="(min-height: 36em)"
+                            srcset="content/images/wedding-bouquet.jpg 1900w"
+                            sizes="100vw" />
+                    <img src="content/images/wedding-bouquet.jpg" />
+                </picture>
+            </li>
+        </ul>
+    </div>
+</header>
+<!-- / header -->
+<div class="main-content no-gutter">
+    <nav id="menu-nav" class="col-lg-3 col-sm-3">
+        <ul class="nav" id="menu">
+            <li><a href="#initiative">Initiative</a></li>
+            <li><a href="#how">How it Works </a></li>
+            <li><a href="#faq">FAQ </a></li>
+            <li>
+                <a class="editing" href="#apply/edit-profile">Update</a>
+                <a class="not-editing" href="#apply">Apply</a>
+            </li>
+        </ul>
+        <ul class="nav">
+            <li class="login"><a href="#apply/login">Login</a></li>
+            <li class="logout"><a href="#logout">Logout</a></li>
+        </ul>
+
+    </nav>
+    <!-- content -->
+    <div id="content" class="col-lg-12 col-sm-12">
+        <section id="main">
+            <section id="initiative">
+                <div class="stripe stripe-md row">
+                    <div class="col-sm-9">
+                        <h2>FSI was conceived to help orthodox Florida singles a match</h2>
+                        <div class="separator-container">
+                            <div class="separator line-separator"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="stripe stripe-lg stripe-dark">
+                    <div class="col-sm-9">
+                        <div class="col-md-4">
+                            <div class="card add-animation animation-1 animate">
+                                <div class="icon">
+                                    <i class="fa fa-male" aria-hidden="true"></i>
+                                    <i class="fa fa-female" aria-hidden="true"></i>
+                                </div>
+                                <h3>Help Us Help You</h3>
+                                <p>The only cost to you is a few minutes of your time. Once you register your profile will be avialable to numeros shodchanim waiting to find you a match.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card add-animation animation-1 animate">
+                                <div class="icon">
+                                    <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                </div>
+                                <h3>From Our Community</h3>
+                                <p>FSI is built by our Florida community for our Florida community. It's about providing more access to singles in out-of-town communities like ours.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card add-animation animation-1 animate">
+                                <div class="icon">
+                                    <i class="fa fa-database" aria-hidden="true"></i>
+                                </div>
+                                <h3>Find Your Match Anywhere</h3>
+                                <p>Our database is for Floridan's only, but we match you with any single that fits your requirements, regardles of where he or she may live. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </section>
+
+            <section id="how" class="row">
+                <div class="stripe stripe-lg">
+                    <div class="col-xs-12 col-sm-9">
+                        <h3>How it Works</h3>
+                        <div class="separator-container">
+                            <div class="separator line-separator line-separator-sm"></div>
+                        </div>
+                        <div class="col-sm-12 col-lg-1">
+                            <div class="card">
+                                <div class="icon">
+                                    <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                </div>
+                                <h4>Register</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-1 visible-lg-block">
+                            <div class="card">
+                                <div class="icon">
+                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 hidden-lg">
+                            <div class="card">
+                                <div class="icon">
+                                    <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg-offset-0 col-lg-3">
+                            <div class="card">
+                                <div class="icon">
+                                    <i class="fa fa-table" aria-hidden="true"></i>
+                                </div>
+                                <h4>Complete your profile</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-1 visible-lg-block">
+                            <div class="card">
+                                <div class="icon">
+                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 hidden-lg">
+                            <div class="card">
+                                <div class="icon">
+                                    <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg-offset-0 col-lg-2">
+                            <div class="card">
+                                <div class="icon">
+                                    <i class="fa fa-bullseye" aria-hidden="true"></i>
+                                </div>
+                                <h4>We find a match</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-1 visible-lg-block">
+                            <div class="card">
+                                <div class="icon">
+                                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 hidden-lg">
+                            <div class="card">
+                                <div class="icon">
+                                    <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg-offset-0 col-lg-3">
+                            <div class="card">
+                                <div class="icon">
+                                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                </div>
+                                <h4>Hear from a shodchan</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="faq" class="row">
+                <div class="stripe stripe-no-position stripe-dark">
+                    <div class="col-sm-9 no-gutter">
+                        <h3>Frequently Asked Questions</h3>
+                        <div class="separator-container">
+                            <div class="separator line-separator"></div>
+                        </div>
+                        <div class="question-block">
+                            <h5 class="question">Do you have to be born in Florida to be added to the database?</h5>
+                            <p class="answer">Our site is designed to find matches for individuals that were born or live in Florida. We do not restrict sign-ups to our database. We encourage them! However, if you do not live in Florida (we check your current mailing address) or you did not check the "I was born in Florida" option, our shadchanim will not be <em>actively</em> looking for matches for you. Of course, if a Florida single is matched with you, you will be contacted by an FSI member shadchan, regardless of your place or origin.</p>
+                        </div>
+                        <br />
+                        <div class="question-block">
+                            <h5 class="question">Is my profile public? Who can see it?</h5>
+                            <p class="answer">Your profile is <em>not</em> visible to the public. Only member shadchanim of FSI can see it. They will only send your resume to qualified matches. You may choose to have them contact you before your profile is shared with a match.</p>
+                        </div>
+                        <br />
+
+                        <div class="question-block">
+                            <h5 class="question">How do I become a member shadchan?</h5>
+                            <p class="answer">Please send us an email at <a href="mailto:members@floridashidduch.com">members@floridashidduch.com</a>. We will contact your to begin the registration process.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <section id="apply" class="row" style="display:none;">
+            <div class="stripe stripe-no-position">
+                <div class="col-sm-9">
+                    <h3>Apply</h3>
+                    <div class="separator-container">
+                        <div class="separator line-separator"></div>
+                    </div>
+                    <div id="apply-region"></div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <!-- / content -->
+</div>
+<div class="clearfix"></div>
+<!-- footer -->
+<footer class="row black-gradient">
+    <div class="col-lg-8 col-lg-offset-2">
+        <h2 class="logo">
+            <span>
+                FSI
+            </span>
+        </h2>
+    </div>
+</footer>
+<!-- / footer -->

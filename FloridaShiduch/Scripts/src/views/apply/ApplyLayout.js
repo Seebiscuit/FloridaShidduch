@@ -293,61 +293,60 @@ function (app, Backbone, MasterLayout, templates, ModulesProgress, ModuleProgres
 
         _setTrackerStatus: function (module) {
             var nextModule, progress;
-            return this._initProgress().then(function () {
-                progress = this.state.progress;
-                if (progress.length < 1) {
-                    return this.setProgress(this.pageOrder[0], false)
-                        .then(this._setTrackerStatus.bind(this));
+          return this._initProgress().then(function () {
+            progress = this.state.progress;
+            if (progress.length < 1) {
+              return this.setProgress(this.pageOrder[0], false)
+                .then(this._setTrackerStatus.bind(this));
+            }
+            else {
+              if ((progress.get(nextModule = START_PAGE) && !progress.get(START_PAGE).get('status')) ||
+                (progress.get(nextModule = COMPLETE_PAGE) && progress.get(COMPLETE_PAGE).get('status')))
+                return nextModule;
+
+              nextModule = null;
+              _.each(this.pageOrder, function (mod, i) {
+                var progressMod = progress.get(mod);
+
+                if (isCurrentModuleInApply(mod)) {
+                  if (progressMod) {
+                    if (!progressMod.get('status')) {
+                      // False status, started but not finished
+                      if (!nextModule)
+                        nextModule = mod;
+
+                      this.ui[(mod + 'Meter')].addClass('incomplete').removeClass('complete');
+                    }
+                    else
+                      this.ui[(mod + 'Meter')].removeClass('incomplete').addClass('complete');
+                  } else {
+                    // Not visited. Mark as 'todo'
+                    this.ui[(mod + 'Meter')].removeClass('incomplete complete active');
+                    // First visit, save progress as incomplete
+                    if (mod == module) this.setProgress(mod, false);
+
+                    if (!nextModule)
+                      nextModule = mod;
+                  }
+
+                  if (mod == module || (!module && nextModule == mod))
+                    this.ui[(mod + 'Meter')].addClass('active');
+                  else
+                    this.ui[(mod + 'Meter')].removeClass('active');
                 }
-                else {
-                    if ((progress.get(nextModule = START_PAGE) && !progress.get(START_PAGE).get('status')) || 
-                        (progress.get(nextModule = COMPLETE_PAGE) && progress.get(COMPLETE_PAGE).get('status')))
-                        return nextModule; 
-
-                    nextModule = null;
-                    _.each(this.pageOrder, function (mod, i) {
-                        var progressMod = progress.get(mod);
-
-                        if (isCurrentModuleInApply(mod)) {
-                            if (progressMod) {
-                                if (!progressMod.get('status')) {
-                                    // False status, started but not finished
-                                    if (!nextModule)
-                                        nextModule = mod;
-
-                                    this.ui[(mod + 'Meter')].addClass('incomplete').removeClass('complete');
-                                }
-                                else
-                                    this.ui[(mod + 'Meter')].removeClass('incomplete').addClass('complete');
-                            } else {
-                                // Not visited. Mark as 'todo'
-                                this.ui[(mod + 'Meter')].removeClass('incomplete complete active');
-                                // First visit, save progress as incomplete
-                                if (mod == module) this.setProgress(mod, false);
-
-                                if (!nextModule)
-                                    nextModule = mod;
-                            }
-
-                            if (mod == module || (!module && nextModule == mod)) 
-                                this.ui[(mod + 'Meter')].addClass('active');
-                            else 
-                                this.ui[(mod + 'Meter')].removeClass('active');
-                        }
-                    }.bind(this));
-                }
+              }.bind(this));
+            }
 
 
-                return nextModule ||
-                    (
-                        areAllModulesComplete(this.pageOrder, progress) ? 
-                            // all modules completed
-                            'edit' :
-                            // Not started?
-                            'start'
-                    );
-            }.bind(this))
-            .fail(() => console.log("ERROR!"));
+            return nextModule ||
+              (
+                areAllModulesComplete(this.pageOrder, progress) ?
+                  // all modules completed
+                  'edit' :
+                  // Not started?
+                  'start'
+              );
+          }.bind(this));
         },
 
         _initProgress: function () {

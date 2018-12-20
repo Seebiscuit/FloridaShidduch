@@ -1,0 +1,156 @@
+[33mcommit 9b20d6c53ddfbac9b984aad6a58d7164de9ee4eb[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Tue Nov 27 21:51:35 2018 -0500
+
+    Adding js vendors
+
+[33mcommit 2239e21d0792d730972cabe06f6a9ca46ceea70e[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Tue Nov 27 21:34:52 2018 -0500
+
+    Update publish profile
+
+[33mcommit de9b464a23c51141c66e45ef6a4712e830c5a8fc[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Tue Nov 27 20:43:30 2018 -0500
+
+    Committing forgotten files
+
+[33mcommit b12dedb94e59095c204fa26f1ae0e3dffc08d824[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Mon Nov 26 20:45:26 2018 -0500
+
+    First mostly working version
+
+[33mcommit c0c5704f92ffadae12d1d4efdff59e3f114a9794[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Thu Oct 18 13:56:14 2018 -0400
+
+    References loaded via collection view
+
+[33mcommit 4732d2312da98b31878779011f83a97b1c91d5fd[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Thu Oct 18 05:28:54 2018 -0400
+
+    Edit profile works with progress
+
+[33mcommit 52380dcd96fc1abf705e5530e0c5f09773a7e605[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Wed Oct 17 11:07:00 2018 -0400
+
+    Complete validation for all models
+
+[33mcommit f8151fed6a3f0d2a023d083f354f6de4531b2ef4[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Wed Oct 17 06:37:53 2018 -0400
+
+    Create Profile start and edite flow
+
+[33mcommit 33ebeddad7fa5835d61dba1aabdce73993c44e34[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Thu Mar 22 14:18:15 2018 -0400
+
+    Seeded test users\Polished apply flow
+
+[33mcommit 98246621d31641d47696b390ddf4410cefa787a8[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Thu Mar 22 14:09:48 2018 -0400
+
+    Start page works
+    Seeded Users
+
+[33mcommit 00da0bc1ce3990def590398f7c32741a4751bb70[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Thu Nov 17 07:20:31 2016 -0500
+
+    Pagination, CRUD
+
+[33mcommit 389ca7e35e9f2d51e98c58fb274a2bd3a18fd2d1[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Fri Nov 11 06:27:05 2016 -0500
+
+    AuthenticatedModels, DB PRogress Tracker, Pagination
+
+[33mcommit ce576d9349b60474e595464401798f6ad8845671[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Fri Oct 21 06:43:57 2016 -0400
+
+    Implement Bb model authentication
+
+[33mcommit 0b0f14d143b7ed273f76fe61c8d9894ce01641cf[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Tue Sep 13 06:52:42 2016 -0400
+
+    Registration loop and transitions and styling
+
+[33mcommit cbc4adcb71112c159928ce14030af08d9f5a4fba[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Fri Aug 19 07:38:19 2016 -0400
+
+    Responsive
+
+[33mcommit a9e59c25f9c9bf26f206bbf42a016bc50b9cfc82[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Wed Aug 10 13:47:59 2016 -0400
+
+    Upload Images v 0.1
+
+[33mcommit f7f9b7428eece0c90f27060c4b44fac274fc3c2d[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Thu Jul 21 12:36:14 2016 -0400
+
+    Tracker, Registration
+
+[33mcommit 265c8b5c92ec3ef3a51d84d3d26aa631dfa6f75f[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Thu Jul 14 12:11:43 2016 -0400
+
+    UI Bindings
+
+[33mcommit fed4f019595d850246126c2efa583a902b867c33[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Wed Jul 13 12:22:18 2016 -0400
+
+    Models, Bindings, Events
+
+[33mcommit 2b84c50625780ec9a6ec67cc6793986de4276202[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Fri Jul 8 18:01:42 2016 -0400
+
+    Controllers Init
+
+[33mcommit 31b8ec9b11605c22400e4e9c52eec75659c8a78a[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Thu Jul 7 19:38:35 2016 -0400
+
+    Finished bindings
+
+[33mcommit ac1539d7f0ad8fee3f159db9ce3a07bdd85dce4e[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Thu Jul 7 14:59:09 2016 -0400
+
+    Applying bindings
+
+[33mcommit 950bb93c6391b127c4cb018aa4271facd743cce3[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Tue Jun 7 16:42:51 2016 -0400
+
+    Form and Other Setup
+
+[33mcommit d47474c000b961a055a8296026321328ef6eb8e8[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Wed May 11 15:00:38 2016 -0400
+
+    App Generated
+
+[33mcommit d2597a4a576b37e116242865b7a23c50f978bbc0[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Tue May 10 14:21:32 2016 -0400
+
+    Initial Commit
+
+[33mcommit b0e19c46d50d767b5323cf5b0c75012dba54522e[m
+Author: Gary Kaganas <kaganasg@gmail.com>
+Date:   Sat Mar 19 23:34:14 2016 -0400
+
+    Initial commit to add default .gitIgnore and .gitAttribute files.

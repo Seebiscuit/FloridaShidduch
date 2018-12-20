@@ -4,8 +4,13 @@ dist
 .sass-cache
 
 src/bower_components/*
-!src/bower_components/**/dist/
-!src/bower_components/**/lib/
-!src/bower_components/when/
-!src/bower_components/font-awesome/fonts/
+!src/bower_components/**/dist/*
+!src/bower_components/**/lib/*
+!src/bower_components/when/*
+!src/bower_components/font-awesome/fonts/*
+!src/bower_components/backbone/*.js
+!src/bower_components/requirejs/require.js
+!src/bower_components/requirejs-text/text.js
+!src/bower_components/lodash/*.js
+
 .tmp/

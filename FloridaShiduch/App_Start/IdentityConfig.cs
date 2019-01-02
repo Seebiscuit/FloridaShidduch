@@ -72,15 +72,15 @@ namespace FloridaShiduch
     {
         public override void InitializeDatabase(ApplicationDbContext context)
         {
-            if (context.Database.Exists())
-                context.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction,
-                    string.Format(
-                        @"USE [master];
-                        DECLARE @kill varchar(1000) = '';  
-                        SELECT @kill = @kill + 'kill ' + CONVERT(varchar(5), session_id) + ';'  
-                        FROM sys.dm_exec_sessions
-                        WHERE database_id  = db_id('{0}')
-                        EXEC(@kill);", context.Database.Connection.Database));
+            //if (context.Database.Exists())
+            //    context.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction,
+            //        string.Format(
+            //            @"USE [master];
+            //            DECLARE @kill varchar(1000) = '';  
+            //            SELECT @kill = @kill + 'kill ' + CONVERT(varchar(5), session_id) + ';'  
+            //            FROM sys.dm_exec_sessions
+            //            WHERE database_id  = db_id('{0}')
+            //            EXEC(@kill);", context.Database.Connection.Database));
 
             base.InitializeDatabase(context);
         }

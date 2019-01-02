@@ -114,7 +114,7 @@ function (app, store, Backbone, Marionette, templates) {
                 addControls: function (title) {
                     var prev = Backbone.$('<a><i class="fa fa-caret-left pagination pagination-left"></i></a>'),
                         next = Backbone.$('<a><i class="fa fa-caret-right pagination pagination-right"></i></a>'),
-                        titleEl = Backbone.$('<h3 class="component-title inline"/>'),
+                        titleEl = Backbone.$('<h2 class="component-title inline"/>'),
                         container = Backbone.$('<div class="component-title-container"/>').append(titleEl);
 
                     titleEl.text(this.printTitle())

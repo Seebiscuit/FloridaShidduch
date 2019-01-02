@@ -92,20 +92,19 @@ namespace FloridaShiduch.Controllers
                     {
                         byte[] data = Convert.FromBase64String(image.Image);
                         bw.Write(data);
-                        bw.Close(); 
-                    }
-                    
-                    file = new UserFile(User.Identity.GetUserId(), name, path, fs.Length);
-                }
 
-                db.UserFiles.Add(file);
-                await db.SaveChangesAsync();
+                        file = new UserFile(User.Identity.GetUserId(), name, path, fs.Length);
+
+                        db.UserFiles.Add(file);
+                        await db.SaveChangesAsync();
+                    }
+                }
 
                 return Ok("Upload success!");
             }
             catch (Exception e)
             {
-                
+
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotAcceptable, "This request is not properly formatted. " + e.Message));
             }
 

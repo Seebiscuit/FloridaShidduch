@@ -20,6 +20,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -193,6 +195,7 @@
     <Compile Include="Controllers\DescriptionsController.cs" />
     <Compile Include="Controllers\EssaysController.cs" />
     <Compile Include="Controllers\LifestylesController.cs" />
+    <Compile Include="Controllers\MVC\HomeController.cs" />
     <Compile Include="Controllers\OccupationsController.cs" />
     <Compile Include="Controllers\PersonalsController.cs" />
     <Compile Include="Controllers\ProgressController.cs" />
@@ -400,6 +403,9 @@
     <Content Include="index.html" />
     <Content Include="Scripts\.gitattributes" />
     <Content Include="Scripts\.gitignore" />
+    <Content Include="Scripts\app.build.js" />
+    <None Include="Scripts\build.bat" />
+    <Content Include="Scripts\dist\main.min.js" />
     <Content Include="Scripts\Gruntfile.js" />
     <Content Include="Scripts\src\behaviors\ModelBehavior.js" />
     <Content Include="Scripts\src\bower_components\backbone.babysitter\lib\backbone.babysitter.js" />
@@ -692,11 +698,13 @@
     <Content Include="Scripts\src\bower_components\when\es6-shim\Promise.js.map" />
     <Content Include="Scripts\src\bower_components\when\es6-shim\Promise.min.js.map" />
     <Content Include="Scripts\src\bower_components\when\package.json" />
+    <Content Include="Views\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Sass\site\fonts\" />
-    <Folder Include="Scripts\dist\" />
     <Folder Include="Scripts\src\controllers\" />
     <Folder Include="Scripts\src\regions\" />
     <Folder Include="Scripts\src\test\" />
@@ -833,6 +841,9 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PreBuildEvent>"$(SolutionDir)FloridaShiduch\Scripts\build.bat"</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

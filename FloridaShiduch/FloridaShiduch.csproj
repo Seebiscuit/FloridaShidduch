@@ -407,6 +407,7 @@
     <None Include="Scripts\build.bat" />
     <Content Include="Scripts\dist\main.min.js" />
     <Content Include="Scripts\Gruntfile.js" />
+    <Content Include="Scripts\make-appbuild.js" />
     <Content Include="Scripts\src\behaviors\ModelBehavior.js" />
     <Content Include="Scripts\src\bower_components\backbone.babysitter\lib\backbone.babysitter.js" />
     <Content Include="Scripts\src\bower_components\backbone.babysitter\lib\backbone.babysitter.min.js" />
@@ -701,6 +702,7 @@
     <Content Include="Views\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Scripts\package-lock.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
